@@ -1,0 +1,145 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Data.SqlClient;
+using System.Data;
+using System.Web;
+
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using DatabaseTVP;
+
+namespace FYP1.Models.Student
+{
+    public class Student
+    {
+        [TVP]
+        public int Student_ID { get; set; }
+        [TVP]
+        public string Student_Name { get; set; }
+        [TVP]
+        public string Father_Name { get; set; }
+        [TVP]
+        public string CNIC_No { get; set; }
+        [TVP]
+        public string Email{ get; set; }
+        [TVP]
+        public string Contact_No { get; set; }
+        [TVP]
+        public DateTime DOB { get; set; }
+        [TVP]
+        [DisplayName("City")]
+        public int City_ID { get; set; }
+        [TVP]
+        public string Nationality { get; set; }
+        [TVP]
+        public string Password{ get; set; }
+        [TVP]
+        public bool Status{ get; set; }
+
+        public StudentQualification detail{ get; set; }
+
+
+
+        private const string Module = "Module";
+
+        //Your Properties for Model Here
+
+        //View Only Properties
+        public string ReturnMessage { get; set; }
+
+
+        public int Student_Add()
+        {
+            try
+            {
+                //place your Model Logic and DB Calls here:
+                int Student_ID = DataBase.ExecuteQuery<Student>(new { x = this,x1=detail }, Connection.Get()).FirstOrDefault().Student_ID;
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = this }, "", Module, Connection.GetLogConnection(), 1);
+                return Student_ID;
+            }
+            catch (Exception ex)
+            {
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Negative, ex.Message, new { x = this }, "", Module, Connection.GetLogConnection(), 1);
+                return 0;
+            }
+        }
+        public int Student_Login()
+        {
+            try
+            {
+                //place your Model Logic and DB Calls here:
+                int Student_ID = DataBase.ExecuteQuery<Student>(new { x = this.Email,x1=this.Password}, Connection.Get()).FirstOrDefault().Student_ID;
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = this }, "", Module, Connection.GetLogConnection(), 1);
+                return Student_ID;
+            }
+            catch (Exception ex)
+            {
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Negative, ex.Message, new { x = this }, "", Module, Connection.GetLogConnection(), 1);
+                return 0;
+            }
+        }
+        public Student StudentGetById(int Id )
+        {
+            try
+            {
+                //place your Model Logic and DB Calls here:
+                Student ret = DataBase.ExecuteQuery<Student>(new { x = Id }, Connection.Get()).FirstOrDefault();
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = Id }, "", Module, Connection.GetLogConnection(), 1);
+                return ret;
+            }
+            catch (Exception ex)
+            {
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Negative, ex.Message, new { x = Id }, "", Module, Connection.GetLogConnection(), 1);
+                return null;
+            }
+        }
+            
+
+        public List<Student> StudentGetAll()
+        {
+            try
+            {
+                //place your Model Logic and DB Calls here:
+                List<Student> ret = DataBase.ExecuteQuery<Student>(new { x = 1 }, Connection.Get());
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = 1 }, "", Module, Connection.GetLogConnection(), 1);
+                return ret;
+            }
+            catch (Exception ex)
+            {
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Negative, ex.Message, new { x = 1 }, "", Module, Connection.GetLogConnection(), 1);
+                return null;
+            }
+        }
+
+        public string StudentUpdate()
+        {
+            try
+            {
+                //place your Model Logic and DB Calls here:
+                string Message = DataBase.ExecuteQuery<Student>(new { x = this }, Connection.Get()).FirstOrDefault().ReturnMessage;
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = this }, "", Module, Connection.GetLogConnection(), 1);
+                return Message;
+            }
+            catch (Exception ex)
+            {
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Negative, ex.Message, new { x = this }, "", Module, Connection.GetLogConnection(), 1);
+                return null;
+            }
+        }
+
+
+
+    }
+
+}

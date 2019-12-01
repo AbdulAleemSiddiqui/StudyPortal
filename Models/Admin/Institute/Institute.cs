@@ -1,0 +1,175 @@
+﻿
+using DatabaseTVP;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Web;
+
+namespace FYP1.Models.Institute
+    {
+        public class Institute
+        {
+            public int Institute_ID { get; set; }
+            public string Institute_Name { get; set; }
+            public string Institute_RegNo { get; set; }
+            public DateTime Institute_EstablishYear { get; set; }
+            public int InstituteType_ID { get; set; }
+            public string Institute_Affilation { get; set; }
+            public int Query { get; set; }
+             public DateTime startdate { get; set; }
+        public DateTime end_date { get; set; }
+        [DataType( DataType.EmailAddress)]
+        public string Email { get; set; }
+        [DataType(DataType.Password)]
+
+        public string Password { get; set; }
+        public List<Institute> Institute_Get_All()
+            {
+                List<Institute> lst = new List<Institute>();
+                SqlCommand sc = new SqlCommand("Usp_InsertUpdateDelete_Institute", Connection.Get()) { CommandType = System.Data.CommandType.StoredProcedure };
+            sc.Parameters.AddWithValue("@Query",4);
+            SqlDataReader sdr = sc.ExecuteReader();
+                while (sdr.Read())
+                {
+                    Institute u = new Institute();
+                    u.Institute_ID = (int)sdr["Institute_ID"];
+                    u.Institute_Name = (string)sdr["Institute_Name"];
+                    u.Institute_RegNo = (string)sdr["Institute_RegNo"];
+                    u.Institute_EstablishYear = (DateTime)sdr["Institute_EstablishYear"];
+                    u.InstituteType_ID = (int)sdr["InstituteType_ID"];
+                    u.Institute_Affilation = (string)sdr["Institute_Affilation"];
+                    u.startdate = (DateTime)sdr["start_date"];
+                    u.end_date = (DateTime)sdr["end_date"];
+
+                lst.Add(u);
+                }
+                sdr.Close();
+                return lst;
+            }
+            public Institute Institute_Get_By_ID()
+            {
+                Institute u = new Institute();
+                SqlCommand sc = new SqlCommand("Usp_InsertUpdateDelete_Institute", Connection.Get()) { CommandType = System.Data.CommandType.StoredProcedure };
+                sc.Parameters.AddWithValue("@Institute_ID", Institute_ID);
+            sc.Parameters.AddWithValue("@Query",5);
+                SqlDataReader sdr = sc.ExecuteReader();
+                while (sdr.Read())
+                {
+                    u.Institute_ID = (int)sdr["Institute_ID"];
+                    u.Institute_Name = (string)sdr["Institute_Name"];
+                    u.Institute_RegNo = (string)sdr["Institute_RegNo"];
+                    u.Institute_EstablishYear = (DateTime)sdr["Institute_EstablishYear"];
+                    u.InstituteType_ID = (int)sdr["InstituteType_ID"];
+                    u.Institute_Affilation = (string)sdr["Institute_Affilation"];
+                u.startdate = (DateTime)sdr["startdate"];
+                u.end_date = (DateTime)sdr["end_date"];
+            }
+                sdr.Close();
+                return u;
+            }
+
+            public void Institute_Add()
+            {
+                SqlCommand sc = new SqlCommand("Usp_InsertUpdateDelete_Institute", Connection.Get()) { CommandType = System.Data.CommandType.StoredProcedure }; ;
+                sc.Parameters.AddWithValue("@InstituteType_ID", InstituteType_ID);
+                sc.Parameters.AddWithValue("@Institute_Name", Institute_Name);
+                sc.Parameters.AddWithValue("@Institute_RegNo", Institute_RegNo);
+                sc.Parameters.AddWithValue("@Institute_EstablishYear", Institute_EstablishYear);
+                sc.Parameters.AddWithValue("@Institute_Affilation", Institute_Affilation);
+            sc.Parameters.AddWithValue("@startdate", startdate);
+            sc.Parameters.AddWithValue("@end_date", end_date);
+
+            sc.Parameters.AddWithValue("@Query", 1);
+
+                sc.ExecuteNonQuery();
+
+            }
+            public void Institute_Update()
+            {
+                SqlCommand sc = new SqlCommand("Usp_InsertUpdateDelete_Institute", Connection.Get()) { CommandType = System.Data.CommandType.StoredProcedure }; ;
+                sc.Parameters.AddWithValue("@Institute_ID", Institute_ID);
+                sc.Parameters.AddWithValue("@Institute_Name", Institute_Name);
+                sc.Parameters.AddWithValue("@Institute_RegNo", Institute_RegNo);
+                sc.Parameters.AddWithValue("@Institute_EstablishYear", Institute_EstablishYear);
+                sc.Parameters.AddWithValue("@InstituteType_ID", InstituteType_ID);
+                sc.Parameters.AddWithValue("@Institute_Affilation", Institute_Affilation);
+            sc.Parameters.AddWithValue("@Query", Query);
+            sc.Parameters.AddWithValue("@startdate", startdate);
+            sc.Parameters.AddWithValue("@end_date", end_date);
+
+            sc.ExecuteNonQuery();
+            }
+            public void Institute_Delete()
+            {
+                SqlCommand sc = new SqlCommand("Usp_InsertUpdateDelete_Institute", Connection.Get()) { CommandType = System.Data.CommandType.StoredProcedure }; ;
+                sc.Parameters.AddWithValue("@Institute_ID", Institute_ID);
+                sc.ExecuteNonQuery();
+            }
+
+        public List<Institute> Institute_Get_By_Deprt(int D_ID)
+        {
+            List<Institute> lst = new List<Institute>();
+            SqlCommand sc = new SqlCommand("Institute_Get_By_Deprt", Connection.Get()) { CommandType = System.Data.CommandType.StoredProcedure };
+            sc.Parameters.AddWithValue("@D_ID", D_ID);
+            SqlDataReader sdr = sc.ExecuteReader();
+            while (sdr.Read())
+            {
+                Institute u = new Institute();
+                u.Institute_ID = (int)sdr["Institute_ID"];
+                u.Institute_Name = (string)sdr["Institute_Name"];
+                u.Institute_RegNo = (string)sdr["Institute_RegNo"];
+                u.Institute_EstablishYear = (DateTime)sdr["Institute_EstablishYear"];
+                u.InstituteType_ID = (int)sdr["InstituteType_ID"];
+                u.Institute_Affilation = (string)sdr["Institute_Affilation"];
+                u.startdate = (DateTime)sdr["start_date"];
+                u.end_date = (DateTime)sdr["end_date"];
+
+                lst.Add(u);
+            }
+            sdr.Close();
+            return lst;
+        }
+        public List<Institute> Institute_Get_By_Degree(int Degree_ID)
+        {
+            List<Institute> lst = new List<Institute>();
+            SqlCommand sc = new SqlCommand("Institute_Get_By_Degree", Connection.Get()) { CommandType = System.Data.CommandType.StoredProcedure };
+            sc.Parameters.AddWithValue("@Degree_ID", Degree_ID);
+            SqlDataReader sdr = sc.ExecuteReader();
+            while (sdr.Read())
+            {
+                Institute u = new Institute();
+                u.Institute_ID = (int)sdr["Institute_ID"];
+                u.Institute_Name = (string)sdr["Institute_Name"];
+                u.Institute_RegNo = (string)sdr["Institute_RegNo"];
+                u.Institute_EstablishYear = (DateTime)sdr["Institute_EstablishYear"];
+                u.InstituteType_ID = (int)sdr["InstituteType_ID"];
+                u.Institute_Affilation = (string)sdr["Institute_Affilation"];
+                u.startdate = (DateTime)sdr["start_date"];
+                u.end_date = (DateTime)sdr["end_date"];
+
+                lst.Add(u);
+            }
+            sdr.Close();
+            return lst;
+        }
+        public int Institute_Login()
+        {
+            try
+            {
+                //place your Model Logic and DB Calls here:
+                int I_ID = DataBase.ExecuteQuery<Institute>(new { x = this.Email,x2=this.Password }, Connection.Get()).FirstOrDefault().Institute_ID;
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = this }, "", "", Connection.GetLogConnection(), 1);
+                return I_ID;
+            }
+            catch (Exception ex)
+            {
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Negative, ex.Message, new { x = this }, "", "", Connection.GetLogConnection(), 1);
+                return 0;
+            }
+        }
+    }
+}

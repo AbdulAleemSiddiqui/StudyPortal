@@ -1,0 +1,136 @@
+﻿@model FYP1.Models.Admin.AdmissionForm.AdmissionForm
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>AdmissionForm</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+      @Html.HiddenFor(x=>x.S_ID)
+        <div class="form-group">
+            @Html.Label("Department", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Department_ID", new SelectList(ViewBag.Department, "Department_ID", "Department_Name"), new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Degree_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Degree_ID, new SelectList(ViewBag.Degree, "D_ID", "Name"), new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Degree_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <div class="col-md-10">
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>
+                                Check
+                            </th>
+                            <th></th>
+                            <th>
+                                University
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="bdy">
+
+                    </tbody>
+                </table>
+            </div>
+</div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    $('#Department_ID').change(function () {
+        $('#bdy').html('');
+        //$.ajax({
+        //    url: '/AdmissionForm/GetByDeprtment',
+        //    type: 'GET',
+        //    dataType: 'json',
+        //    data: { D_ID: $(this).val()},
+        //    success: function (d) {
+        //        //list post nhi ho rhi hai q k input k tag k name sahi nhi arha 
+        //        var body = $('#bdy');
+        //        body.empty();
+        //        $("#Vehicle_ID").prepend("<option value='' ></option>");// Clear the please wait
+        //        $.each(d, function (i, item) {
+        //            debugger;
+        //            var tr ="<tr>";
+        //            tr += " <td> <input type='checkbox' name='Inst_List[" + i + "].I_ID' value=" + item.Institute_ID + " /> </td> ";
+        //            tr += " <td> </td>";
+        //            tr += " <td><label>" + item.Institute_Name + "</label></td>";
+        //            tr += "</tr>";
+        //            body.append(tr);
+        //        });
+        //    }
+        //});
+
+        $.ajax({
+            url: '/AdmissionForm/GetDegreeByDeprtment',
+            type: 'GET',
+            dataType: 'json',
+            data: { D_ID: $(this).val() },
+            success: function (d) {
+                var degree = $('#Degree_ID');
+                degree.html('');
+                $("#Degree_ID").prepend("<option value='' ></option>");// Clear the please wait
+                $.each(d, function (i, item) {
+                    degree.append($("<option></option>").val(item.D_ID).html(item.Name));
+                });
+            }
+        });
+    });
+    $('#Degree_ID').change(function () {
+
+        $.ajax({
+            url: '/AdmissionForm/GetByDegree',
+            type: 'GET',
+            dataType: 'json',
+            data: { Degree_ID: $(this).val() },
+            success: function (d) {
+
+                var body = $('#bdy');
+                body.empty();
+                $("#Vehicle_ID").prepend("<option value='' ></option>");// Clear the please wait
+                $.each(d, function (i, item) {
+                    debugger;
+                    var tr = "<tr>";
+                    tr += " <td> <input type='checkbox' Name='Inst_List[" + i + "].I_ID' value=" + item.Institute_ID + " /> </td> ";
+                    tr += " <td> </td>";
+                    tr += " <td><label>" + item.Institute_Name + "</label></td>";
+                    tr += "</tr>";
+                    body.append(tr);
+                });
+            }
+        });
+
+    
+    });
+</script>
+}

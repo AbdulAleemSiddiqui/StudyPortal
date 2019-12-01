@@ -1,0 +1,152 @@
+﻿=
+@{
+    ViewBag.Title = "show_All_Uni_selection";
+}
+
+<br />
+<br />
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <section class="find-course find-course_mod-a">
+        <h2 class="find-course__title"><i class="icon stroke icon-Search"></i>All About Education In Pakistan</h2>
+        <div>
+            <div class="form-group" style="">
+                <ul style="float: left; margin-left: 0px;margin-top:0;">
+                    <li style="list-style:none;" class="col-lg-4 col-md-4 col-sm-10 col-xs-12">
+                        <label style="color:black;">Discipline Type</label>
+                       
+
+                        <select class="form-control" id="discipline_type" name="discipline_type" onchange=""></select>
+                    </li>
+
+                    <li style="list-style:none;" class="col-lg-4 col-md-4 col-sm-10 col-xs-12">
+                        <label style="color:;">Level</label>
+                        <select class="form-control" id="sub_level" name="sub_level" onchange="if (!window.__cfRLUnblockHandlers) return false; document.searchForm2.submit()" ;="">
+                            <option value="">Select Level</option>
+                            <option value="7">Bachelor</option>
+                            <option value="4">Master (ma / Msc)</option>
+                            <option value="3" selected="">Ms / M.phil (18 Years)</option>
+                            <option value="2">Doctorate</option>
+                            <option value="13">Matric/ O-level</option>
+                            <option value="10">Intermediate / A-level</option>
+                            <option value="17">Professional (ca/acca/flying Etc..)</option>
+                            <option value="8">Diploma / Cert (after Inter)</option>
+                            <option value="11">Diploma / Cert (after Matric)</option>
+                            <option value="5">Pg Diploma / Cert</option>
+                            <option value="16">Major Training [medical]</option>
+                        </select>
+                    </li>
+                    <li style="list-style:none;" class="col-lg-4 col-md-4 col-sm-10 col-xs-12">
+                        <label style="color:black;">Courses</label>
+                        <select class="form-control" name="discipline" onchange=""></select>
+                    </li>
+
+                    <li style="list-style:none;" class="col-lg-4 col-md-4 col-sm-10 col-xs-12">
+                        <label style="color:black;">City</label>
+                        <select class="form-control" id="city" name="city" onchange="if (!window.__cfRLUnblockHandlers) return false; document.searchForm2.submit()" ;="">
+                            <option value="">Select City</option>
+                            <option value="Abbottabad">Abbottabad</option>
+                            <option value="Attock">Attock</option>
+                            <option value="Bahawal nagar">Bahawal nagar</option>
+                            <option value="Bahawal pur">Bahawal pur</option>
+                            <option value="Bhakkar">Bhakkar</option>
+                            <option value="Chakwal">Chakwal</option>
+                            <option value="Chishtian">Chishtian</option>
+                            <option value="D.g.khan">D.g.khan</option>
+                            <option value="Dokri ">Dokri </option>
+                            <option value="Faisalabad">Faisalabad</option>
+                            <option value="Ghotki">Ghotki</option>
+                            <option value="Gujranwala">Gujranwala</option>
+                            <option value="Gujrat">Gujrat</option>
+                            <option value="Gwadar">Gwadar</option>
+                            <option value="Hafizabad">Hafizabad</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Islamabad">Islamabad</option>
+                            <option value="Jamshoro">Jamshoro</option>
+                            <option value="Jhang">Jhang</option>
+                            <option value="Jhelum">Jhelum</option>
+                            <option value="Kallar kahar">Kallar kahar</option>
+                            <option value="Karachi" selected="">Karachi</option>
+                            <option value="Kasur">Kasur</option>
+                            <option value="Khair pur">Khair pur</option>
+                            <option value="Khanewal">Khanewal</option>
+                            <option value="Khushab">Khushab</option>
+                            <option value="Kohat">Kohat</option>
+                            <option value="Kotli">Kotli</option>
+                            <option value="Lahore">Lahore</option>
+                            <option value="Lakki marwat">Lakki marwat</option>
+                            <option value="Larkana">Larkana</option>
+                            <option value="Layyah">Layyah</option>
+                            <option value="Lodhran">Lodhran</option>
+                            <option value="Mandi baha-ud-din">Mandi baha-ud-din</option>
+                            <option value="Mansehra">Mansehra</option>
+                            <option value="Mardan">Mardan</option>
+                            <option value="Mianwali">Mianwali</option>
+                            <option value="Mingora">Mingora</option>
+                            <option value="Mir pur (ajk)">Mir pur (ajk)</option>
+                            <option value="Multan">Multan</option>
+                            <option value="Muridke">Muridke</option>
+                            <option value="Murree">Murree</option>
+                            <option value="Muzafargarh">Muzafargarh</option>
+                            <option value="Muzaffarabad">Muzaffarabad</option>
+                            <option value="Narowal">Narowal</option>
+                            <option value="Okara">Okara</option>
+                            <option value="Pak pattan">Pak pattan</option>
+                            <option value="Pasroor">Pasroor</option>
+                            <option value="Pattoki">Pattoki</option>
+                            <option value="Peshawar">Peshawar</option>
+                            <option value="Quetta">Quetta</option>
+                            <option value="Rahim yar khan">Rahim yar khan</option>
+                            <option value="Rajanpur">Rajanpur</option>
+                            <option value="Rawalpindi">Rawalpindi</option>
+                            <option value="Razmak">Razmak</option>
+                            <option value="Risalpur">Risalpur</option>
+                            <option value="Sahiwal">Sahiwal</option>
+                            <option value="Sakardu">Sakardu</option>
+                            <option value="Sakrand">Sakrand</option>
+                            <option value="Sargodha">Sargodha</option>
+                            <option value="Sheikhupura">Sheikhupura</option>
+                            <option value="Shikar pur">Shikar pur</option>
+                            <option value="Sialkot">Sialkot</option>
+                            <option value="Sukkur">Sukkur</option>
+                            <option value="Swabi">Swabi</option>
+                            <option value="Tando adam">Tando adam</option>
+                            <option value="Tando jam">Tando jam</option>
+                            <option value="Toba tek singh">Toba tek singh</option>
+                            <option value="Topi">Topi</option>
+                            <option value="Turbat">Turbat</option>
+                            <option value="Umerkot">Umerkot</option>
+                            <option value="Vehari">Vehari</option>
+                            <option value="Wah">Wah</option>
+                            <option value="Wana">Wana</option>
+                        </select>
+                        <br />
+                        <br />
+                        <button>Submit</button>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+
+    </section>
+
+</div>
+
+<article class="post post_mod-i clearfix">
+    <div class="entry-main">
+
+        <a>PAKISTAN NAVY ENGINEERING COLLEGE, KARACHI</a>
+        <br>
+        <span class="entry-autor"> PNEC admissions are open for <a class="post-link" href="javascript:void(0);">BACHELOR</a> degree courses in <a href="javascript:void(0);" class="post-link">Mechanical</a></span>
+        <div class="entry-footer" style="">
+            <div style="margin-bottom: 0px; width:80%; float:left;" class="entry-content">
+                <p style="margin-bottom:0px;">Last date to apply for admission (online / by hand) is <font color="#FF0000">03-12-2019.</font></p>
+            </div>
+        </div>
+    </div>
+    <a href="/admissions/pakistan-navy-engineering-college-karachi-admissions-bachelor-level-2265" class="btn btn-sq btn-info">Admission Details</a>
+    <a href="../pakistan-navy-engineering-college-pnec-karachi-ins-2265" class="btn btn-sq btn-info">Programs, Fee and Merit</a>
+</article>
+
+

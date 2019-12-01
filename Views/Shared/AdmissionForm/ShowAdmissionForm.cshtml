@@ -1,0 +1,91 @@
+﻿@model IEnumerable<FYP1.Models.Admin.AdmissionForm.AdmissionForm>
+
+@{
+    ViewBag.Title = "ShowAdmissionForm";
+}
+
+<h2>ShowAdmissionForm</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicantID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicantName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fathername)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dob)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CNIC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MetricMarks)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InterMarks)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Institute_Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicantID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicantName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fathername)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dob)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CNIC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MetricMarks)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InterMarks)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Institute_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UpdateAdmissionform", new { id = item.ApplicantID}) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

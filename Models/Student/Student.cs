@@ -22,7 +22,9 @@ namespace FYP1.Models.Student
         [TVP]
         public string CNIC_No { get; set; }
         [TVP]
-        public string Email{ get; set; }
+        public string Email { get; set; }
+        [TVP]
+        public bool EmailConfirmation { get; set; }
         [TVP]
         public string Contact_No { get; set; }
         [TVP]
@@ -33,10 +35,11 @@ namespace FYP1.Models.Student
         [TVP]
         public string Nationality { get; set; }
         [TVP]
-        public string Password{ get; set; }
+        public string Password { get; set; }
         [TVP]
-        public bool Status{ get; set; }
-
+        public bool Status { get; set; }
+        [TVP]
+        public bool ConnectionID { get; set; }
         public StudentQualification detail { get; set; } = new StudentQualification();
 
 
@@ -54,7 +57,7 @@ namespace FYP1.Models.Student
             try
             {
                 //place your Model Logic and DB Calls here:
-                int Student_ID = DataBase.ExecuteQuery<Student>(new { x = this,x1=detail }, Connection.Get()).FirstOrDefault().Student_ID;
+                int Student_ID = DataBase.ExecuteQuery<Student>(new { x = this, x1 = detail }, Connection.Get()).FirstOrDefault().Student_ID;
                 // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
                 Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = this }, "", Module, Connection.GetLogConnection(), 1);
                 return Student_ID;
@@ -71,7 +74,7 @@ namespace FYP1.Models.Student
             try
             {
                 //place your Model Logic and DB Calls here:
-                int Student_ID = DataBase.ExecuteQuery<Student>(new { x = this.Email,x1=this.Password}, Connection.Get()).FirstOrDefault().Student_ID;
+                int Student_ID = DataBase.ExecuteQuery<Student>(new { x = this.Email, x1 = this.Password }, Connection.Get()).FirstOrDefault().Student_ID;
                 // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
                 Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = this }, "", Module, Connection.GetLogConnection(), 1);
                 return Student_ID;
@@ -83,14 +86,14 @@ namespace FYP1.Models.Student
                 return 0;
             }
         }
-        public Student StudentGetById(int Id )
+        public Student StudentGetById(int Id)
         {
             try
             {
                 //place your Model Logic and DB Calls here:
                 Student ret = DataBase.ExecuteQuery<Student>(new { x = Id }, Connection.Get()).FirstOrDefault();
                 // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
-                ret.detail= ret.detail.Student_Qualification_GetById(ret.Student_ID);
+                ret.detail = ret.detail.Student_Qualification_GetById(ret.Student_ID);
                 Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = Id }, "", Module, Connection.GetLogConnection(), 1);
                 return ret;
             }
@@ -101,7 +104,7 @@ namespace FYP1.Models.Student
                 return null;
             }
         }
-            
+
 
         public List<Student> StudentGetAll()
         {
@@ -121,12 +124,12 @@ namespace FYP1.Models.Student
             }
         }
 
-        public string StudentUpdate()
+        public string Student_EmailConfirm()
         {
             try
             {
                 //place your Model Logic and DB Calls here:
-                string Message = DataBase.ExecuteQuery<Student>(new { x = this }, Connection.Get()).FirstOrDefault().ReturnMessage;
+                string Message = DataBase.ExecuteQuery<Student>(new { x = this.Student_ID }, Connection.Get()).FirstOrDefault().ReturnMessage;
                 // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
                 Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = this }, "", Module, Connection.GetLogConnection(), 1);
                 return Message;

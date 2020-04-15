@@ -1,0 +1,175 @@
+﻿@model IEnumerable<FYP1.Models.Quiz>
+
+
+@*<div class="block">
+        @Html.DisplayNameFor(model => model.question)
+    </div>
+    @{
+        int count = 1;
+    }
+    @foreach (var item in Model)
+    {
+        <div class="block">
+            <span>@count  :</span>      @Html.DisplayFor(modelItem => item.question)
+        </div>
+        foreach (var items in item.choicess)
+        {
+            <div class="choices">
+                       <input type="radio" name="@items.choices" class="radio-inline" />@Html.DisplayFor(m=>items.choices)
+                </div>
+
+        }
+
+        count++;
+    }*@
+
+@{ int count = 1, countR = 0; }
+
+    <div class="Quiz">
+        <h4 style="margin-top:4%;"><span class="label label-info">Questions :</span></h4>
+        @if (Model != null && Model.Any())
+        {
+            var stuid = ViewBag.data;
+            foreach (var item in Model)
+            {
+                <div class="BlockQ" style="border: 1px solid #bdbdbd; width: 75%; border-radius: 4px; margin-top: 40px; background-color: #f0ffff; padding: 8px;">
+                    <div class="Question" style="padding: 2%;">
+                        <span class="label label-warning"> @string.Format("{0}{1}.", "Q", count)</span>
+                        <span id="@string.Format("{0}{1}", "ID_Q", count)" style="display:none;">@item.quiz_question_id</span>
+                        <p style="display: inline; padding: 2%;" id="@string.Format("{0}{1}", "Q", count)">@item.question</p>
+                    </div>
+
+                    <div class="Choices" style="margin-left: 8%;">
+                        @foreach (var items in item.choicess)
+                        {
+                            <label class="radio-inline">
+                                <span id="@string.Format("{0}{1}", "ID_C", count)" style="display:none;">@items.quiz_choice_id</span>
+                                @if (stuid == 0)
+                                {
+
+                                    <input type="radio" name="@string.Format("{0}{1}", "inlineRadioOptions", count)" id="@string.Format("{0}{1}", "inlineRadio", countR)" value="@items.choices" style="margin-left: -16px;"> @items.choices
+
+                                }
+                                else
+                                {
+                                    <input type="radio" name="@string.Format("{0}{1}", "inlineRadioOptions", count)" id="@string.Format("{0}{1}", "inlineRadio", countR)" value="@items.choices" style="margin-left: -16px;" disabled="disabled"> @items.choices
+
+                                }
+                            </label><br />
+                            countR++;
+                        }
+                    </div> <!--END Choices-->
+
+                    <div id="@string.Format("{0}{1}{2}", "Ans", "Q", count)">
+
+
+                    </div>
+                </div> <!-- END BlockQ -->
+                count++;
+            }
+            <span id="countQuections" style="display:none;">@count</span>
+          
+            <button type="button" id="SubmitQuiz" class="btn btn-default" style="margin-top: 10px;"><span class="glyphicon glyphicon-ok" ></span>   Submit Quiz </button>
+            
+        }
+    </div> <!-- END QUIZ -->
+
+@section scripts
+{
+<script >
+
+
+        $(document).ready(function () {
+
+            $('#SubmitQuiz').on('click', function () {
+
+                //count Questions
+                var sel = $('#countQuections').text();
+              
+                console.log(sel);
+
+                var resultQuiz = [], countQuestion = parseInt(sel), question = {}, j = 1;
+
+                for (var i = 1; i < countQuestion; i++) {
+                    question = {
+                        quiz_ques_id: $('#ID_Q'+ i).text(),
+                        quiz_choice_id: $('#ID_C' + i).text()
+                        ,answer: $('input[name=inlineRadioOptions' + i + ']:checked').val()
+                    }
+
+                    resultQuiz.push(question);
+                }
+ debugger;
+                $.ajax({
+                        
+                    type: 'POST',
+                    url: '@Url.Action("GetQuizQuestion", "AdmissionForm")',
+                    data: { resultQuiz },
+                     
+                    success: function (response) {
+                        debugger;
+                        
+                        if (response.qa.length > 0)
+                        {
+                            var j = 1;
+                            count = 0;
+                            for(var i = 0; i <response.qa.length; i++ )
+                            {
+                                if (response.qa[i].Is_correct == true )
+                                {
+                                    debugger;
+                                    $('#AnsQ' + j).html('<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Correct answer</div>');
+                                    count++;
+                                    
+                                    
+                                }
+                                
+                                else
+                                {
+
+                                    $('#AnsQ' + j).html('<div class="alert alert-danger" role="alert"> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Incorrect answer - The Good Answer is <b>' + response.qa[i].answer + '</b></div>');
+                                }
+                                j++;
+                                
+                              
+                            }
+                            swal("Congratulation!", "You marks is" + count, "success");
+
+                        }
+                        else
+                        {
+                            alert("Something Wrong");
+                        }
+
+
+                        //console.log(response.result.length);
+
+                    },
+                    error: function (response) {
+
+                    }
+                });
+
+                console.log(resultQuiz);
+
+            });
+
+
+
+        });
+
+	
+        $(document).ready(function ()
+        {
+           
+        $('#SubmitQuiz').click(function () {
+
+            if ($("#SubmitQuiz").prop('disabled')) $("SubmitQuiz").prop('disabled', false);
+        else $("#SubmitQuiz").prop('disabled', true);
+        });
+        })
+</script>
+
+
+
+    }

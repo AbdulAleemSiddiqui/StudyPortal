@@ -41,6 +41,7 @@
                 @Html.ValidationMessageFor(model => model.department.Department_ID, "", new { @class = "error" })
             </div>
         </div>
+       
 
         <div class="form-group">
             @Html.LabelFor(model => model.degreelevel.DegreeLevel_Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -79,4 +80,28 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $("#institute_Institute_ID").change(function () {
+            debugger;
+           
+            $.ajax({
+                url: '/admin/GetCampusByIntitute',
+                type: 'GET',
+                dataType: 'json',
+                data: { I_ID: $(this).val() },
+                success: function (d) {
+                    debugger;
+
+                    var degree = $('#institutecampus_InsCampus_ID');
+                    degree.html('');
+                    $("#InsCampus_ID").prepend("<option value='' ></option>");// Clear the please wait
+                    $.each(d, function (i, item) {
+                        degree.append($("<option></option>").val(item.InsCampus_ID).html(item.InsCampus_Address));
+                    });
+                }
+            });
+        });  
+      
+
+    </script>
 }

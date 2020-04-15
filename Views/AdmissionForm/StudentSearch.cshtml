@@ -1,0 +1,135 @@
+﻿@model FYP1.Models.Student.Student
+
+<center>
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Student_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Student_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Father_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Father_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CNIC_No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CNIC_No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contact_No)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contact_No)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOB)
+        </dd>
+
+     
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nationality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nationality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+
+   
+
+        <dt>
+            @Html.DisplayNameFor(model => model.detail.DegreeLevel_Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.detail.DegreeLevel_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.detail.Field_Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.detail.Field_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.detail.Board_Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.detail.Board_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.detail.Start_Year)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.detail.Start_Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.detail.End_Year)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.detail.End_Year)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.detail.CGPA)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.detail.CGPA)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.detail.Percentage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.detail.Percentage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.detail.Grades)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.detail.Grades)
+        </dd>
+    </dl>
+</div>
+</center>
+<p>
+    @Html.ActionLink("Back to List", "Get_paid_Admission")
+</p>

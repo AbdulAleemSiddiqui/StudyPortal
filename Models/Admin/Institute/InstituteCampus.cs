@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.SqlClient;
+using System.ComponentModel;
 using System.Web;
 
 namespace FYP1.Models.Institute
@@ -9,15 +10,21 @@ namespace FYP1.Models.Institute
     public class InstituteCampus
     {
         public int Query { get; set; }
+        [DisplayName("InsCampus ID")]
         public int InsCampus_ID { get; set; }
-
+        [DisplayName("Institute ID")]
         public int Institute_ID { get; set; }
-      
+        [DisplayName("Institute Name")]
         public string Institute_Name { get; set; }
+        [DisplayName("Institute Area")]
         public string InsCampus_Area { get; set; }
+        [DisplayName("Institute Address")]
         public string InsCampus_Address { get; set; }
+        [DisplayName("Institute PhoneNo")]
         public int InsCampus_PhoneNo { get; set; }
+        [DisplayName("Institute EmailID")]
         public string InsCampus_EmailID { get; set; }
+        [DisplayName("Institute EstablishYear")]
         public string InsCampus_EstablishYear { get; set; }
         
 
@@ -92,6 +99,7 @@ namespace FYP1.Models.Institute
             sc.Parameters.AddWithValue("@InsCampus_PhoneNo", InsCampus_PhoneNo);
             sc.Parameters.AddWithValue("@InsCampus_EmailId", InsCampus_EmailID);
             sc.Parameters.AddWithValue("@InsCampus_EstablishYear", InsCampus_EstablishYear);
+            sc.Parameters.AddWithValue("Query", 2);
             
             sc.ExecuteNonQuery();
         }

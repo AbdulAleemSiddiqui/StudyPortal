@@ -77,7 +77,7 @@ namespace FYP1.Models
         public List<Degree> Degree_Get_By_Deprtment(int D_ID)
         {
             try
-            {
+             {
                 List<Degree> ret = DataBase.ExecuteQuery<Degree>(new {x1=D_ID }, Connection.Get());
                 Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = 1 }, "", Module, Connection.GetLogConnection(), 1);
                 return ret;

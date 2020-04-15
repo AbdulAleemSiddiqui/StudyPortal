@@ -3,27 +3,16 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<body>
-    <section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(../images/big_image_2.jpg); ">
-        <div class="container">
-            <div class="row align-items-center justify-content-center site-hero-sm-inner">
-                <div class="col-md-7 text-center">
-
-                    <div class="mb-5 element-animate fadeInUp element-animated">
-                        <h1 class="mb-2">Log in</h1>
-                        <p class="bcrumb"><a href="index.html">Home</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">Log in</span></p>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row" data-background-color="green">
+            <div class="col-md-6" style="float:right">
+                <div class="card">
+                    <div class="card-header" data-background-color="red">
+                        <h4 class="title"><b>Sign In</b></h4>
+                        <p class="category"><b>as Institute</b></p>
                     </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="site-section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-7">
-                    <div class="form-wrap">
-                        <h2 class="mb-4">Log in with your account</h2>
+                    <div class="card-content">
                         @using (Html.BeginForm())
                         {
                             <form action="#" method="post">
@@ -41,8 +30,17 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-6 form-group">
-                                        <input type="submit" value="Login" class="btn btn-primary px-5 py-2">
+                                    <div class="col-md-12 form-group">
+                                        <input type="submit" value="Login" class="btn btn-danger" style="width:100%;">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 ">
+                                        <a href="@Url.Action("StudentLogin","Login")">login as student</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="@Url.Action("AdminLogin","Login")">login as admin</a>
                                     </div>
                                 </div>
                             </form>
@@ -51,8 +49,42 @@
                 </div>
             </div>
         </div>
-    </section>
-</body>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

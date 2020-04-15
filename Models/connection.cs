@@ -31,5 +31,16 @@ namespace FYP1.Models
             }
             return c_log;
         }
+     //   static SqlConnection ssc = null;
+        //public static SqlConnection GetConnection()
+        //{
+        //    if (ssc == null)
+        //    {
+        //        ssc = new SqlConnection();
+        //        ssc.ConnectionString = @"Data Source=DESKTOP-Q78RQP5\SQLEXPRESS;Initial Catalog=University_DataSet;Integrated Security=True";
+        //        ssc.Open();
+        //    }
+        //    return ssc;
+        //}
     }
 }

@@ -59,12 +59,12 @@ namespace FYP1.Models.Admin
         public void InstituteDepartment_Add()
         {
             SqlCommand sc = new SqlCommand("Usp_InsertUpdateDelete_InstituteDepartment", Connection.Get()) { CommandType = System.Data.CommandType.StoredProcedure }; ;
-            sc.Parameters.AddWithValue("@InstituteDepartment_ID", 0);
+            //sc.Parameters.AddWithValue("@InstituteDepartment_ID", 0);
             sc.Parameters.AddWithValue("@InsCampus_ID", InsCampus_ID);
             sc.Parameters.AddWithValue("@Department_ID", Department_ID);
             sc.Parameters.AddWithValue("@DegreeLevel_ID", DegreeLevel_ID);
-            sc.Parameters.AddWithValue("@DegreeDuration_ID", DegreeDuration_ID);
-          
+            //sc.Parameters.AddWithValue("@DegreeDuration_ID", DegreeDuration_ID);
+
             sc.Parameters.AddWithValue("@Query", 1);
 
             sc.ExecuteNonQuery();

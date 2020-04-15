@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -53,6 +53,9 @@
     </Reference>
     <Reference Include="Logger">
       <HintPath>..\..\..\Data Recovery 2019-10-29 at 13.23.20\E\Lost Location\My-Projects\Axon Project\AHS\AHS\bin\Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -120,11 +123,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -148,12 +146,15 @@
     <Compile Include="Models\Admin\Institute\InstituteType.cs" />
     <Compile Include="Models\Admin\Institute\Institute.cs" />
     <Compile Include="Models\Admin\Institute\InstituteCampus.cs" />
+    <Compile Include="Models\Admin\uni\University.cs" />
+    <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\connection.cs" />
     <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\DegreeDuration.cs" />
     <Compile Include="Models\DegreeLevel.cs" />
     <Compile Include="Models\Location\City.cs" />
     <Compile Include="Models\Location\State.cs" />
+    <Compile Include="Models\Quiz.cs" />
     <Compile Include="Models\Student\Board.cs" />
     <Compile Include="Models\Student\Qualification.cs" />
     <Compile Include="Models\Student\QualificationLevel.cs" />
@@ -166,27 +167,145 @@
     <Compile Include="ViewModel\StudentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\demo.css" />
+    <Content Include="assets\css\material-dashboard.css" />
+    <Content Include="assets\img\apple-icon.png" />
+    <Content Include="assets\img\cover.jpeg" />
+    <Content Include="assets\img\faces\marc.jpg" />
+    <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\mask.png" />
+    <Content Include="assets\img\new_logo.png" />
+    <Content Include="assets\img\sidebar-1.jpg" />
+    <Content Include="assets\img\sidebar-2.jpg" />
+    <Content Include="assets\img\sidebar-3.jpg" />
+    <Content Include="assets\img\sidebar-4.jpg" />
+    <Content Include="assets\img\tim_80x80.png" />
+    <Content Include="assets\js\arrive.min.js" />
+    <Content Include="assets\js\bootstrap-notify.js" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\chartist.min.js" />
+    <Content Include="assets\js\demo.js" />
+    <Content Include="assets\js\jquery-3.2.1.min.js" />
+    <Content Include="assets\js\material-dashboard.js" />
+    <Content Include="assets\js\material.min.js" />
+    <Content Include="assets\js\perfect-scrollbar.jquery.min.js" />
+    <Content Include="Content\alertifyjs\alertify.css" />
+    <Content Include="Content\alertifyjs\alertify.min.css" />
+    <Content Include="Content\alertifyjs\alertify.rtl.css" />
+    <Content Include="Content\alertifyjs\alertify.rtl.min.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.min.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.rtl.css" />
+    <Content Include="Content\alertifyjs\themes\bootstrap.rtl.min.css" />
+    <Content Include="Content\alertifyjs\themes\default.css" />
+    <Content Include="Content\alertifyjs\themes\default.min.css" />
+    <Content Include="Content\alertifyjs\themes\default.rtl.css" />
+    <Content Include="Content\alertifyjs\themes\default.rtl.min.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.min.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.rtl.css" />
+    <Content Include="Content\alertifyjs\themes\semantic.rtl.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="fonts\images\angularjs.jpg" />
+    <Content Include="fonts\images\big_image_1.jpg" />
+    <Content Include="fonts\images\big_image_2.jpg" />
+    <Content Include="fonts\images\big_image_3.jpg" />
+    <Content Include="fonts\images\Capture.PNG" />
+    <Content Include="fonts\images\img_1.jpg" />
+    <Content Include="fonts\images\img_2.jpg" />
+    <Content Include="fonts\images\img_2_b.jpg" />
+    <Content Include="fonts\images\img_3.jpg" />
+    <Content Include="fonts\images\javascript.jpg" />
+    <Content Include="fonts\images\loc.png" />
+    <Content Include="fonts\images\logo.png" />
+    <Content Include="fonts\images\person_1.jpg" />
+    <Content Include="fonts\images\person_2.jpg" />
+    <Content Include="fonts\images\person_3.jpg" />
+    <Content Include="fonts\images\person_4.jpg" />
+    <Content Include="fonts\images\person_5.jpg" />
+    <Content Include="fonts\images\person_6.jpg" />
+    <Content Include="fonts\images\person_testimonial_1.jpg" />
+    <Content Include="fonts\images\photoshop.jpg" />
+    <Content Include="fonts\images\reactjs.jpg" />
+    <Content Include="fonts\images\Uni1.jpg" />
+    <Content Include="fonts\images\uni2.jpg" />
+    <Content Include="fonts\images\webdesign.jpg" />
+    <Content Include="fonts\images\wordpress.jpg" />
+    <Content Include="images\logo.png" />
+    <Content Include="js\alertify.js" />
+    <Content Include="js\alertify.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="fonts\images\.DS_Store" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <Content Include="assets\sass\material-dashboard.scss" />
+    <Content Include="assets\sass\md\mixins\_chartist.scss" />
+    <Content Include="assets\sass\md\mixins\_transparency.scss" />
+    <Content Include="assets\sass\md\mixins\_vendor-prefixes.scss" />
+    <Content Include="assets\sass\md\plugins\_animate.scss" />
+    <Content Include="assets\sass\md\plugins\_perfect-scrollbar.scss" />
+    <Content Include="assets\sass\md\plugins\_plugin-nouislider.scss" />
+    <Content Include="assets\sass\md\_alerts.scss" />
+    <Content Include="assets\sass\md\_buttons.scss" />
+    <Content Include="assets\sass\md\_cards.scss" />
+    <Content Include="assets\sass\md\_chartist.scss" />
+    <Content Include="assets\sass\md\_checkboxes.scss" />
+    <Content Include="assets\sass\md\_colors.scss" />
+    <Content Include="assets\sass\md\_dialogs.scss" />
+    <Content Include="assets\sass\md\_dropdown.scss" />
+    <Content Include="assets\sass\md\_footers.scss" />
+    <Content Include="assets\sass\md\_forms.scss" />
+    <Content Include="assets\sass\md\_inputs-size.scss" />
+    <Content Include="assets\sass\md\_inputs.scss" />
+    <Content Include="assets\sass\md\_misc.scss" />
+    <Content Include="assets\sass\md\_mixins.scss" />
+    <Content Include="assets\sass\md\_navbars.scss" />
+    <Content Include="assets\sass\md\_pagination.scss" />
+    <Content Include="assets\sass\md\_pills.scss" />
+    <Content Include="assets\sass\md\_popups.scss" />
+    <Content Include="assets\sass\md\_radios.scss" />
+    <Content Include="assets\sass\md\_responsive.scss" />
+    <Content Include="assets\sass\md\_ripples.scss" />
+    <Content Include="assets\sass\md\_shadows.scss" />
+    <Content Include="assets\sass\md\_sidebar-and-main-panel.scss" />
+    <Content Include="assets\sass\md\_tables.scss" />
+    <Content Include="assets\sass\md\_tabs.scss" />
+    <Content Include="assets\sass\md\_togglebutton.scss" />
+    <Content Include="assets\sass\md\_typography.scss" />
+    <Content Include="assets\sass\md\_variables.scss" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery-3.4.1-vsdoc.js" />
+    <Content Include="js\jquery-3.4.1.js" />
+    <Content Include="js\jquery-3.4.1.min.js" />
+    <Content Include="js\jquery-3.4.1.slim.js" />
+    <Content Include="js\jquery-3.4.1.slim.min.js" />
+    <Content Include="js\jquery-3.4.1.slim.min.map" />
+    <Content Include="js\jquery-3.4.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-migrate-3.0.0.js" />
+    <Content Include="Scripts\jquery-migrate-3.0.0.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Statistics\404.html" />
     <Content Include="Statistics\500.html" />
     <Content Include="Statistics\accordion.html" />
@@ -458,6 +577,14 @@
     <Content Include="Statistics\tree-view.html" />
     <Content Include="Statistics\widgets.html" />
     <Content Include="Statistics\x-editable.html" />
+    <Content Include="UniSelTemplate\css\main.css" />
+    <Content Include="UniSelTemplate\images\Searchs_008.png" />
+    <Content Include="UniSelTemplate\index.html" />
+    <Content Include="UniSelTemplate\js\extention\choices.js" />
+    <Content Include="UniSelTemplate\js\extention\custom-materialize.js" />
+    <Content Include="UniSelTemplate\js\extention\flatpickr.js" />
+    <Content Include="UniSelTemplate\js\main.js" />
+    <Content Include="UniSelTemplate\readme.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -527,6 +654,12 @@
     <Content Include="Statistics\js\metisMenu\metisMenu.min.js.map" />
     <Content Include="Statistics\pdf\mamunur.pdf" />
     <Content Include="Statistics\README.md" />
+    <Content Include="Views\Shared\_LayoutUniSelect.cshtml" />
+    <Content Include="Views\AdmissionForm\StudentSearch.cshtml" />
+    <Content Include="Views\Shared\_LayoutStudent.cshtml" />
+    <Content Include="Views\AdmissionForm\GetQuizQuestion.cshtml" />
+    <Content Include="Views\Shared\_DashboardLayout.cshtml" />
+    <Content Include="Views\AdmissionForm\index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -576,7 +709,7 @@
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

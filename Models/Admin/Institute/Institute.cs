@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
+using System.ComponentModel;
 using System.Linq;
 using System.Web;
 
@@ -11,20 +12,28 @@ namespace FYP1.Models.Institute
     {
         public class Institute
         {
+        [DisplayName("Instiitute ID")]
             public int Institute_ID { get; set; }
-            public string Institute_Name { get; set; }
-            public string Institute_RegNo { get; set; }
-            public DateTime Institute_EstablishYear { get; set; }
+        [DisplayName("Institute Name")]
+        public string Institute_Name { get; set; }
+        [DisplayName("Institute Reg No")]
+        public string Institute_RegNo { get; set; }
+        [DisplayName("Institute EstablishYear")]
+        public DateTime Institute_EstablishYear { get; set; }
             public int InstituteType_ID { get; set; }
-            public string Institute_Affilation { get; set; }
+        [DisplayName("Institute Affilation")]
+        public string Institute_Affilation { get; set; }
             public int Query { get; set; }
-             public DateTime startdate { get; set; }
+             public DateTime start_date { get; set; }
         public DateTime end_date { get; set; }
         [DataType( DataType.EmailAddress)]
         public string Email { get; set; }
         [DataType(DataType.Password)]
 
         public string Password { get; set; }
+        public string Institute_img { get; set; }
+
+        public HttpPostedFileBase Prop { get; set; }
         public List<Institute> Institute_Get_All()
             {
                 List<Institute> lst = new List<Institute>();
@@ -40,9 +49,11 @@ namespace FYP1.Models.Institute
                     u.Institute_EstablishYear = (DateTime)sdr["Institute_EstablishYear"];
                     u.InstituteType_ID = (int)sdr["InstituteType_ID"];
                     u.Institute_Affilation = (string)sdr["Institute_Affilation"];
-                    u.startdate = (DateTime)sdr["start_date"];
+                    u.start_date = (DateTime)sdr["start_date"];
                     u.end_date = (DateTime)sdr["end_date"];
-
+                u.Email = (string)sdr["Email"];
+                u.Password = (string)sdr["Password"];
+               // u.Institute_img = (string)sdr["Institute_img"];
                 lst.Add(u);
                 }
                 sdr.Close();
@@ -63,7 +74,7 @@ namespace FYP1.Models.Institute
                     u.Institute_EstablishYear = (DateTime)sdr["Institute_EstablishYear"];
                     u.InstituteType_ID = (int)sdr["InstituteType_ID"];
                     u.Institute_Affilation = (string)sdr["Institute_Affilation"];
-                u.startdate = (DateTime)sdr["startdate"];
+                u.start_date = (DateTime)sdr["start_date"];
                 u.end_date = (DateTime)sdr["end_date"];
             }
                 sdr.Close();
@@ -78,9 +89,11 @@ namespace FYP1.Models.Institute
                 sc.Parameters.AddWithValue("@Institute_RegNo", Institute_RegNo);
                 sc.Parameters.AddWithValue("@Institute_EstablishYear", Institute_EstablishYear);
                 sc.Parameters.AddWithValue("@Institute_Affilation", Institute_Affilation);
-            sc.Parameters.AddWithValue("@startdate", startdate);
+             sc.Parameters.AddWithValue("@start_date", start_date);
             sc.Parameters.AddWithValue("@end_date", end_date);
-
+            sc.Parameters.AddWithValue("@Institute_img",Institute_img);
+            sc.Parameters.AddWithValue("@Email", Email);
+            sc.Parameters.AddWithValue("@Password", Password);
             sc.Parameters.AddWithValue("@Query", 1);
 
                 sc.ExecuteNonQuery();
@@ -96,7 +109,7 @@ namespace FYP1.Models.Institute
                 sc.Parameters.AddWithValue("@InstituteType_ID", InstituteType_ID);
                 sc.Parameters.AddWithValue("@Institute_Affilation", Institute_Affilation);
             sc.Parameters.AddWithValue("@Query", Query);
-            sc.Parameters.AddWithValue("@startdate", startdate);
+            sc.Parameters.AddWithValue("@start_date", start_date);
             sc.Parameters.AddWithValue("@end_date", end_date);
 
             sc.ExecuteNonQuery();
@@ -123,9 +136,9 @@ namespace FYP1.Models.Institute
                 u.Institute_EstablishYear = (DateTime)sdr["Institute_EstablishYear"];
                 u.InstituteType_ID = (int)sdr["InstituteType_ID"];
                 u.Institute_Affilation = (string)sdr["Institute_Affilation"];
-                u.startdate = (DateTime)sdr["start_date"];
+                u.start_date = (DateTime)sdr["start_date"];
                 u.end_date = (DateTime)sdr["end_date"];
-
+                u.Institute_img = (string)sdr["Institute_img"];
                 lst.Add(u);
             }
             sdr.Close();
@@ -146,9 +159,9 @@ namespace FYP1.Models.Institute
                 u.Institute_EstablishYear = (DateTime)sdr["Institute_EstablishYear"];
                 u.InstituteType_ID = (int)sdr["InstituteType_ID"];
                 u.Institute_Affilation = (string)sdr["Institute_Affilation"];
-                u.startdate = (DateTime)sdr["start_date"];
+                u.start_date = (DateTime)sdr["start_date"];
                 u.end_date = (DateTime)sdr["end_date"];
-
+                u.Institute_img = (string)sdr["Institute_img"];
                 lst.Add(u);
             }
             sdr.Close();

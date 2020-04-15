@@ -7,59 +7,73 @@
 <h2>ShowInstitute</h2>
 
 <p>
-    @Html.ActionLink("AddInstituteDepartment", "InstituteDepartment")
+    @Html.ActionLink("Add Institute", "insertinstitutedetails") <br />
+    @Html.ActionLink("Add Institute-Department", "InstituteDepartment")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Institute_ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Institute_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Institute_RegNo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Institute_EstablishYear)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.InstituteType_ID)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.Institute_Affilation)
-        </th>
-  
-        <th></th>
-    </tr>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Institute_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Institute_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Institute_RegNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Institute_EstablishYear)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.InstituteType_ID)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Institute_Affilation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Institute_ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Institute_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Institute_RegNo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Institute_EstablishYear)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.InstituteType_ID)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.Institute_Affilation)
-        </td>
-
-        <td>
-            @Html.ActionLink("Edit", "UpdateInstitute", new { id=item.Institute_ID }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+            <th></th>
+        </tr>
+    </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Institute_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Institute_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Institute_RegNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Institute_EstablishYear)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.InstituteType_ID)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Institute_Affilation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "UpdateInstitute", new { id = item.Institute_ID }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
 
 </table>

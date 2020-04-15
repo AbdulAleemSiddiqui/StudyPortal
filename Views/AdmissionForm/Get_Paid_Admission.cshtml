@@ -1,10 +1,39 @@
 ﻿@model IEnumerable<FYP1.Models.Admin.AdmissionForm.AdmissionViewModel>
 
 @{
-    ViewBag.Title = "Get_Unpaid_Admission";
+    ViewBag.Title = "Get paid Admission";
 }
 
 <h2>Get_Unpaid_Admission</h2>
+
+
+
+
+<button class="open-button" onclick="openForm()">Chat</button>
+
+<div class="chat-popup" id="myForm">
+    <form class="form-container" id="ab">
+        <h1>Chat</h1>
+
+
+
+
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+</div>
+
+
+
+
+<div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px"><i>Loading chat...</i></div>
+
+
+
+
+
+
+
+
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -26,6 +55,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Degree_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
         </th>
         <th>
             Mark
@@ -52,6 +84,14 @@
                 @Html.DisplayFor(modelItem => item.Degree_Name)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <button onclick="window.location.href='@Url.Action("StudentSearch","AdmissionForm",new { S_ID=item.S_ID})'" value="Pay">
+                    Details
+                </button>
+            </td>
+            <td>
                 <button onclick="window.location.href='@Url.Action("AdmissionResponse","AdmissionForm",new { AI_ID=item.AI_ID,Status_ID=3})'" value="Pay">
                     Accept
                 </button>
@@ -64,3 +104,170 @@
     }
 
 </table>
+
+@section Scripts{
+
+     <script>
+        (function (t, a, l, k, j, s) {
+            s = a.createElement('script'); s.async = 1; s.src = "https://cdn.talkjs.com/talk.js"; a.head.appendChild(s)
+                ; k = t.Promise; t.Talk = {
+                    v: 3, ready: {
+                        then: function (f) {
+                            if (k) return new k(function (r, e) { l.push([f, r, e]) }); l
+                                .push([f])
+                        }, catch: function () { return k && new k() }, c: l
+                    }
+                };
+        })(window, document, []);
+    </script>
+
+
+
+
+
+
+    <script>
+
+            function openForm() {
+                debugger;
+                document.getElementById("myForm").style.display = "block";
+                var ls = @Html.Raw(Json.Encode(ViewBag.stddetail));
+                var btn = $('#ab');
+                var b = ""
+
+
+
+                    $.each(ls, function (k, ktem) {
+                        debugger;
+                        b = ""
+                        b += " <h1  class='btn'   id = " + ktem.S_ID + " onclick = 'opendiv(this.id)' > " + ktem.Student_Name + " </h1 > "
+                        btn.append(b);
+
+                    });
+
+            }
+
+
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+
+
+            }
+
+            function opendiv(value) {
+
+                var bs = @Html.Raw(Json.Encode(ViewBag.stddetail));
+                $.each(bs, function (l, ltem) {
+                    if (ltem.S_ID == value) {
+                        debugger;
+               Talk.ready.then(function() {
+                   var me = new Talk.User({
+                       id: String(ltem.Institute_ID),
+        name: ltem.Institute_Name,
+        email: "alice@example.com",
+        photoUrl: "https://demo.talkjs.com/img/alice.jpg",
+        welcomeMessage: "Hey there! How are you? :-)"
+    });
+    window.talkSession = new Talk.Session({
+        appId: "tX8hryM7",
+        me: me
+    });
+                   var other = new Talk.User({
+                       id: String(ltem.S_ID),
+                       name: ltem.Student_Name,
+        email: "Sebastian@example.com",
+        photoUrl: "https://demo.talkjs.com/img/sebastian.jpg",
+        welcomeMessage: "Hey, how can I help?"
+    });
+
+    var conversation = talkSession.getOrCreateConversation(Talk.oneOnOneId(me, other))
+    conversation.setParticipant(me);
+    conversation.setParticipant(other);
+    var inbox = talkSession.createInbox({selected: conversation});
+    inbox.mount(document.getElementById("talkjs-container"));
+});
+                        debugger;
+                    }
+});
+
+
+                                debugger;
+        }
+
+
+
+
+
+    </script>
+
+
+
+
+   
+
+
+
+
+
+}
+
+<style>
+
+
+
+
+    .open-button {
+        background-color: #555;
+        color: white;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        opacity: 0.8;
+        position: fixed;
+        bottom: 23px;
+        right: 28px;
+        width: 280px;
+    }
+
+    /* The popup chat - hidden by default */
+    .chat-popup {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        right: 15px;
+        margin: auto;
+        border: 3px solid #f1f1f1;
+        z-index: 9;
+    }
+
+    /* Add styles to the form container */
+    .form-container {
+        max-width: 300px;
+        padding: 10px;
+        background-color: white;
+    }
+
+
+
+        /* Set a style for the submit/send button */
+        .form-container .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        /* Add a red background color to the cancel button */
+        .form-container .cancel {
+            background-color: red;
+        }
+
+        /* Add some hover effects to buttons */
+        .form-container .btn:hover, .open-button:hover {
+            opacity: 1;
+        }
+</style>

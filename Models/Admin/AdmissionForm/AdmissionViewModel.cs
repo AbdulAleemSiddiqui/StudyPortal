@@ -1,6 +1,8 @@
 ﻿using DatabaseTVP;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -11,12 +13,17 @@ namespace FYP1.Models.Admin.AdmissionForm
         public int A_ID { get; set; }
         public int AI_ID { get; set; }
         public int S_ID { get; set; }
+        [DisplayName("Student Name")]
         public string Student_Name { get; set; }
+        [DisplayName("CNIC")]
         public string CNIC_No { get; set; }
-
+        public int Institute_ID { get; set; }
+        [DisplayName("Father Name")]
         public string Father_Name { get; set; }
+        [DisplayName("Institute Name")]
         public string Institute_Name { get; set; }
 
+        [DisplayName("Degree Name")]
         public string Degree_Name { get; set; }
         public int Status_ID { get; set; }
         public string Status { get; set; }

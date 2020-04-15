@@ -7,7 +7,7 @@
 <h2>InsertInstituteDetails</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("InsertInstituteDetails", "Admin", FormMethod.Post,new { enctype="multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
 
@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.state.State_Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.state.State_ID, ViewBag.StateList as SelectList, "--select--", new { @class = "form-control", @id = "st", @onchange = "abc()" })
@@ -65,16 +65,35 @@
                 @Html.DropDownListFor(model => model.city.City_ID, new SelectList("City_ID", "City_Name"), "--select--", new { @class = "form-control", @id = "sam", @onchange = "getuniversity()" })
                 @Html.ValidationMessageFor(model => model.city.City_ID, "", new { @class = "error" })
             </div>
+        </div>*@
+
+        <div class="col-md-10">
+            <div class="form-group">
+                <label for="Email">start Year</label>
+                <input type="date" id="name" name="institute.start_date" class="form-control py-2">
+            </div>
+        </div>
+
+        <div class="col-md-10">
+            <div class="form-group">
+                <label for="Email">End Year</label>
+                <input type="date" id="name" name="institute.end_date" class="form-control py-2">
+            </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.institute.Institute_Affilation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownListFor(model => model.institute.Institute_Affilation, new SelectList( "University_Name"), "--select--", new { @class = "form-control", @id = "uni"})     
+                @Html.DropDownListFor(model => model.institute.Institute_Affilation, new SelectList("University_Name"), "--select--", new { @class = "form-control", @id = "uni" })
                 @Html.ValidationMessageFor(model => model.institute.Institute_Affilation, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <div class="form-group">
+            @Html.LabelFor(model => model.institute.Institute_img, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="institute.Prop" required>
+            </div>
+        </div>
         @*<div class="form-group">
             @Html.LabelFor(model => model.institute.Institute_Affilation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -83,7 +102,19 @@
             </div>
         </div>*@
 
+        <div class="col-md-10">
+            <div class="form-group">
+            <label for="email">Email</label>   
+                <input type="email" name="institute.Email" class="form-control py-2">
+            </div>
+        </div>
 
+        <div class="col-md-10">
+        <div class="form-group">
+        <label for="password">Password</label>
+            <input type="password" name="institute.Password" required class="form-control py-2">
+        </div>
+        </div>
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-default" />
         </div>
@@ -136,7 +167,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "ShowInstitute")
 </div>
 
 @section Scripts {

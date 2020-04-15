@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.ComponentModel;
 using System.Web;
 using System.Data.SqlClient;
 
@@ -11,6 +11,7 @@ namespace FYP1.Models.Department
     {
 
         public int DepartmentType_ID { get; set; }
+        [DisplayName ("Department Type")]
         public string DepartmentType_Name { get; set; }
         public int Query { get; set; }
 

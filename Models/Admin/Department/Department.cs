@@ -10,11 +10,13 @@ namespace FYP1.Models.Department
 {
     public class Department
     {
-
+        [DisplayName("Department ID")]
         public int Department_ID { get; set; }
+        [DisplayName("Department Name")]
         public string Department_Name { get; set; }
         [DisplayName("Department Type")]
         public int DepartmentType_ID { get; set; }
+        [DisplayName("Department Type")]
 
         public string DepartmentType_Name { get; set; }
 

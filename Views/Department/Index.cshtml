@@ -3,37 +3,45 @@
 @{
     ViewBag.Title = "Index";
 }
-
+<br />
 <h2>Index</h2>
+<br />
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Department_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DepartmentType_Name)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Department_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DepartmentType_Name)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Department_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DepartmentType_Name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.Department_ID}) |
-            @Html.ActionLink("Details", "Details", new { id = item.Department_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Department_ID })
-        </td>
-    </tr>
-}
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentType_Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Department_ID }) 
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.Department_ID }) 
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.Department_ID })
+            </td>
+        </tr>
+    }
+</tbody>
 
 </table>

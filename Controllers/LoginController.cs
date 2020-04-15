@@ -53,9 +53,16 @@ namespace FYP1.Controllers
             if (id > 0)
             {
                 Session["A_ID"] = id;
-                return RedirectToAction("Get_Unpaid_Admission", "AdmissionForm");
+                return RedirectToAction("index", "AdmissionForm");
             }
             return View();
+        }
+        public ActionResult Logout()
+        {
+            Session["A_ID"] = null;
+            Session["I_ID"] = null;
+            Session["S_ID"] = null;
+            return RedirectToAction("Index","Home");
         }
     }
 }

@@ -37,7 +37,7 @@ namespace FYP1.Models.Student
         [TVP]
         public bool Status{ get; set; }
 
-        public StudentQualification detail{ get; set; }
+        public StudentQualification detail { get; set; } = new StudentQualification();
 
 
 
@@ -90,6 +90,7 @@ namespace FYP1.Models.Student
                 //place your Model Logic and DB Calls here:
                 Student ret = DataBase.ExecuteQuery<Student>(new { x = Id }, Connection.Get()).FirstOrDefault();
                 // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                ret.detail= ret.detail.Student_Qualification_GetById(ret.Student_ID);
                 Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = Id }, "", Module, Connection.GetLogConnection(), 1);
                 return ret;
             }

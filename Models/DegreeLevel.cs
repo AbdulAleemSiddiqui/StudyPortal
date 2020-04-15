@@ -37,20 +37,20 @@ namespace FYP1.Models
         }
         public DegreeLevel DegreeLevel_Get_By_ID()
         {
-            DegreeLevel u = new DegreeLevel();
-            SqlCommand sc = new SqlCommand("Usp_InsertUpdateDelete_DegreeLevel", Connection.Get()) { CommandType = System.Data.CommandType.StoredProcedure };
-            sc.Parameters.AddWithValue("@DegreeLevel_ID", DegreeLevel_ID);
-            sc.Parameters.AddWithValue("@Query",5);
-            SqlDataReader sdr = sc.ExecuteReader();
-            while (sdr.Read())
-            {
-                u.DegreeLevel_ID = (int)sdr["DegreeLevel_ID"];
-                u.DegreeLevel_Name = (string)sdr["DegreeLevel_Name"];
+                        DegreeLevel u = new DegreeLevel();
+                        SqlCommand sc = new SqlCommand("Usp_InsertUpdateDelete_DegreeLevel", Connection.Get()) { CommandType = System.Data.CommandType.StoredProcedure };
+                        sc.Parameters.AddWithValue("@DegreeLevel_ID", DegreeLevel_ID);
+                        sc.Parameters.AddWithValue("@Query",5);
+                        SqlDataReader sdr = sc.ExecuteReader();
+                        while (sdr.Read())
+                        {
+                            u.DegreeLevel_ID = (int)sdr["DegreeLevel_ID"];
+                            u.DegreeLevel_Name = (string)sdr["DegreeLevel_Name"];
 
 
-            }
-            sdr.Close();
-            return u;
+                        }
+                        sdr.Close();
+                        return u;
         }
 
         public void DegreeLevel_Add()

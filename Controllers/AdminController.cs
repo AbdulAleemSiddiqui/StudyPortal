@@ -9,6 +9,7 @@ using FYP1.Models.Institute;
 using FYP1.Models.Location;
 using FYP1.ViewModel;
 using FYP1.Models.Department;
+using System.IO;
 
 namespace FYP1.Controllers
 {
@@ -102,8 +103,16 @@ namespace FYP1.Controllers
             {
                 List<InstituteType> ls = avm.institutetype.InstituteType_Get_All().ToList();
                 ViewBag.InstituteType = new SelectList(ls, "InstituteType_ID", "InstituteType_Name");
-
+              //  Institute i = new Institute();
                 avm.institute.InstituteType_ID = avm.institutetype.InstituteType_ID;
+                //avm.institute.Institute_img = imageupload(i.prop,i.Institute_img);
+                string filename = Path.GetFileNameWithoutExtension(avm.institute.Prop.FileName);
+                string extension = Path.GetExtension(avm.institute.Prop.FileName);
+                filename = filename + DateTime.Now.ToString( "-yymmssffff") + extension;
+                avm.institute.Institute_img = "/images/" + filename;
+                filename = Path.Combine(Server.MapPath("/images/") , filename);
+                avm.institute.Prop.SaveAs(filename);
+              
                 avm.institute.Institute_Add();
 
 
@@ -129,10 +138,10 @@ namespace FYP1.Controllers
         public ActionResult get_universitydropdown(int a)
         {
 
-            University u = new University();
-            u.City_ID = a;
-
-            return Json(u.University_Get_By_ID(), JsonRequestBehavior.AllowGet);
+            //University u = new University();
+            //u.City_ID = a;
+            return View();
+            //return Json(u.University_Get_By_ID(), JsonRequestBehavior.AllowGet);
         }
         public ActionResult ShowInstitute()
         {
@@ -157,6 +166,10 @@ namespace FYP1.Controllers
 
 
         }
+        public ActionResult GetCampusByIntitute(int I_ID)
+        {
+            return Json(new InstituteCampus().InstituteCampus_Get_All().FindAll(x=> x.Institute_ID == I_ID), JsonRequestBehavior.AllowGet);
+        }
 
         public ActionResult ShowInstituteCampus()
         {
@@ -168,6 +181,7 @@ namespace FYP1.Controllers
         {
             InstituteCampus i = new InstituteCampus();
             i.InsCampus_ID = id;
+
             i.Query = 5;
             InstituteCampus ins = i.InstituteCampus_Get_By_ID();
             return View(ins);
@@ -248,8 +262,13 @@ namespace FYP1.Controllers
         public ActionResult InstituteDepartment(AdminViewModel avm) // ek hi dafa se add() ka method call karkay redirect karwadetay showall pe :s 
                                                                     // ye acha kia k ek model mei alag alag classes ko call karwalia
         {
-            //List<Institute> lis = avm.institute.Institute_Get_All().ToList();
-            //ViewBag.InstituteList = new SelectList(lis, "Institute_ID", "Institute_Name");
+            List<Institute> lis = avm.institute.Institute_Get_All().ToList();
+            ViewBag.InstituteList = new SelectList(lis, "Institute_ID", "Institute_Name");
+            InstituteDepartment i = new InstituteDepartment();
+            i.InsCampus_ID = avm.institutecampus.InsCampus_ID;
+            i.Department_ID = avm.department.Department_ID;
+            i.DegreeLevel_ID = avm.degreelevel.DegreeLevel_ID;
+            i.InstituteDepartment_Add();
 
 
             List<InstituteCampus> il = avm.institutecampus.InstituteCampus_Get_All().ToList();
@@ -258,20 +277,30 @@ namespace FYP1.Controllers
             List<Department> dl = avm.department.Department_Get_All().ToList();
             ViewBag.DepartmentList = new SelectList(dl, "Department_ID", "Department_Name");
 
-            List<DegreeLevel> dll = avm.degreelevel.DegreeLevel_Get_All().ToList();
-            ViewBag.DegreeLevelList = new SelectList(dll, "DegreeLevel_ID", "DegreeLevel_Name");
-            //List<DegreeDuration> ddl = avm.degreeduration.DegreeDuration_Get_All().ToList();
-            //ViewBag.DegreeDurationList = new SelectList(ddl, "DegreeDuration_ID", "DegreeDuration_Name");
+             List<DegreeLevel> dll = avm.degreelevel.DegreeLevel_Get_All().ToList();
+              ViewBag.DegreeLevelList = new SelectList(dll, "DegreeLevel_ID", "DegreeLevel_Name");
+            //  //List<DegreeDuration> ddl = avm.degreeduration.DegreeDuration_Get_All().ToList();
+            //  //ViewBag.DegreeDurationList = new SelectList(ddl, "DegreeDuration_ID", "DegreeDuration_Name");
 
-            avm.institutedepartment.InsCampus_ID = avm.institutecampus.InsCampus_ID;
-            avm.institutedepartment.Department_ID = avm.department.Department_ID;
-            avm.institutedepartment.DegreeLevel_ID = avm.degreelevel.DegreeLevel_ID;
+            //  avm.institutedepartment.InsCampus_ID = avm.institutecampus.InsCampus_ID;
+            //  avm.institutedepartment.Department_ID = avm.department.Department_ID;
+            //  avm.institutedepartment.DegreeLevel_ID = avm.degreelevel.DegreeLevel_ID;
 
 
-          //  avm.institutedepartment.DegreeDuration_ID = avm.degreeduration.DegreeDuration_ID;
-            avm.institutedepartment.InstituteDepartment_Add();
+            ////  avm.institutedepartment.DegreeDuration_ID = avm.degreeduration.DegreeDuration_ID;
+            //  avm.institutedepartment.InstituteDepartment_Add();
 
             return View(avm);
         }
+        //public string imageupload(HttpPostedFileBase image,string imagepath)
+        //{
+        //    string filename = Path.GetFileNameWithoutExtension(image.FileName);
+        //    string extension = Path.GetExtension(image.FileName);
+        //    filename = filename + DateTime.Now + "yymmssffff" + extension;
+        //    imagepath = "~/images/" + filename;
+        //    filename = Path.Combine(Server.MapPath("~/images/") + filename);
+        //    image.SaveAs(filename);
+        //    return imagepath;
+        //}
     }
 }

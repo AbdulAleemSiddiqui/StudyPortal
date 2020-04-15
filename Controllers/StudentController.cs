@@ -25,7 +25,7 @@ namespace FYP1.Controllers
         [HttpPost]
         public ActionResult StudentInfo(Student s)
         {
-            int id = 0;
+           // int id = 0;
             try
             {
                 s.Student_Add();

@@ -38,7 +38,7 @@ namespace FYP1.Controllers
             }
             catch(Exception ex)
             {
-                return View();
+                return View(ex.Message);
             }
         }
 

@@ -4,58 +4,65 @@
     ViewBag.Title = "Get_Unpaid_Admission";
 }
 
-<h2>Get_Unpaid_Admission</h2>
+<br />
+<h1>Student Admissions</h1>
+<br />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-       
-        <th>
-            @Html.DisplayNameFor(model => model.Student_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CNIC_No)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Father_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Institute_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Degree_Name)
-        </th>
-        <th>
-            Mark
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Student_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CNIC_No)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Father_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Institute_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Degree_Name)
-        </td>
-        <td>
-           <button onclick="window.location.href='@Url.Action("PayAdmission","AdmissionForm",new { AI_ID=item.AI_ID})'" value="Pay">
-               Pay </button>
-        </td>
-       
-    </tr>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Student_Name)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.CNIC_No)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Father_Name)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Institute_Name)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Degree_Name)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th scope="col">
+                Mark
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Student_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CNIC_No)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Father_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Institute_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Degree_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                <button onclick="window.location.href='@Url.Action("PayAdmission", "AdmissionForm", new { AI_ID = item.AI_ID })'" value="Pay" class="btn btn-primary">
+                    Pay
+                </button>
+            </td>
+        </tr>
 }
-
+    </tbody>
 </table>

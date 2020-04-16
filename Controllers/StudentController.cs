@@ -13,6 +13,13 @@ namespace FYP1.Controllers
 {
     public class StudentController : Controller
     {
+        [HttpGet]
+        public ActionResult index()
+        {
+
+
+            return View();
+        }
         // GET: Student
         public ActionResult StudentInfo()
         {

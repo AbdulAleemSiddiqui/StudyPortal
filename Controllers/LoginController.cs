@@ -23,7 +23,7 @@ namespace FYP1.Controllers
             if(id >0)
             {
                 Session["S_ID"] = id;
-                return RedirectToAction("Add", "AdmissionForm");
+                return RedirectToAction("index", "student");
             }
             return View();
         }
@@ -53,7 +53,7 @@ namespace FYP1.Controllers
             if (id > 0)
             {
                 Session["A_ID"] = id;
-                return RedirectToAction("index", "AdmissionForm");
+                return RedirectToAction("index", "admin");
             }
             return View();
         }

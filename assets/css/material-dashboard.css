@@ -730,8 +730,10 @@ h2.title {
 
 .sidebar .nav li:hover>a,
 .off-canvas-sidebar .nav li:hover>a {
-    background: rgba(200, 200, 200, 0.2);
-    color: #3C4858;
+    background: #9c27b0;
+        /*rgba(200, 200, 200, 0.2);*/
+    color: white;
+        /*#3C4858;*/
 }
 
 .sidebar .nav li.active>a,

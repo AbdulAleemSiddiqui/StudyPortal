@@ -15,6 +15,13 @@ namespace FYP1.Controllers
 {
     public class AdminController : Controller
     {
+        [HttpGet]
+        public ActionResult index()
+        {
+
+
+            return View();
+        }
         // GET: Admin
         [HttpGet]
         public ActionResult AddDepartment()

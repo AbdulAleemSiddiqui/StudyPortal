@@ -3,12 +3,13 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="content">
     <div class="container-fluid">
         <div class="row" data-background-color="green">
             <div class="col-md-6" style="float:right">
                 <div class="card">
-                    <div class="card-header" data-background-color="red">
+                    <div class="card-header" data-background-color="purple">
                         <h4 class="title"><b>Sign In</b></h4>
                         <p class="category"><b>as Student</b></p>
                     </div>
@@ -31,10 +32,10 @@
 
                                 <div class="row">
                                     <div class="col-md-6 form-group">
-                                        <input type="submit" value="Login" class="btn btn-danger" style="width:100%;">
+                                        <input type="submit" value="Login" class="btn btn-primary" style="width:100%;">
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <a href="@Url.Action("StudentInfo","Student")" type="submit" class="btn btn-danger" style="width:100%;">Register</a>
+                                        <a href="@Url.Action("StudentInfo","Student")" type="submit" class="btn btn-primary" style="width:100%;">Register</a>
                                     </div>
                                 </div>
                                 <div class="row">

@@ -1,0 +1,44 @@
+﻿@model FYP1.Models.Pre_Req_Course
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<div>
+    <h4>Pre_Req_Course</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PR_Course_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PR_Course_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PR_Course_Duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PR_Course_Duration)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Degree_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Degree_Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.PR_Course_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets
+    xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Model Body</Title>
+      <Author>Abdul Aleem</Author>
+      <Description>Snippet for Model  Body</Description>
+      <Shortcut>mmController</Shortcut>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>ReturnType</ID>
+          <Default>object</Default>
+          <Function>ClassName()</Function>
+          <ToolTip>Define Generic List a Return Object</ToolTip>
+        </Literal>
+        <Literal>
+          <ID>ModuleName</ID>
+          <Default>Module</Default>
+          <ToolTip>Change the name of Module</ToolTip>
+        </Literal>
+      </Declarations>
+      <Code Language="CSharp">
+        <![CDATA[ 
+		
+		
+		    //Get All
+        public ActionResult Index()
+        {
+            return View(new abc().abc_Get_All());
+        }
+
+        //Search
+        //Get By ID
+        public ActionResult Search(int id)
+        {
+            return View(new abc().abc_Get_By_Id(id));
+        }
+
+        //Add
+        public ActionResult Add()
+        {
+        //ViewBag.List
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Add(abc obj)
+        {
+            obj.abc_Add();
+            return RedirectToAction("Index");
+        }
+
+        //Edit
+        public ActionResult Edit(int id)
+        {
+        //ViewBag.
+            return View(new abc().abc_Get_By_Id(id));
+        }
+        [HttpPost]
+        public ActionResult Edit(abc obj)
+        {
+            obj.abc_Edit();
+            return RedirectToAction("Index");
+        }
+
+        //Delete
+        public ActionResult Delete(int id)
+        {
+            new abc().abc_Delete(id);
+            return RedirectToAction("Index");
+        }
+      
+        
+		
+		
+		]]>
+      </Code>
+      <Imports>
+        <Import>
+          <Namespace>DatabaseTVP</Namespace>
+        </Import>
+      </Imports>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

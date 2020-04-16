@@ -1,0 +1,45 @@
+﻿@model IEnumerable<FYP1.Models.Pre_Req_Course>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PR_Course_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PR_Course_Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Degree_Name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PR_Course_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PR_Course_Duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Degree_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PR_Course_ID}) |
+            @Html.ActionLink("Search", "Search", new { id = item.PR_Course_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.PR_Course_ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -56,8 +56,10 @@
     <Compile Include="Controllers\DegreeController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\Department_TypeController.cs" />
+    <Compile Include="Controllers\FeedBackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\Pre_Req_CourseController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -77,9 +79,11 @@
     <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\DegreeDuration.cs" />
     <Compile Include="Models\DegreeLevel.cs" />
+    <Compile Include="Models\FeedBack.cs" />
     <Compile Include="Models\Location\City.cs" />
     <Compile Include="Models\Location\State.cs" />
     <Compile Include="Models\Mail.cs" />
+    <Compile Include="Models\Pre_Req_Course.cs" />
     <Compile Include="Models\Quiz.cs" />
     <Compile Include="Models\Student\Board.cs" />
     <Compile Include="Models\Student\Qualification.cs" />
@@ -170,6 +174,7 @@
     <Content Include="images\logo.png" />
     <Content Include="js\alertify.js" />
     <Content Include="js\alertify.min.js" />
+    <None Include="Models\ControllerSnippet.snippet" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="fonts\images\.DS_Store" />
@@ -587,6 +592,14 @@
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <Content Include="Views\AdmissionForm\index.cshtml" />
     <Content Include="Views\Shared\_oldLayout.cshtml" />
+    <Content Include="Views\Pre_Req_Course\Index.cshtml" />
+    <Content Include="Views\Pre_Req_Course\Search.cshtml" />
+    <Content Include="Views\Pre_Req_Course\Add.cshtml" />
+    <Content Include="Views\Pre_Req_Course\Edit.cshtml" />
+    <Content Include="Views\FeedBack\Index.cshtml" />
+    <Content Include="Views\FeedBack\Search.cshtml" />
+    <Content Include="Views\FeedBack\Add.cshtml" />
+    <Content Include="Views\FeedBack\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

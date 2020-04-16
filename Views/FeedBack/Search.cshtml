@@ -1,0 +1,81 @@
+﻿@model FYP1.Models.FeedBack
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Search</h2>
+
+<div>
+    <h4>FeedBack</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        @if (Model.is_Student)
+        {
+            <dt>
+                @Html.DisplayName("Sender")
+            </dt>
+
+            <dd>
+                @Html.Display("Student")
+            </dd>
+        }
+        else if (Model.is_Institute)
+        {
+            <dt>
+                @Html.DisplayName("Sender")
+            </dt>
+
+            <dd>
+                @Html.Display("Institute")
+            </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.User_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User_Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User_Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Response)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Response)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FB_Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FB_Date)
+        </dd>
+
+   
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FB_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

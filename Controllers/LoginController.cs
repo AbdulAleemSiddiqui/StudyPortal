@@ -11,7 +11,7 @@ namespace FYP1.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
+        // GET: Loging
         public ActionResult StudentLogin()
         {
             return View();

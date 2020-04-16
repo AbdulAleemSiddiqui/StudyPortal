@@ -35,21 +35,21 @@
         -->
         <div class="logo">
             <a href="http://www.creative-tim.com" class="simple-text">
-                Creative Tim
+               DashBoard
             </a>
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
                 @if (Session["A_ID"] != null)
                 {
-                        <li class="active">
-                            <a href="~/Views/AdmissionForm/Get_Paid_Admission.cshtml">
+                        <li >
+                            <a href="@Url.Action("Get_Paid_Admission","admissionform")">
                             <i class="material-icons">dashboard</i>
                             <p>paid application</p>
                         </a>
                         </li>
                         <li>
-                            <a href="~/Views/AdmissionForm/Get_UnPaid_Admission.cshtml">
+                            <a href="@Url.Action("Get_UnPaid_Admission","admissionform")">
 
                                 <i class="material-icons">person</i>
                                 <p>unpaid application</p>

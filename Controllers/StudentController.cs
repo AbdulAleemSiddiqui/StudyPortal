@@ -43,7 +43,13 @@ namespace FYP1.Controllers
             }
             catch (Exception ex)
             {
-                throw ex;
+                ViewBag.Message = ex.Message;
+
+                ViewBag.DegreeLevel_List = new SelectList(new DegreeLevel().DegreeLevel_Get_All(), "DegreeLevel_ID", "DegreeLevel_Name");
+                ViewBag.State_List = new SelectList(new State().State_Get_All(), "State_ID ", "State_Name");
+                ViewBag.Field_List = new SelectList(new DepartmentType().DepartmentType_Get_All(), "DepartmentType_ID", "DepartmentType_Name");
+                ViewBag.Board_List = new SelectList(new Board().Board_Get_All(), "Board_ID", "Board_Name");
+                return View();
             }
             return RedirectToAction("Confirmation");
 

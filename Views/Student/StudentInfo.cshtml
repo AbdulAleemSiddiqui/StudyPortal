@@ -175,9 +175,13 @@
 </div>
 
 @section Scripts {
-    <script>
+<script>
 
-
+    var Message = '@ViewBag.Message';
+    debugger;
+    if (Message != "") {
+        alert(Message);
+    }
         $('#State').change(function () {
             var stateId = $('#State').val();
             $.ajax({
@@ -198,5 +202,5 @@
 
 
 
-    </script>
+</script>
 }

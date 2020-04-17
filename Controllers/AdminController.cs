@@ -63,7 +63,7 @@ namespace FYP1.Controllers
         }
         [HttpGet]
 
-        public ActionResult Update(int id) //update mei phir bc list aagai? seedha seedha yahan query aati update ki phir department ka ek dafa phir se obj call hota jo getbyid se id utha k dept k obj k variable mei save hota or usay return mei call karwadete!
+        public ActionResult UpdateDepartment(int id) //update mei phir bc list aagai? seedha seedha yahan query aati update ki phir department ka ek dafa phir se obj call hota jo getbyid se id utha k dept k obj k variable mei save hota or usay return mei call karwadete!
         {
             DepartmentType dt = new DepartmentType();
             List<DepartmentType> lis = dt.DepartmentType_Get_All().ToList();
@@ -75,7 +75,7 @@ namespace FYP1.Controllers
 
         }
         [HttpPost]
-        public ActionResult Update(Department d) // bc phir se dept ka obj? direct update ka method call hota bas 
+        public ActionResult UpdateDepartment(Department d) // bc phir se dept ka obj? direct update ka method call hota bas 
         {
             DepartmentType dt = new DepartmentType();
             List<DepartmentType> lis = dt.DepartmentType_Get_All().ToList();
@@ -89,7 +89,7 @@ namespace FYP1.Controllers
         //    return View(new AdminInstitute().AdminInstitute_Get_All());
         //}
         [HttpGet]
-        public ActionResult InsertInstituteDetails()
+        public ActionResult AddInstitute()
         {
             InstituteType it = new InstituteType();
             State s = new State();
@@ -104,7 +104,7 @@ namespace FYP1.Controllers
         }
 
         [HttpPost]
-        public ActionResult InsertInstituteDetails(AdminViewModel avm)
+        public ActionResult AddInstitute(AdminViewModel avm)
         {
             try
             {
@@ -182,7 +182,10 @@ namespace FYP1.Controllers
         {
             return View(new InstituteCampus().InstituteCampus_Get_All().ToList());
         }
-
+        public ActionResult SearchInstituteCampus(int id)
+        {
+            return View(new InstituteCampus().InstituteCampus_Get_All().FindAll(x=>x.Institute_ID==id).ToList());
+        }
         [HttpGet]
         public ActionResult UpdateInstituteCampus(int id)
         {
@@ -210,7 +213,7 @@ namespace FYP1.Controllers
 
 
         [HttpGet]
-        public ActionResult institutecampuss()
+        public ActionResult AddInstituteCampuse()
         {
             Institute i = new Institute();
             List<Institute> list = i.Institute_Get_All().ToList();
@@ -224,7 +227,7 @@ namespace FYP1.Controllers
 
         }
         [HttpPost]
-        public ActionResult institutecampuss(AdminViewModel avm)
+        public ActionResult AddInstituteCampuse(AdminViewModel avm)
         {
 
             List<Institute> list = avm.institute.Institute_Get_All().ToList();
@@ -239,7 +242,7 @@ namespace FYP1.Controllers
 
         }
         [HttpGet]
-        public ActionResult InstituteDepartment() // ye kya kia hai? Add k post k kam mei 
+        public ActionResult AddInstituteDepartment() // ye kya kia hai? Add k post k kam mei 
         {
             InstituteCampus ic = new InstituteCampus();
             Institute i = new Institute();
@@ -266,7 +269,7 @@ namespace FYP1.Controllers
 
         [HttpPost]
 
-        public ActionResult InstituteDepartment(AdminViewModel avm) // ek hi dafa se add() ka method call karkay redirect karwadetay showall pe :s 
+        public ActionResult AddInstituteDepartment(AdminViewModel avm) // ek hi dafa se add() ka method call karkay redirect karwadetay showall pe :s 
                                                                     // ye acha kia k ek model mei alag alag classes ko call karwalia
         {
             List<Institute> lis = avm.institute.Institute_Get_All().ToList();

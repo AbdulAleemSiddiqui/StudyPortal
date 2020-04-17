@@ -9,27 +9,10 @@
 
 }
 
-<html>
-<head>
-    <title>abc</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="author" content="colorlib.com">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" />
-    <link href="~/UniSelTemplate/css/main.css" rel="stylesheet" />
-    <div class="group-btn">
-        <button class="btn btn-default" style="margin-top: 10px; border-color:darkorange;"><span class="glyphicon glyphicon-ok"></span> @Html.ActionLink("Check skil", "GetQuizQuestion")</button>
-        </br>
-    </div>
-</head>
-<body>
 
 
 
-
-
-    <button class="open-button" onclick="openForm()">Chat</button>
+@*<button class="open-button" onclick="openForm()">Chat</button>
 
     <div class="chat-popup" id="myForm">
         <form class="form-container" id="ab">
@@ -40,7 +23,7 @@
 
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
-    </div>
+    </div>*@
 
 
 
@@ -49,94 +32,106 @@
 
 
 
+<div class="content">
+    <div class="row" data-background-color="green">
 
-    <div class="s008" id="bd">
-
-
-        <form class="form" action="/AdmissionForm/Add" method="post">
-            @Html.HiddenFor(x => x.S_ID)
-
-
-            <div class="inner-form">
-                <div class="basic-search">
-                    <div class="input-field">
-                        <div class="icon-wrap">
-                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
-                                <path d="M18.869 19.162l-5.943-6.484c1.339-1.401 2.075-3.233 2.075-5.178 0-2.003-0.78-3.887-2.197-5.303s-3.3-2.197-5.303-2.197-3.887 0.78-5.303 2.197-2.197 3.3-2.197 5.303 0.78 3.887 2.197 5.303 3.3 2.197 5.303 2.197c1.726 0 3.362-0.579 4.688-1.645l5.943 6.483c0.099 0.108 0.233 0.162 0.369 0.162 0.121 0 0.242-0.043 0.338-0.131 0.204-0.187 0.217-0.503 0.031-0.706zM1 7.5c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5-2.916 6.5-6.5 6.5-6.5-2.916-6.5-6.5z"></path>
-                            </svg>
-                        </div>
-                    </div>
+        <div class="col-md-12"">
+            <div class="card">
+                <div class="card-header" data-background-color="purple">
+                    <h4 class="title"><b>Recommended Universities</b></h4>
+                    <p class="category"><b>Registeration</b></p>
                 </div>
-                <div class="advance-search">
-                    <span class="desc">Advanced Search</span>
-                    <div class="row">
-                        <div class="input-field">
-                            <div class="label">
-                                Department
-                            </div>
-                            <div class="input-select">
-                                <div class="input">
-                                    @Html.DropDownList("Department_ID", new SelectList(ViewBag.Department, "Department_ID", "Department_Name"), new { htmlAttributes = new { @class = "form-control" } })
+                <div class="card-content">
+                    <div class="s008" id="bd">
+
+
+                        <form class="form" action="/AdmissionForm/Add" method="post">
+                            @Html.HiddenFor(x => x.S_ID)
+
+
+                            @*<div class="inner-form">
+                                <div class="basic-search">
+                                    <div class="input-field">
+                                        <div class="icon-wrap">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+                                                <path d="M18.869 19.162l-5.943-6.484c1.339-1.401 2.075-3.233 2.075-5.178 0-2.003-0.78-3.887-2.197-5.303s-3.3-2.197-5.303-2.197-3.887 0.78-5.303 2.197-2.197 3.3-2.197 5.303 0.78 3.887 2.197 5.303 3.3 2.197 5.303 2.197c1.726 0 3.362-0.579 4.688-1.645l5.943 6.483c0.099 0.108 0.233 0.162 0.369 0.162 0.121 0 0.242-0.043 0.338-0.131 0.204-0.187 0.217-0.503 0.031-0.706zM1 7.5c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5-2.916 6.5-6.5 6.5-6.5-2.916-6.5-6.5z"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="advance-search">
+                                    <span class="desc">Advanced Search</span>
+                                    <div class="row">
+                                        <div class="input-field">
+                                            <div class="label">
+                                                Department
+                                            </div>
+                                            <div class="input-select">
+                                                <div class="input">
+                                                    @Html.DropDownList("Department_ID", new SelectList(ViewBag.Department, "Department_ID", "Department_Name"), new { htmlAttributes = new { @class = "form-control" } })
+                                                </div>
+                                            </div>
 
-                        </div>
-                        <div class="input-field">
+                                        </div>
+                                        <div class="input-field">
 
-                            <div class="label">
-                                Degree
-                            </div>
+                                            <div class="label">
+                                                Degree
+                                            </div>
 
-                            <div class="col-md-12 form-group">
-                                @Html.DropDownListFor(model => model.Degree_ID, new SelectList(""), new { htmlAttributes = new { @class = "form-control" } })
-                            </div>
-                        </div>
-                        <div class="input-field">
-                            <div class="result-count">
-                            </div>
-                            <div class="group-btn">
-                                <button type="button" class="btn-search" id="abc">Search</button>
-                            </div>
-                        </div>
+                                            <div class="col-md-12 form-group">
+                                                @Html.DropDownListFor(model => model.Degree_ID, new SelectList(""), new { htmlAttributes = new { @class = "form-control" } })
+                                            </div>
+                                        </div>
+                                        <div class="input-field">
+                                            <div class="result-count">
+                                            </div>
+                                            <div class="group-btn">
+                                                <button type="button" class="btn-search" id="abc">Search</button>
+                                            </div>
+                                        </div>
 
+                                    </div>
+
+
+                                </div>
+                            </div>*@
+                            @Html.DropDownList("Department_ID", new SelectList(ViewBag.Department, "Department_ID", "Department_Name"), new { htmlAttributes = new { @class = "form-control" } })
+
+
+                            @Html.DropDownListFor(model => model.Degree_ID, new SelectList(""), new { htmlAttributes = new { @class = "form-control" } })
+
+                    
+                            <button type="button" class="btn-search" id="abc">Search</button>
+                                 
+                                       
+                                    
+                                        <div class="col-md-12" id="bdy">
+
+                                        </div>
+                                 
+                                    <div class="input-field">
+                                        <div class="result-count">
+                                        </div>
+                                        <div class="group-btn">
+                                            <button type="submit" class="btn-search">Apply</button>
+                                        </div>
+                                    </div>
+                          
+
+                        </form>
                     </div>
-
-
+                    </div>
                 </div>
             </div>
-            <div class="site-section bg-light">
-
-
-                <div class="container">
-                    <div class="row justify-content-center mb-5 element-animate">
-                        <div class="col-md-7 text-center section-heading">
-                            <h2 class="text-primary heading">Recommended Universities</h2>
-                        </div>
-                    </div>
-                    <div class="row element-animate">
-                        <div class="col-md-12" id="bdy">
-
-                        </div>
-                    </div>
-                    <div class="input-field">
-                        <div class="result-count">
-                        </div>
-                        <div class="group-btn">
-                            <button type="submit" class="btn-search">Apply</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </form>
+        </div>
     </div>
+                    <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px"><i>Loading chat...</i></div>
 
-    <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px"><i>Loading chat...</i></div>
+                    @section Scripts{
 
-    @section Scripts{
-
-        <script src="~/UniSelTemplate/js/extention/choices.js"></script>
-        <script>
+                        <script src="~/UniSelTemplate/js/extention/choices.js"></script>
+                        @*<script>
 
              var lst = @Html.Raw(Json.Encode(ViewBag.ids));
             debugger
@@ -162,8 +157,8 @@
                     }
                 }, false);
             }
-        </script>
-        <script>
+                        </script>*@
+                        <script>
 
             $('#Department_ID').change(function () {
 
@@ -203,13 +198,17 @@
                                 debugger
 
                                 a = ""
-                                a += "<div class='block-19 d-flex mb-4'>"
+                                a+= "<div class='card col-md-12'>"
+                                a+="  <div class='card-header' data-background-color='purple'>"
+                                a+="<h4 class='title'><b>"+item.Institute_Name+"</b></h4>"
+                         
+                                a += "<div class='col-md-6'>"
                                 //a += "<figure class='mr-3'><a href='#'><img src='/images/uni2.jpg'" + "alt='' class='img-fluid' width='250px' height='250px'></a></figure>"
 
                                // a += '<figure class="mr-3"><a href="#"><img src=' + item.InsCampus_Img_Path + ' alt='' class="img-fluid" width="250px" height="250px"></a></figure>';
-                                a += '<img src=' + item.InsCampus_Img_Path + ' style="display: inline-block;" class="img-responsive thumbnail"/> ';
-
-                                a += "<div class='text' style='padding-block-start: 25px; '>";
+                                a += '<img src=' + item.Institute_img + ' style="display: inline-block;"  width="250px" height="250px" class="img-responsive thumbnail"/>  ';
+                               
+                                a += "<div class='col-md-6 card-content' style='color:black'>";
                                 a += "<h6 class='heading' style='font-size: 25px;'><a href='#'>" + item.Institute_Name + "</a></h6> ";
                                 a += "<h6 class='' ><i>Reg No: </i>" + item.Institute_RegNo + "</a></h6>  ";
                                 a += "<h6 class='' ><i>Affilation: </i>" + item.Institute_Affilation + "</a></h6>  ";
@@ -256,6 +255,7 @@
                                   a += " <td> <input type='checkbox' Name='Inst_List[" + i + "].I_ID' value=" + item.Institute_ID + "  disabled='disabled'/> </td> ";
 
                               }
+                                a+= '</div>'
                                //a += "<input type='button' class='seassrch-submit btn btn-primary apply' style='height: 40px;float:right;margin-top: 35px;margin-left: 100px;' value='Apply Now' id='" + item.Institute_ID + "'>" + "</div>  <div class='meta'></div>"
                                 body.append(a);
                             });
@@ -273,8 +273,8 @@
                     alert("Applied")
                 });
 
-        </script>
-        <script>
+                        </script>
+                        <script>
             (function (t, a, l, k, j, s) {
                 s = a.createElement('script'); s.async = 1; s.src = "https://cdn.talkjs.com/talk.js"; a.head.appendChild(s)
                     ; k = t.Promise; t.Talk = {
@@ -286,14 +286,10 @@
                         }
                     };
             })(window, document, []);
-        </script>
+                        </script>
+                        <!-- TalkJS initialization code, which we'll customize in the next steps -->
+                        <script>
 
-       
-
-        <!-- TalkJS initialization code, which we'll customize in the next steps -->
-
-        <script>
-     
             function openForm() {
                 debugger;
                 document.getElementById("myForm").style.display = "block";
@@ -359,7 +355,7 @@
 
                                 debugger;
             }
-        </script>
+                        </script>
 
 
 
@@ -378,104 +374,98 @@
 
 
 
-    }
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+                    }
 
-</html>
-<style>
-    .slidecontainer {
-        width: 60%;
-    }
+                    <style>
+                        .slidecontainer {
+                            width: 60%;
+                        }
 
-    .slider {
-        -webkit-appearance: none; /* Override default CSS styles */
-        width: 100%; /* Full-width */
-        height: 25px; /* Specified height */
-        background: #d3d3d3; /* Grey background */
-        outline: none; /* Remove outline */
-        opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-        -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-        transition: opacity .2s;
-    }
+                        .slider {
+                            -webkit-appearance: none; /* Override default CSS styles */
+                            width: 100%; /* Full-width */
+                            height: 25px; /* Specified height */
+                            background: #d3d3d3; /* Grey background */
+                            outline: none; /* Remove outline */
+                            opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+                            -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+                            transition: opacity .2s;
+                        }
 
-        .slider:hover {
-            opacity: 1;
-        }
+                            .slider:hover {
+                                opacity: 1;
+                            }
 
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 25px;
-            height: 25px;
-            background: #4CAF50;
-            cursor: pointer;
-        }
+                            .slider::-webkit-slider-thumb {
+                                -webkit-appearance: none;
+                                width: 25px;
+                                height: 25px;
+                                background: #4CAF50;
+                                cursor: pointer;
+                            }
 
-        .slider:-moz-range-thumb {
-            width: 25px;
-            height: 25px;
-            background: #4CAF50;
-            cursor: pointer;
-        }
+                            .slider:-moz-range-thumb {
+                                width: 25px;
+                                height: 25px;
+                                background: #4CAF50;
+                                cursor: pointer;
+                            }
 
 
 
 
-                .open-button {
-  background-color: #555;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  opacity: 0.8;
-  position: fixed;
-  bottom: 23px;
-  right: 28px;
-  width: 280px;
-}
+                        .open-button {
+                            background-color: #555;
+                            color: white;
+                            padding: 16px 20px;
+                            border: none;
+                            cursor: pointer;
+                            opacity: 0.8;
+                            position: fixed;
+                            bottom: 23px;
+                            right: 28px;
+                            width: 280px;
+                        }
 
-/* The popup chat - hidden by default */
-.chat-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  margin:auto;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-  
-}
+                        /* The popup chat - hidden by default */
+                        .chat-popup {
+                            display: none;
+                            position: fixed;
+                            bottom: 0;
+                            right: 15px;
+                            margin: auto;
+                            border: 3px solid #f1f1f1;
+                            z-index: 9;
+                        }
 
-/* Add styles to the form container */
-.form-container {
-  max-width: 300px;
-  padding: 10px;
-  background-color: white;
-}
-
-
-
-/* Set a style for the submit/send button */
-.form-container .btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px 20px;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  margin-bottom:10px;
-  opacity: 0.8;
-}
-
-/* Add a red background color to the cancel button */
-.form-container .cancel {
-  background-color: red;
-}
-
-/* Add some hover effects to buttons */
-.form-container .btn:hover, .open-button:hover {
-  opacity: 1;
-}
+                        /* Add styles to the form container */
+                        .form-container {
+                            max-width: 300px;
+                            padding: 10px;
+                            background-color: white;
+                        }
 
 
 
-</style>
+                            /* Set a style for the submit/send button */
+                            .form-container .btn {
+                                background-color: #4CAF50;
+                                color: white;
+                                padding: 16px 20px;
+                                border: none;
+                                cursor: pointer;
+                                width: 100%;
+                                margin-bottom: 10px;
+                                opacity: 0.8;
+                            }
+
+                            /* Add a red background color to the cancel button */
+                            .form-container .cancel {
+                                background-color: red;
+                            }
+
+                            /* Add some hover effects to buttons */
+                            .form-container .btn:hover, .open-button:hover {
+                                opacity: 1;
+                            }
+                    </style>

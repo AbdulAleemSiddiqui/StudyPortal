@@ -6,77 +6,94 @@
     ViewBag.Title = "ShowInstitute";
 }
 
-<h2>ShowInstitute</h2>
 
-<p>
-    @Html.ActionLink("Add Institute", "insertinstitutedetails") <br />
-    @Html.ActionLink("Add Institute-Department", "InstituteDepartment")
-</p>
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Institute_ID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Institute_Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Institute_RegNo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Institute_EstablishYear)
-            </th>
-            @*<th>
-                    @Html.DisplayNameFor(model => model.InstituteType_ID)
-                </th>*@
-            <th>
-                @Html.DisplayNameFor(model => model.Institute_Affilation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="purple">
+                        <h4 class="title"><b>Show Institute</b></h4>
+                        <p class="category">
+                            <b>
+                                @Html.ActionLink("Add Institute", "insertinstitutedetails") <br />
+                                @Html.ActionLink("Add Institute-Department", "InstituteDepartment")
 
-            <th></th>
-        </tr>
-    </thead>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Institute_ID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Institute_Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Institute_RegNo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Institute_EstablishYear)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.InstituteType_ID)
-                    </td>*@
-                <td>
-                    @Html.DisplayFor(modelItem => item.Institute_Affilation)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Password)
-                </td>
-                <td>
-                    @Html.ActionLink("Campuses", "searchinstitutecampus", new { id = item.Institute_ID }) |
-                    @Html.ActionLink("Edit", "UpdateInstitute", new { id = item.Institute_ID }) |
-                     @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                </td>
-            </tr>
-        }
+                            </b>
+                        </p>
+                    </div>
+                    <div class="card-content">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Institute_ID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Institute_Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Institute_RegNo)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Institute_EstablishYear)
+                                    </th>
+                                    @*<th>
+                                            @Html.DisplayNameFor(model => model.InstituteType_ID)
+                                        </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Institute_Affilation)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Password)
+                                    </th>
 
-</table>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Institute_ID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Institute_Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Institute_RegNo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Institute_EstablishYear)
+                                    </td>
+                                    @*<td>
+                                            @Html.DisplayFor(modelItem => item.InstituteType_ID)
+                                        </td>*@
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Institute_Affilation)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Password)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Campuses", "searchinstitutecampus", new { id = item.Institute_ID }) |
+                                        @Html.ActionLink("Edit", "UpdateInstitute", new { id = item.Institute_ID }) |
+                                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

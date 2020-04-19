@@ -6,54 +6,75 @@
     ViewBag.Title = "ShowDepartment";
 }
 
-<h2>ShowDepartment</h2>
 
-<p>
-    @Html.ActionLink("Adddepartment", "AddDepartment")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Department_ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Department_Name)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.DepartmentType_ID)
-        </th>*@
-        <th>
-            @Html.DisplayNameFor(model => model.DepartmentType_Name)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Query)
-        </th>*@
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Department_ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Department_Name)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.DepartmentType_ID)
-        </td>*@
-        <td>
-            @Html.DisplayFor(modelItem => item.DepartmentType_Name)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Query)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Update", new { id=item.Department_ID }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="purple">
+                        <h4 class="title"><b>Show Department</b></h4>
+                        <p class="category">
+                            <b>
+                                @Html.ActionLink("Add new department", "AddDepartment")
 
-</table>
+
+                            </b>
+                        </p>
+                    </div>
+                    <div class="card-content">
+
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Department_ID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Department_Name)
+                                </th>
+                                @*<th>
+                        @Html.DisplayNameFor(model => model.DepartmentType_ID)
+                    </th>*@
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DepartmentType_Name)
+                                </th>
+                                @*<th>
+                        @Html.DisplayNameFor(model => model.Query)
+                    </th>*@
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Department_ID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Department_Name)
+                                    </td>
+                                    @*<td>
+                            @Html.DisplayFor(modelItem => item.DepartmentType_ID)
+                        </td>*@
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DepartmentType_Name)
+                                    </td>
+                                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Query)
+                        </td>*@
+                                    <td>
+                                        @Html.ActionLink("Edit", "Update", new { id = item.Department_ID }) |
+                                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                    </td>
+                                </tr>
+                            }
+
+                        </table>
+</div>                    
+                </div>                    
+            </div>                    
+        </div>                    
+    </div>                    
+</div>

@@ -1,0 +1,71 @@
+﻿@model FYP1.ViewModel.AdminViewModel
+
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+
+    ViewBag.Title = "AddDepartment";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="purple">
+                        <h4 class="title"><b>Add </b></h4>
+                        <p class="category"><b>Department</b></p>
+                    </div>
+                    <div class="card-content">
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                              
+                                <div class="form-group label-floating">
+                                    <div class="col-md-8">
+                                        @Html.LabelFor(model => model.department.Department_Name, htmlAttributes: new { @class = "control-label " })
+
+
+                                        @Html.EditorFor(model => model.department.Department_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.department.Department_Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group label-floating">
+                                    <div class="col-md-8">
+                                        @Html.LabelFor(model => model.departmenttype.DepartmentType_Name, htmlAttributes: new { @class = "control-label " })
+
+
+                                        @Html.DropDownListFor(model => model.departmenttype.DepartmentType_ID, ViewBag.DepartmentTypeList as SelectList, "", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.departmenttype.DepartmentType_ID, "", new { @class = "error" })
+                                    </div>
+                                </div>
+
+
+
+                                <input type="submit" value="Add" class="btn btn-primary " />
+
+                                <div class="clearfix"></div>
+                                
+                            </div>
+                        }
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div> 
+
+<div>
+    @Html.ActionLink("Back to List", "AdmissionForm")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}

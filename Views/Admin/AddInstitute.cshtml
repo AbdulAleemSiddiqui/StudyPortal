@@ -6,172 +6,176 @@
     ViewBag.Title = "InsertInstituteDetails";
 }
 
-<h2>InsertInstituteDetails</h2>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="purple">
+                        <h4 class="title"><b>Add </b></h4>
+                        <p class="category"><b>Institute Details</b></p>
+                    </div>
+                    <div class="card-content">
+
+                        @using (Html.BeginForm("InsertInstituteDetails", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            
+                                <div class="row">
+                                
+                                    <div class="col-md-5">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.institute.Institute_Name, htmlAttributes: new { @class = "control-label" })
 
 
-@using (Html.BeginForm("InsertInstituteDetails", "Admin", FormMethod.Post,new { enctype="multipart/form-data"}))
-{
-    @Html.AntiForgeryToken()
+                                            @Html.EditorFor(model => model.institute.Institute_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.institute.Institute_Name, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group label-floating">
+                                           
+                                                @Html.LabelFor(model => model.institute.Institute_EstablishYear, htmlAttributes: new { @class = "control-label" })
+                                                @Html.EditorFor(model => model.institute.Institute_EstablishYear, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.institute.Institute_EstablishYear, "", new { @class = "text-danger" })
+                                           
+                                        </div>
+                                        </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group label-floating">
 
-    <div class="form-horizontal">
-        <h4>AdminViewModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
+                                            @Html.LabelFor(model => model.institute.Institute_RegNo, htmlAttributes: new { @class = "control-label" })
+                                            @Html.EditorFor(model => model.institute.Institute_RegNo, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.institute.Institute_RegNo, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                 </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.institute.Institute_Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.institute.Institute_Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.institute.Institute_Name, "", new { @class = "text-danger" })
+                                <div class="row">
+
+
+                                    <div class="col-md-3">
+                                        <div class="form-group label-floating">
+                                            @Html.LabelFor(model => model.institutetype.InstituteType_Name, htmlAttributes: new { @class = "" })
+                                            @Html.DropDownListFor(model => model.institutetype.InstituteType_ID, ViewBag.InstituteType as SelectList, "--select--", new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(model => model.institutetype.InstituteType_ID, "", new { @class = "error" })
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group label-floating">
+                                            <label for="Email">start Year</label>
+                                            <input type="date" id="name" name="institute.start_date" class="form-control py-2">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group label-floating">
+
+
+                                            <label for="Email">End Year</label>
+                                            <input type="date" id="name" name="institute.end_date" class="form-control py-2">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group label-floating">
+
+                                            @Html.LabelFor(model => model.institute.Institute_Affilation, htmlAttributes: new { @class = "" })
+                                            @Html.DropDownListFor(model => model.institute.Institute_Affilation, new SelectList("University_Name"), "--select--", new { @class = "form-control", @id = "uni" })
+                                            @Html.ValidationMessageFor(model => model.institute.Institute_Affilation, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                          <div class="col-md-6">
+                                              <div class="form-group label-floating">
+                                                  <label for="email" class="control-label">Email</label>
+                                                  <input type="email" name="institute.Email" class="form-control py-2">
+                                              </div>
+                                          </div>
+
+                                          <div class="col-md-6">
+                                              <div class="form-group label-floating">
+                                                  <label for="password" class="control-label">Password</label>
+                                                  <input type="password" name="institute.Password" required class="form-control py-2">
+                                              </div>
+                                          </div>
+                                      </div>
+                                 <div class="row">
+                                     <div class="col-md-6">
+                                         <div class="form-group label-floating">
+                                             <label> Image ofInstitute</label><br />
+                                             @Html.Label("click here to browse", htmlAttributes: new { @class = "" })
+                                             <input type="file" name="institute.Prop"  class="form-control py-2"/>
+                                             
+                                         </div>
+                                     </div>
+                                     </div> 
+                                <input type="submit" value="Add" class="btn btn-primary pull-right" />
+
+                                <div class="clearfix"></div>
+
+
+
+                        }
+                        <div>
+                            @Html.ActionLink("Back to List", "ShowInstitute")
+                        </div>
+                    </div>
+                    
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.institute.Institute_EstablishYear, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.institute.Institute_EstablishYear, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.institute.Institute_EstablishYear, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.institute.Institute_RegNo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.institute.Institute_RegNo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.institute.Institute_RegNo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.institutetype.InstituteType_Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.institutetype.InstituteType_ID, ViewBag.InstituteType as SelectList, "--select--", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.institutetype.InstituteType_ID, "", new { @class = "error" })
-            </div>
-        </div>
-
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.state.State_Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.state.State_ID, ViewBag.StateList as SelectList, "--select--", new { @class = "form-control", @id = "st", @onchange = "abc()" })
-                @Html.ValidationMessageFor(model => model.state.State_ID, "", new { @class = "error" })
-            </div>
-        </div>
-
-
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.city.City_Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.city.City_ID, new SelectList("City_ID", "City_Name"), "--select--", new { @class = "form-control", @id = "sam", @onchange = "getuniversity()" })
-                @Html.ValidationMessageFor(model => model.city.City_ID, "", new { @class = "error" })
-            </div>
-        </div>*@
-
-        <div class="col-md-10">
-            <div class="form-group">
-                <label for="Email">start Year</label>
-                <input type="date" id="name" name="institute.start_date" class="form-control py-2">
-            </div>
-        </div>
-
-        <div class="col-md-10">
-            <div class="form-group">
-                <label for="Email">End Year</label>
-                <input type="date" id="name" name="institute.end_date" class="form-control py-2">
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.institute.Institute_Affilation, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.institute.Institute_Affilation, new SelectList("University_Name"), "--select--", new { @class = "form-control", @id = "uni" })
-                @Html.ValidationMessageFor(model => model.institute.Institute_Affilation, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.institute.Institute_img, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" name="institute.Prop" required>
-            </div>
-        </div>
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.institute.Institute_Affilation, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.institute.Institute_Affilation, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.institute.Institute_Affilation, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
-        <div class="col-md-10">
-            <div class="form-group">
-            <label for="email">Email</label>   
-                <input type="email" name="institute.Email" class="form-control py-2">
-            </div>
-        </div>
-
-        <div class="col-md-10">
-        <div class="form-group">
-        <label for="password">Password</label>
-            <input type="password" name="institute.Password" required class="form-control py-2">
-        </div>
-        </div>
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
         </div>
     </div>
-    </div>
 
-
-    <script>
-
-
-        function abc() {
-    var stateId = $('#st').val();
-    $.ajax({
-        url: '/Admin/getcitydropdown',
-        type: "GET",
-        dataType: "JSON",
-        data: { a: stateId},
-        success: function (cities) {
-            $("#sam").html(""); // clear before appending new list
-            $.each(cities, function (i, city) {
-                $("#sam").append(
-                    $('<option></option>').val(city.City_ID).html(city.City_Name));
-            });
-        }
-    });
-  }
-
-             function getuniversity() {
-    var CityId = $('#sam').val();
-    $.ajax({
-        url: '/Admin/get_universitydropdown',
-        type: "GET",
-        dataType: "JSON",
-        data: { a: CityId},
-        success: function (universitites) {
-            $("#uni").html(""); // clear before appending new list
-            $.each(universitites, function (i, univ) {
-                $("#uni").append(
-                    $('<option></option>').html(univ.University_Name));
-            });
-        }
-    });
-  }
-
-
-    </script>
-
-
-
-}
-
-<div>
-    @Html.ActionLink("Back to List", "ShowInstitute")
 </div>
 
+
+
+
+
+
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+  <script>
+
+
+    function abc() {
+        var stateId = $('#st').val();
+        $.ajax({
+            url: '/Admin/getcitydropdown',
+            type: "GET",
+            dataType: "JSON",
+            data: { a: stateId },
+            success: function (cities) {
+                $("#sam").html(""); // clear before appending new list
+                $.each(cities, function (i, city) {
+                    $("#sam").append(
+                        $('<option></option>').val(city.City_ID).html(city.City_Name));
+                });
+            }
+        });
+    }
+
+    function getuniversity() {
+        var CityId = $('#sam').val();
+        $.ajax({
+            url: '/Admin/get_universitydropdown',
+            type: "GET",
+            dataType: "JSON",
+            data: { a: CityId },
+            success: function (universitites) {
+                $("#uni").html(""); // clear before appending new list
+                $.each(universitites, function (i, univ) {
+                    $("#uni").append(
+                        $('<option></option>').html(univ.University_Name));
+                });
+            }
+        });
+    }
+
+
+</script>
+
+
 }

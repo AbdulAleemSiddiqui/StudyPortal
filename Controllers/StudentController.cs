@@ -16,12 +16,11 @@ namespace FYP1.Controllers
         [HttpGet]
         public ActionResult index()
         {
-
-
             return View();
         }
-        // GET: Student
-        public ActionResult StudentInfo()
+
+        // Registration
+        public ActionResult AddStudent()
         {
             ViewBag.DegreeLevel_List = new SelectList(new DegreeLevel().DegreeLevel_Get_All(), "DegreeLevel_ID", "DegreeLevel_Name");
             ViewBag.State_List = new SelectList(new State().State_Get_All(), "State_ID ", "State_Name");
@@ -30,7 +29,7 @@ namespace FYP1.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult StudentInfo(Student s)
+        public ActionResult AddStudent(Student s)
         {
             try
             {
@@ -55,6 +54,33 @@ namespace FYP1.Controllers
 
             //return RedirectToAction("StudentLogin", "Login");
         }
+
+        //Show All
+        [HttpGet]
+        public ActionResult ShowStudent()
+        {
+            return View(new Student().StudentGetAll());
+        }
+
+        [HttpGet]
+        public ActionResult EditStudent(int id)
+        {
+            return View(new Student().StudentGetById(id));
+        }
+
+        [HttpPost]
+        public ActionResult EditStudent(Student s)
+        {
+           //s.StudentUpdate();
+            return View();
+        }
+
+        public ActionResult DeleteStudent(Student s)
+        {
+            //s.StudentDelete();
+            return RedirectToAction("Index");
+        }
+
         public ActionResult Confirmation()
         {
             return View();
@@ -74,6 +100,7 @@ namespace FYP1.Controllers
             return Json(c.City_Get_By_ID(), JsonRequestBehavior.AllowGet);
         }
 
+        //yeh kya hai bhai ??
         public ActionResult show_All_Uni_selection()
         {
             Department d = new Department();

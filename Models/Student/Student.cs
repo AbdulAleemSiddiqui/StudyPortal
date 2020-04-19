@@ -56,10 +56,7 @@ namespace FYP1.Models.Student
         {
             try
             {
-                //place your Model Logic and DB Calls here:
                 int Student_ID = DataBase.ExecuteQuery<Student>(new { x = this, x1 = detail }, Connection.Get()).FirstOrDefault().Student_ID;
-                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
-                Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = this }, "", Module, Connection.GetLogConnection(), 1);
                 return Student_ID;
             }
             catch (Exception ex)
@@ -69,6 +66,36 @@ namespace FYP1.Models.Student
                 return 0;
             }
         }
+
+        public string Student_Edit()
+        {
+            try
+            {
+                return DataBase.ExecuteQuery<Student>(new { x = this, x1 = detail }, Connection.Get()).FirstOrDefault().ReturnMessage;
+            }
+            catch (Exception ex)
+            {
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Negative, ex.Message, new { x = this }, "", Module, Connection.GetLogConnection(), 1);
+                return ex.Message;
+            }
+        }
+        public string Student_Delete(int id)
+        {
+            try
+            {
+                return DataBase.ExecuteQuery<Student>(new { x = this, x1 = detail }, Connection.Get()).FirstOrDefault().ReturnMessage;
+            }
+            catch (Exception ex)
+            {
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Negative, ex.Message, new { x = this }, "", Module, Connection.GetLogConnection(), 1);
+                return ""
+;
+            }
+        }
+
+
         public int Student_Login()
         {
             try
@@ -104,8 +131,6 @@ namespace FYP1.Models.Student
                 return null;
             }
         }
-
-
         public List<Student> StudentGetAll()
         {
             try
@@ -123,7 +148,6 @@ namespace FYP1.Models.Student
                 return null;
             }
         }
-
         public string Student_EmailConfirm()
         {
             try

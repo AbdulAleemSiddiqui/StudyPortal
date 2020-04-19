@@ -280,6 +280,7 @@ namespace FYP1.Controllers
         }
 
         [Institute_Session]
+        [Admin_Session]
 
         public ActionResult Get_Paid_Admission()
         {

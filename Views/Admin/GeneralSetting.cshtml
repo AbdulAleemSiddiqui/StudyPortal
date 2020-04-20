@@ -1,0 +1,91 @@
+﻿@model FYP1.Models.Admin.Admin
+
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    ViewBag.Title = "Add";
+}
+
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header" data-background-color="purple">
+                        <h4 class="title"><b>General Setting</b></h4>
+                        <p class="category"><b>Setup your info!!</b></p>
+                    </div>
+                    <div class="card-content">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group label-floating">
+                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label " })
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group label-floating">
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label " })
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label" })
+
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Payment_Info, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.Payment_Info, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Payment_Info, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Terms_And_Conditions, htmlAttributes: new { @class = "control-label " })
+                                        @Html.TextAreaFor(model => model.Terms_And_Conditions, new { @type="textarea",@class = "form-control", @rows = "5" })
+                                        @Html.ValidationMessageFor(model => model.Terms_And_Conditions, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <input type="submit" value="Add" class="btn btn-primary pull-right" />
+
+                            <div class="clearfix"></div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    <script>
+        $('.radio').change(function () {
+            $('.radio').not(this).prop('checked', false);
+        });
+    </script>
+}

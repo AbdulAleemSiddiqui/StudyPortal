@@ -1,15 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using FYP1.Models.Admin;
 using System.Web.Mvc;
-using FYP1.Models.Admin;
-using FYP1.Models;
-using FYP1.Models.Institute;
-using FYP1.Models.Location;
-using FYP1.ViewModel;
-using FYP1.Models.Department;
-using System.IO;
 
 namespace FYP1.Controllers
 {
@@ -20,8 +10,16 @@ namespace FYP1.Controllers
         {
             return View();
         }
-
-
+        public ActionResult GeneralSetting()
+        {
+            return View(new Admin().Admin_Get());
+        }
+        [HttpPost]
+        public ActionResult GeneralSetting(Admin a)
+        {
+            string message = a.Admin_Edit();
+            return View();
+        }
         //[HttpGet]
         //public ActionResult AddInstituteDepartment() // ye kya kia hai? Add k post k kam mei 
         //{

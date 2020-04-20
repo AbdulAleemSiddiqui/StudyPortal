@@ -33,6 +33,8 @@ namespace FYP1.Models.Admin.AdmissionForm
             {
                 //place your Model Logic and DB Calls here:
                 List<AdmissionViewModel> ret = DataBase.ExecuteQuery<AdmissionViewModel>(new { }, Connection.Get());
+     
+
                 // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
                 Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = 1 }, "", "", Connection.GetLogConnection(), 1);
                 return ret;
@@ -44,6 +46,24 @@ namespace FYP1.Models.Admin.AdmissionForm
                 return null;
             }
         }
+        public List<AdmissionViewModel> Get_All_Admission_For_Admin()
+        {
+            try
+            {
+                //place your Model Logic and DB Calls here:
+                List<AdmissionViewModel> ret = DataBase.ExecuteQuery<AdmissionViewModel>(new { }, Connection.Get());
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = 1 }, "", "", Connection.GetLogConnection(), 1);
+                return ret;
+            }
+            catch (Exception ex)
+            {
+                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
+                Logger.Logging.DB_Log(Logger.eLogType.Log_Negative, ex.Message, new { x = 1 }, "", "", Connection.GetLogConnection(), 1);
+                return null;
+            }
+        }
+
         public List<AdmissionViewModel> Get_Admission_For_Institute(int I_ID)
         {
             try

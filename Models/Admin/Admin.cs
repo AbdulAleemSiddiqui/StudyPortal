@@ -16,22 +16,33 @@ namespace FYP1.Models.Admin
         [DataType(DataType.Password)]
 
         public string Password { get; set; }
+        public string Payment_Info { get;  set; }
+        public string Terms_And_Conditions { get;  set; }
+
         public int Admin_Login()
         {
             try
             {
-                //place your Model Logic and DB Calls here:
                 int A_ID = DataBase.ExecuteQuery<Admin>(new { x = this.Email,x1=this.Password }, Connection.Get()).FirstOrDefault().Admin_ID;
-                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
-                Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = this }, "", "", Connection.GetLogConnection(), 1);
                 return A_ID;
             }
             catch (Exception ex)
             {
-                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
-                Logger.Logging.DB_Log(Logger.eLogType.Log_Negative, ex.Message, new { x = this }, "", "", Connection.GetLogConnection(), 1);
                 return 0;
             }
+        }
+
+        
+        public Admin Admin_Get()
+        {
+            return DataBase.ExecuteQuery<Admin>(new { }, Connection.Get()).FirstOrDefault();
+
+        }
+        public string Admin_Edit()
+        {
+            return DataBase.ExecuteQuery<Admin>(new { x= this.Name,x1 = this.Email, x2 = this.Password ,x3=this.Payment_Info,x4=this.Terms_And_Conditions}, Connection.Get()).FirstOrDefault().Name;
+
+            return "";
         }
     }
 }

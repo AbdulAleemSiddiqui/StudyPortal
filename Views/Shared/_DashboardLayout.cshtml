@@ -43,9 +43,9 @@
                 @if (Session["A_ID"] != null)
                   {
                         <li >
-                            <a href="@Url.Action("Get_Paid_Admission","admissionform")">
+                            <a href="@Url.Action("Get_All_Admission","admissionform")">
                             <i class="material-icons">dashboard</i>
-                            <p>Paid Application</p>
+                            <p>All Application</p>
                         </a>
                         </li>
                         <li>
@@ -67,7 +67,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="@Url.Action("PaymentSetting","Admin")">
+                            <a href="@Url.Action("GeneralSetting","Admin")">
                                 <i class="material-icons">bubble_chart</i>
                                 <p>Payment Settings</p>
                             </a>
@@ -84,8 +84,8 @@
                                 <p>Pre Courses</p>
                             </a>
                         </li>
-                        <li class="@Url.Action("GeneralSetting","Admin")">
-                            <a href="upgrade.html">
+                        <li >
+                            <a href="@Url.Action("GeneralSetting","Admin")">
                                 <i class="material-icons">unarchive</i>
                                 <p>Gerneral Setting</p>
                             </a>

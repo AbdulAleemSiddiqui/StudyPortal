@@ -35,7 +35,7 @@
 <div class="content">
     <div class="row" data-background-color="green">
 
-        <div class="col-md-12"">
+        <div class="col-md-12" ">
             <div class="card">
                 <div class="card-header" data-background-color="purple">
                     <h4 class="title"><b>Recommended Universities</b></h4>
@@ -50,115 +50,129 @@
 
 
                             @*<div class="inner-form">
-                                <div class="basic-search">
-                                    <div class="input-field">
-                                        <div class="icon-wrap">
-                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
-                                                <path d="M18.869 19.162l-5.943-6.484c1.339-1.401 2.075-3.233 2.075-5.178 0-2.003-0.78-3.887-2.197-5.303s-3.3-2.197-5.303-2.197-3.887 0.78-5.303 2.197-2.197 3.3-2.197 5.303 0.78 3.887 2.197 5.303 3.3 2.197 5.303 2.197c1.726 0 3.362-0.579 4.688-1.645l5.943 6.483c0.099 0.108 0.233 0.162 0.369 0.162 0.121 0 0.242-0.043 0.338-0.131 0.204-0.187 0.217-0.503 0.031-0.706zM1 7.5c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5-2.916 6.5-6.5 6.5-6.5-2.916-6.5-6.5z"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="advance-search">
-                                    <span class="desc">Advanced Search</span>
-                                    <div class="row">
-                                        <div class="input-field">
-                                            <div class="label">
-                                                Department
-                                            </div>
-                                            <div class="input-select">
-                                                <div class="input">
-                                                    @Html.DropDownList("Department_ID", new SelectList(ViewBag.Department, "Department_ID", "Department_Name"), new { htmlAttributes = new { @class = "form-control" } })
-                                                </div>
-                                            </div>
+            <div class="basic-search">
+                <div class="input-field">
+                    <div class="icon-wrap">
+                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+                            <path d="M18.869 19.162l-5.943-6.484c1.339-1.401 2.075-3.233 2.075-5.178 0-2.003-0.78-3.887-2.197-5.303s-3.3-2.197-5.303-2.197-3.887 0.78-5.303 2.197-2.197 3.3-2.197 5.303 0.78 3.887 2.197 5.303 3.3 2.197 5.303 2.197c1.726 0 3.362-0.579 4.688-1.645l5.943 6.483c0.099 0.108 0.233 0.162 0.369 0.162 0.121 0 0.242-0.043 0.338-0.131 0.204-0.187 0.217-0.503 0.031-0.706zM1 7.5c0-3.584 2.916-6.5 6.5-6.5s6.5 2.916 6.5 6.5-2.916 6.5-6.5 6.5-6.5-2.916-6.5-6.5z"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="advance-search">
+                <span class="desc">Advanced Search</span>
+                <div class="row">
+                    <div class="input-field">
+                        <div class="label">
+                            Department
+                        </div>
+                        <div class="input-select">
+                            <div class="input">
+                                @Html.DropDownList("Department_ID", new SelectList(ViewBag.Department, "Department_ID", "Department_Name"), new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
 
-                                        </div>
-                                        <div class="input-field">
+                    </div>
+                    <div class="input-field">
 
-                                            <div class="label">
-                                                Degree
-                                            </div>
+                        <div class="label">
+                            Degree
+                        </div>
 
-                                            <div class="col-md-12 form-group">
-                                                @Html.DropDownListFor(model => model.Degree_ID, new SelectList(""), new { htmlAttributes = new { @class = "form-control" } })
-                                            </div>
-                                        </div>
-                                        <div class="input-field">
-                                            <div class="result-count">
-                                            </div>
-                                            <div class="group-btn">
-                                                <button type="button" class="btn-search" id="abc">Search</button>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
-                                </div>
-                            </div>*@
-                            @Html.DropDownList("Department_ID", new SelectList(ViewBag.Department, "Department_ID", "Department_Name"), new { htmlAttributes = new { @class = "form-control" } })
-
-
+                        <div class="col-md-12 form-group">
                             @Html.DropDownListFor(model => model.Degree_ID, new SelectList(""), new { htmlAttributes = new { @class = "form-control" } })
-
-                    
+                        </div>
+                    </div>
+                    <div class="input-field">
+                        <div class="result-count">
+                        </div>
+                        <div class="group-btn">
                             <button type="button" class="btn-search" id="abc">Search</button>
-                                 
-                                       
-                                    
-                                        <div class="col-md-12" id="bdy">
+                        </div>
+                    </div>
 
-                                        </div>
-                                 
-                                    <div class="input-field">
-                                        <div class="result-count">
-                                        </div>
-                                        <div class="group-btn">
-                                            <button type="submit" class="btn-search">Apply</button>
-                                        </div>
+                </div>
+
+
+            </div>
+        </div>*@
+                            <div class="row">
+                                <div class="col-md-4">
+
+                                    <div class="form-group label-floating">
+
+                                        @Html.Label("Department", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.DropDownList("Department_ID", new SelectList(ViewBag.Department, "Department_ID", "Department_Name"), "", new { @class = "form-control" })
                                     </div>
-                          
+                                </div>
+                                <div class="col-md-4">
+
+                                    <div class="form-group label-floating">
+                                        @Html.Label("Degree", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.DropDownListFor(model => model.Degree_ID, new SelectList(""), "", new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <button type="button" class="btn btn-default" id="abc">Search</button>
+
+                                        @*<input type="submit" value="Add" class="btn btn-default" id="abc" />*@
+                                    </div>
+                                </div>
+                            </div>"
+                            <div class="col-md-12" id="bdy">
+
+                            </div>
+
+                            <div class="input-field">
+                                <div class="result-count">
+                                </div>
+                                <div class="group-btn">
+                                    <button type="submit" class="btn-search btn btn-default">Apply</button>
+                                </div>
+                            </div>
 
                         </form>
-                    </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-                    <div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px"><i>Loading chat...</i></div>
+</div>
+<div id="talkjs-container" style="width: 90%; margin: 30px; height: 500px"><i>Loading chat...</i></div>
 
-                    @section Scripts{
+@section Scripts{
 
-                        <script src="~/UniSelTemplate/js/extention/choices.js"></script>
-                        @*<script>
+    <script src="~/UniSelTemplate/js/extention/choices.js"></script>
+    @*<script>
 
-             var lst = @Html.Raw(Json.Encode(ViewBag.ids));
-            debugger
-            const customSelects = document.querySelectorAll("select");
-            const deleteBtn = document.getElementById('delete')
-            const choices = new Choices('#Department_ID',
-            {
-                searchEnabled: false,
-                removeItemButton: true,
-                itemSelectText: '',
-            });
-            for (let i = 0; i < customSelects.length; i++) {
-                customSelects[i].addEventListener('addItem', function (event) {
-                    if (event.detail.value) {
-                        let parent = this.parentNode.parentNode
-                        parent.classList.add('valid')
-                        parent.classList.remove('invalid')
-                    }
-                    else {
-                        let parent = this.parentNode.parentNode
-                        parent.classList.add('invalid')
-                        parent.classList.remove('valid')
-                    }
-                }, false);
-            }
-                        </script>*@
-                        <script>
+         var lst = @Html.Raw(Json.Encode(ViewBag.ids));
+        debugger
+        const customSelects = document.querySelectorAll("select");
+        const deleteBtn = document.getElementById('delete')
+        const choices = new Choices('#Department_ID',
+        {
+            searchEnabled: false,
+            removeItemButton: true,
+            itemSelectText: '',
+        });
+        for (let i = 0; i < customSelects.length; i++) {
+            customSelects[i].addEventListener('addItem', function (event) {
+                if (event.detail.value) {
+                    let parent = this.parentNode.parentNode
+                    parent.classList.add('valid')
+                    parent.classList.remove('invalid')
+                }
+                else {
+                    let parent = this.parentNode.parentNode
+                    parent.classList.add('invalid')
+                    parent.classList.remove('valid')
+                }
+            }, false);
+        }
+                    </script>*@
+    <script>
 
             $('#Department_ID').change(function () {
 
@@ -201,13 +215,13 @@
                                 a+= "<div class='card col-md-12'>"
                                 a+="  <div class='card-header' data-background-color='purple'>"
                                 a+="<h4 class='title'><b>"+item.Institute_Name+"</b></h4>"
-                         
+
                                 a += "<div class='col-md-6'>"
                                 //a += "<figure class='mr-3'><a href='#'><img src='/images/uni2.jpg'" + "alt='' class='img-fluid' width='250px' height='250px'></a></figure>"
 
                                // a += '<figure class="mr-3"><a href="#"><img src=' + item.InsCampus_Img_Path + ' alt='' class="img-fluid" width="250px" height="250px"></a></figure>';
                                 a += '<img src=' + item.Institute_img + ' style="display: inline-block;"  width="250px" height="250px" class="img-responsive thumbnail"/>  ';
-                               
+
                                 a += "<div class='col-md-6 card-content' style='color:black'>";
                                 a += "<h6 class='' ><i>Reg No: </i>" + item.Institute_RegNo + "</a></h6>  ";
                                 a += "<h6 class='' ><i>Affilation: </i>" + item.Institute_Affilation + "</a></h6>  ";
@@ -272,22 +286,22 @@
                     alert("Applied")
                 });
 
-                        </script>
-                        <script>
-            (function (t, a, l, k, j, s) {
-                s = a.createElement('script'); s.async = 1; s.src = "https://cdn.talkjs.com/talk.js"; a.head.appendChild(s)
-                    ; k = t.Promise; t.Talk = {
-                        v: 3, ready: {
-                            then: function (f) {
-                                if (k) return new k(function (r, e) { l.push([f, r, e]) }); l
-                                    .push([f])
-                            }, catch: function () { return k && new k() }, c: l
-                        }
-                    };
-            })(window, document, []);
-                        </script>
-                        <!-- TalkJS initialization code, which we'll customize in the next steps -->
-                        <script>
+    </script>
+    <script>
+        (function (t, a, l, k, j, s) {
+            s = a.createElement('script'); s.async = 1; s.src = "https://cdn.talkjs.com/talk.js"; a.head.appendChild(s)
+                ; k = t.Promise; t.Talk = {
+                    v: 3, ready: {
+                        then: function (f) {
+                            if (k) return new k(function (r, e) { l.push([f, r, e]) }); l
+                                .push([f])
+                        }, catch: function () { return k && new k() }, c: l
+                    }
+                };
+        })(window, document, []);
+    </script>
+    <!-- TalkJS initialization code, which we'll customize in the next steps -->
+    <script>
 
             function openForm() {
                 debugger;
@@ -354,7 +368,7 @@
 
                                 debugger;
             }
-                        </script>
+    </script>
 
 
 
@@ -373,98 +387,98 @@
 
 
 
-                    }
+}
 
-                    <style>
-                        .slidecontainer {
-                            width: 60%;
-                        }
+<style>
+    .slidecontainer {
+        width: 60%;
+    }
 
-                        .slider {
-                            -webkit-appearance: none; /* Override default CSS styles */
-                            width: 100%; /* Full-width */
-                            height: 25px; /* Specified height */
-                            background: #d3d3d3; /* Grey background */
-                            outline: none; /* Remove outline */
-                            opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-                            -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-                            transition: opacity .2s;
-                        }
+    .slider {
+        -webkit-appearance: none; /* Override default CSS styles */
+        width: 100%; /* Full-width */
+        height: 25px; /* Specified height */
+        background: #d3d3d3; /* Grey background */
+        outline: none; /* Remove outline */
+        opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+        -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+        transition: opacity .2s;
+    }
 
-                            .slider:hover {
-                                opacity: 1;
-                            }
+        .slider:hover {
+            opacity: 1;
+        }
 
-                            .slider::-webkit-slider-thumb {
-                                -webkit-appearance: none;
-                                width: 25px;
-                                height: 25px;
-                                background: #4CAF50;
-                                cursor: pointer;
-                            }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #4CAF50;
+            cursor: pointer;
+        }
 
-                            .slider:-moz-range-thumb {
-                                width: 25px;
-                                height: 25px;
-                                background: #4CAF50;
-                                cursor: pointer;
-                            }
-
-
-
-
-                        .open-button {
-                            background-color: #555;
-                            color: white;
-                            padding: 16px 20px;
-                            border: none;
-                            cursor: pointer;
-                            opacity: 0.8;
-                            position: fixed;
-                            bottom: 23px;
-                            right: 28px;
-                            width: 280px;
-                        }
-
-                        /* The popup chat - hidden by default */
-                        .chat-popup {
-                            display: none;
-                            position: fixed;
-                            bottom: 0;
-                            right: 15px;
-                            margin: auto;
-                            border: 3px solid #f1f1f1;
-                            z-index: 9;
-                        }
-
-                        /* Add styles to the form container */
-                        .form-container {
-                            max-width: 300px;
-                            padding: 10px;
-                            background-color: white;
-                        }
+        .slider:-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #4CAF50;
+            cursor: pointer;
+        }
 
 
 
-                            /* Set a style for the submit/send button */
-                            .form-container .btn {
-                                background-color: #4CAF50;
-                                color: white;
-                                padding: 16px 20px;
-                                border: none;
-                                cursor: pointer;
-                                width: 100%;
-                                margin-bottom: 10px;
-                                opacity: 0.8;
-                            }
 
-                            /* Add a red background color to the cancel button */
-                            .form-container .cancel {
-                                background-color: red;
-                            }
+    .open-button {
+        background-color: #555;
+        color: white;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        opacity: 0.8;
+        position: fixed;
+        bottom: 23px;
+        right: 28px;
+        width: 280px;
+    }
 
-                            /* Add some hover effects to buttons */
-                            .form-container .btn:hover, .open-button:hover {
-                                opacity: 1;
-                            }
-                    </style>
+    /* The popup chat - hidden by default */
+    .chat-popup {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        right: 15px;
+        margin: auto;
+        border: 3px solid #f1f1f1;
+        z-index: 9;
+    }
+
+    /* Add styles to the form container */
+    .form-container {
+        max-width: 300px;
+        padding: 10px;
+        background-color: white;
+    }
+
+
+
+        /* Set a style for the submit/send button */
+        .form-container .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        /* Add a red background color to the cancel button */
+        .form-container .cancel {
+            background-color: red;
+        }
+
+        /* Add some hover effects to buttons */
+        .form-container .btn:hover, .open-button:hover {
+            opacity: 1;
+        }
+</style>

@@ -16,8 +16,8 @@
                         <h4 class="title"><b>Show Institute</b></h4>
                         <p class="category">
                             <b>
-                                @Html.ActionLink("Add Institute", "insertinstitutedetails") <br />
-                                @Html.ActionLink("Add Institute-Department", "InstituteDepartment")
+                                @Html.ActionLink("Add Institute", "Addinstitute") <br />
+                                @Html.ActionLink("Add Institute-Department", "AddInstituteDepartment")
 
                             </b>
                         </p>
@@ -82,7 +82,7 @@
                                         @Html.DisplayFor(modelItem => item.Password)
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Campuses", "searchinstitutecampus", new { id = item.Institute_ID }) |
+                                        @Html.ActionLink("Campuses", "searchinstitutecampus","InstituteCampus", new { id = item.Institute_ID },new {  }) |
                                         @Html.ActionLink("Edit", "UpdateInstitute", new { id = item.Institute_ID }) |
                                         @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                                         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })

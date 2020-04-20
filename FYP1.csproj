@@ -60,6 +60,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InstituteCampusController.cs" />
     <Compile Include="Controllers\InstituteController.cs" />
+    <Compile Include="Controllers\InstituteDepartmentController.cs" />
     <Compile Include="Controllers\InstituteReviewController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\Pre_Req_CourseController.cs" />
@@ -89,11 +90,9 @@
     <Compile Include="Models\Mail.cs" />
     <Compile Include="Models\Pre_Req_Course.cs" />
     <Compile Include="Models\Quiz.cs" />
-    <Compile Include="Models\Student\Board.cs" />
-    <Compile Include="Models\Student\Qualification.cs" />
-    <Compile Include="Models\Student\QualificationLevel.cs" />
-    <Compile Include="Models\Student\Student.cs" />
-    <Compile Include="Models\Student\StudentQualification.cs" />
+    <Compile Include="Models\Board.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\Student_Detail.cs" />
     <Compile Include="Models\Student_SessionAtrribute.cs" />
     <Compile Include="Models\University.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -547,7 +546,7 @@
     <Content Include="Views\Student\AddStudent.cshtml" />
     <Content Include="Views\Institute\AddInstitute.cshtml" />
     <Content Include="Views\InstituteCampus\AddInstituteCampus.cshtml" />
-    <Content Include="Views\Admin\AddInstituteDepartment.cshtml" />
+    <Content Include="Views\InstituteDepartment\AddInstituteDepartment.cshtml" />
     <Content Include="Views\Institute\ShowInstitute.cshtml" />
     <Content Include="Views\Institute\UpdateInstitute.cshtml" />
     <Content Include="Views\InstituteCampus\ShowInstituteCampus.cshtml" />

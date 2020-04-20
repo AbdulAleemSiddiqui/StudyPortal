@@ -9,10 +9,10 @@ using System.ComponentModel;
 
 namespace FYP1.Models.Student
 {
-    public class StudentQualification
+    public class Student_Detail
     {
         [TVP]
-        public int SQ_ID { get; set; }
+        public int SD_ID { get; set; }
         [TVP]
         public int Student_ID { get; set; }
         [DisplayName("Degree Level")]
@@ -34,18 +34,27 @@ namespace FYP1.Models.Student
         [DisplayName("End Year")]
         public int End_Year { get; set; }
         [TVP]
-        public decimal CGPA     { get; set; }
-        [TVP]
         public decimal Percentage { get; set; }
         [TVP]
         public string Grades { get; set; }
 
-        public StudentQualification Student_Qualification_GetById(int student_ID)
+        [TVP]
+        public string Fav_Subject { get; set; }
+        [TVP]
+        public string Fav_Sport { get; set; }
+        [TVP]
+        public string Fav_Hobby{ get; set; }
+        [TVP]
+        public string Employment { get; set; }
+        [TVP]
+        public string Designation { get; set; }
+
+        public Student_Detail Student_Qualification_GetById(int student_ID)
         {
             try
             {
                 //place your Model Logic and DB Calls here:
-                StudentQualification ret = DataBase.ExecuteQuery<StudentQualification>(new { x = student_ID }, Connection.Get()).FirstOrDefault();
+                Student_Detail ret = DataBase.ExecuteQuery<Student_Detail>(new { x = student_ID }, Connection.Get()).FirstOrDefault();
                 // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
                 Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = student_ID }, "", "", Connection.GetLogConnection(), 1);
                 return ret;

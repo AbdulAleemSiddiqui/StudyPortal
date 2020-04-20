@@ -12,10 +12,10 @@ namespace FYP1.ViewModel
     {
         public Student student { get; set; }
         public Board board { get; set; }
-        public Qualification qualification { get; set; }
+        public Student_Detail qualification { get; set; }
         public DegreeLevel degreelevel { get; set; }
 
-        public StudentQualification studentqualification { get; set; }
+        public Student_Detail studentqualification { get; set; }
         public State state { get; set; }
         public City city { get; set; }
     }

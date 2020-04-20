@@ -39,9 +39,9 @@ namespace FYP1.Controllers
             {
                 List<InstituteType> ls = avm.institutetype.InstituteType_Get_All().ToList();
                 ViewBag.InstituteType = new SelectList(ls, "InstituteType_ID", "InstituteType_Name");
-                //  Institute i = new Institute();
+                 //Institute i = new Institute();
                 avm.institute.InstituteType_ID = avm.institutetype.InstituteType_ID;
-                //avm.institute.Institute_img = imageupload(i.prop,i.Institute_img);
+                avm.institute.Institute_img = imageupload(avm.institute.Prop, avm.institute.Institute_img);
                 string filename = Path.GetFileNameWithoutExtension(avm.institute.Prop.FileName);
                 string extension = Path.GetExtension(avm.institute.Prop.FileName);
                 filename = filename + DateTime.Now.ToString("-yymmssffff") + extension;
@@ -58,6 +58,18 @@ namespace FYP1.Controllers
             return View(avm);
 
         }
+        public string imageupload(HttpPostedFileBase image, string imagepath)
+        {
+            string filename = Path.GetFileNameWithoutExtension(image.FileName);
+            string extension = Path.GetExtension(image.FileName);
+            filename = filename + DateTime.Now + "yymmssffff" + extension;
+            imagepath = "~/images/" + filename;
+            filename = Path.Combine(Server.MapPath("~/images/") + filename);
+            image.SaveAs(filename);
+            return imagepath;
+        }
+
+        //Extra actions for ajax call
 
         [HttpGet]
         public ActionResult UpdateInstitute(int id)

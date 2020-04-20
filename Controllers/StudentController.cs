@@ -1,13 +1,11 @@
-﻿using System;
+﻿using FYP1.Models;
+using FYP1.Models.Department;
+using FYP1.Models.Location;
+using FYP1.Models.Student;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using FYP1.Models.Student;
-using FYP1.Models.Location;
-using FYP1.Models;
-using FYP1.ViewModel;
-using System.Web;
 using System.Web.Mvc;
-using FYP1.Models.Department;
 
 namespace FYP1.Controllers
 {
@@ -26,6 +24,7 @@ namespace FYP1.Controllers
             ViewBag.State_List = new SelectList(new State().State_Get_All(), "State_ID ", "State_Name");
             ViewBag.Field_List = new SelectList(new DepartmentType().DepartmentType_Get_All(), "DepartmentType_ID", "DepartmentType_Name");
             ViewBag.Board_List = new SelectList(new Board().Board_Get_All(), "Board_ID", "Board_Name");
+            ViewBag.Employment = new SelectList("Employe", "Self-Employe", "Unemploye");
             return View();
         }
         [HttpPost]
@@ -43,11 +42,11 @@ namespace FYP1.Controllers
             catch (Exception ex)
             {
                 ViewBag.Message = ex.Message;
-
                 ViewBag.DegreeLevel_List = new SelectList(new DegreeLevel().DegreeLevel_Get_All(), "DegreeLevel_ID", "DegreeLevel_Name");
                 ViewBag.State_List = new SelectList(new State().State_Get_All(), "State_ID ", "State_Name");
                 ViewBag.Field_List = new SelectList(new DepartmentType().DepartmentType_Get_All(), "DepartmentType_ID", "DepartmentType_Name");
                 ViewBag.Board_List = new SelectList(new Board().Board_Get_All(), "Board_ID", "Board_Name");
+                ViewBag.Employment = new SelectList("Employe", "Self-Employe", "Unemploye");
                 return View();
             }
             return RedirectToAction("Confirmation");
@@ -59,19 +58,19 @@ namespace FYP1.Controllers
         [HttpGet]
         public ActionResult ShowStudent()
         {
-            return View(new Student().StudentGetAll());
+            return View(new Student().Student_Get_All());
         }
 
         [HttpGet]
         public ActionResult EditStudent(int id)
         {
-            return View(new Student().StudentGetById(id));
+            return View(new Student().Student_Get_By_Id(id));
         }
 
         [HttpPost]
         public ActionResult EditStudent(Student s)
         {
-           //s.StudentUpdate();
+            //s.StudentUpdate();
             return View();
         }
 

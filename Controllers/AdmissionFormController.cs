@@ -279,8 +279,12 @@ namespace FYP1.Controllers
             return RedirectToAction("Get_Unpaid_Admission");
         }
 
-        [Institute_Session]
-
+        //[Institute_Session,Admin_Session]
+        
+public ActionResult Get_All_Admission()
+        {
+            return View(new AdmissionViewModel().Get_All_Admission_For_Admin()) ;
+        }
         public ActionResult Get_Paid_Admission()
         {
             ViewBag.stddetail = new Chat() { Institute_ID = (int)Session["I_ID"] }.studentbyid();
@@ -288,7 +292,7 @@ namespace FYP1.Controllers
         }
         public ActionResult StudentSearch(int S_ID)
         {
-            return View(new Student().StudentGetById(S_ID));
+            return View(new Student().Student_Get_By_Id(S_ID));
         }
         [Institute_Session]
         [HttpGet]

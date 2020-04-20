@@ -64,6 +64,5 @@ namespace FYP1.Models
             email = a; password = b;
         }
 
-
     }
 }

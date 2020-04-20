@@ -13,13 +13,15 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" data-background-color="purple">
-                        <h4 class="title"><b>Show Institute</b></h4>
+                        <h2>Show Institute</h2>
                         <p class="category">
                             <b>
-                                @Html.ActionLink("Add Institute", "insertinstitutedetails") <br />
-                                @Html.ActionLink("Add Institute-Department", "InstituteDepartment")
-
+                                    @Html.ActionLink("Add Institute", "Addinstitute")
+                            </b> <br />
+                            <b>
+                                    @Html.ActionLink("Add Institute-Department", "AddInstituteDepartment")
                             </b>
+
                         </p>
                     </div>
                     <div class="card-content">
@@ -82,7 +84,7 @@
                                         @Html.DisplayFor(modelItem => item.Password)
                                     </td>
                                     <td>
-                                        @Html.ActionLink("Campuses", "searchinstitutecampus", new { id = item.Institute_ID }) |
+                                        @Html.ActionLink("Campuses", "searchinstitutecampus", "InstituteCampus", new { id = item.Institute_ID }, new { }) |
                                         @Html.ActionLink("Edit", "UpdateInstitute", new { id = item.Institute_ID }) |
                                         @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                                         @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })

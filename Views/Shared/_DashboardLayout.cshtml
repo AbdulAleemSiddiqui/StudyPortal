@@ -43,50 +43,49 @@
                 @if (Session["A_ID"] != null)
                   {
                         <li >
-                            <a href="@Url.Action("Get_Paid_Admission","admissionform")">
+                            <a href="@Url.Action("Get_All_Admission","admissionform")">
                             <i class="material-icons">dashboard</i>
-                            <p>paid application</p>
+                            <p>All Application</p>
                         </a>
                         </li>
                         <li>
                             <a href="@Url.Action("Get_UnPaid_Admission","admissionform")">
-
                                 <i class="material-icons">person</i>
-                                <p>unpaid application</p>
+                                <p>Unpaid Application</p>
                             </a>
                         </li>
                         <li>
-                            <a href="~/Views/AdmissionForm/Get_UnPaid_Admission.cshtml">
+                            <a href="@Url.Action("ShowInstitute","Institute")">
                                 <i class="material-icons">content_paste</i>
-                                <p>institute</p>
+                                <p>Institute</p>
                             </a>
                         </li>
                         <li>
-                            <a href="./typography.html">
+                            <a href="@Url.Action("ShowStudent","Student")">
                                 <i class="material-icons">library_books</i>
-                                <p>student</p>
+                                <p>Students</p>
                             </a>
                         </li>
                         <li>
-                            <a href="./icons.html">
+                            <a href="@Url.Action("GeneralSetting","Admin")">
                                 <i class="material-icons">bubble_chart</i>
                                 <p>Payment Settings</p>
                             </a>
                         </li>
                         <li>
-                            <a href="./maps.html">
+                            <a href="@Url.Action("Index","Feedback")">
                                 <i class="material-icons">location_on</i>
                                 <p>Feedbacks</p>
                             </a>
                         </li>
                         <li>
-                            <a href="./notifications.html">
+                            <a href="@Url.Action("Index","Pre_Req_Course")">
                                 <i class="material-icons text-gray">notifications</i>
-                                <p>pre Courses</p>
+                                <p>Pre Courses</p>
                             </a>
                         </li>
-                        <li class="active-pro">
-                            <a href="upgrade.html">
+                        <li >
+                            <a href="@Url.Action("GeneralSetting","Admin")">
                                 <i class="material-icons">unarchive</i>
                                 <p>Gerneral Setting</p>
                             </a>

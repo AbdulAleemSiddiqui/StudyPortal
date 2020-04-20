@@ -1,4 +1,8 @@
 ﻿@model FYP1.Models.Student.Student
+    @{ 
+        Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+
+    }
 <div class="content">
     <div class="container-fluid">
         <div class="row">
@@ -118,12 +122,6 @@
                                         @Html.DisplayFor(model => model.detail.End_Year)
                                     </dd>
 
-                                    <dt>
-                                        @Html.DisplayNameFor(model => model.detail.CGPA)
-                                    </dt>
-                                    <dd>
-                                        @Html.DisplayFor(model => model.detail.CGPA)
-                                    </dd>
                                     <dt>
                                         @Html.DisplayNameFor(model => model.detail.Percentage)
                                     </dt>

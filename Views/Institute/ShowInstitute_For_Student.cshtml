@@ -1,0 +1,93 @@
+﻿@model IEnumerable<FYP1.Models.Institute.Institute>
+
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+
+    ViewBag.Title = "ShowInstitute";
+}
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="purple">
+                        <h2>Show Institute</h2>
+                        <p class="category">
+
+                        </p>
+                    </div>
+                    <div class="card-content">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Institute_ID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Institute_Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Institute_RegNo)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Institute_EstablishYear)
+                                    </th>
+                                    @*<th>
+                                            @Html.DisplayNameFor(model => model.InstituteType_ID)
+                                        </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Institute_Affilation)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Website_Link)
+                                    </th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Institute_ID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Institute_Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Institute_RegNo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Institute_EstablishYear)
+                                </td>
+                                @*<td>
+            @Html.DisplayFor(modelItem => item.InstituteType_ID)
+        </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Institute_Affilation)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Website_Link)
+                                </td>
+
+                                <td>
+                                    @Html.ActionLink("Campuses", "CampusForStudent", "InstituteCampus", new { id = item.Institute_ID }, new { }) 
+                                </td>
+                            </tr>
+                            }
+
+                        </table>    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

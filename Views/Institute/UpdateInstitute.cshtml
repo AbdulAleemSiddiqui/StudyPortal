@@ -3,11 +3,8 @@
 @{
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 
-    ViewBag.Title = "UpdateInstitute";
+    ViewBag.Title = "InsertInstituteDetails";
 }
-
-<h2></h2>
-
 
 <div class="content">
     <div class="container-fluid">
@@ -15,73 +12,214 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" data-background-color="purple">
-                        <h4 class="title"><b>Update</b></h4>
-                        <p class="category"><b>Institute</b></p>
+                        <h4 class="title"><b>Edit Your Profile </b></h4>
+                        <p class="category"><b>Institute Details</b></p>
                     </div>
                     <div class="card-content">
-                        @using (Html.BeginForm())
+
+                        @using (Html.BeginForm("UpdateInstitute", "Institute", FormMethod.Post, new { enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
 
-                          
-                                @Html.HiddenFor(model => model.Institute_ID)
-                         <div class="row">
-                             <div class="col-md-6">
+                            @Html.HiddenFor(x=>x.Institute_ID)
+                            <div class="row">
 
-                                 <div class="form-group label-floating">
-                                     @Html.LabelFor(model => model.Institute_Name, htmlAttributes: new { @class = "control-label " })
-                                     @Html.EditorFor(model => model.Institute_Name, new { htmlAttributes = new { @class = "form-control" } })
-                                     @Html.ValidationMessageFor(model => model.Institute_Name, "", new { @class = "text-danger" })
-                                 </div>
-                             </div>
-                             <div class="col-md-6">
-
-                                 <div class="form-group label-floating">
-                                     @Html.LabelFor(model => model.Institute_RegNo, htmlAttributes: new { @class = "control-label " })
-                                     @Html.EditorFor(model => model.Institute_RegNo, new { htmlAttributes = new { @class = "form-control" } })
-                                     @Html.ValidationMessageFor(model => model.Institute_RegNo, "", new { @class = "text-danger" })
-                                 </div>
-                             </div>
-                         </div>
-                                <div class="col-md-12">
-
+                                <div class="col-md-5">
                                     <div class="form-group label-floating">
-                                        @Html.LabelFor(model => model.Institute_EstablishYear, htmlAttributes: new { @class = "control-label " })
-                                        @Html.EditorFor(model => model.Institute_EstablishYear, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.LabelFor(model => model.Institute_Name, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.Institute_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Institute_Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Institute_EstablishYear, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Institute_EstablishYear, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
                                         @Html.ValidationMessageFor(model => model.Institute_EstablishYear, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-
+                                <div class="col-md-5">
                                     <div class="form-group label-floating">
-                                        @Html.LabelFor(model => model.InstituteType_ID, htmlAttributes: new { @class = "control-label " })
-                                        @Html.EditorFor(model => model.InstituteType_ID, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.InstituteType_ID, "", new { @class = "text-danger" })
+                                        @Html.LabelFor(model => model.Institute_RegNo, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.Institute_RegNo, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Institute_RegNo, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                            </div>
 
+                            <div class="row">
+
+
+                                <div class="col-md-3">
                                     <div class="form-group label-floating">
-                                        @Html.LabelFor(model => model.Institute_Affilation, htmlAttributes: new { @class = "control-label " })
+                                        @Html.LabelFor(model => model.InstituteType_ID, htmlAttributes: new { @class = "" })
+                                        @Html.DropDownListFor(model => model.InstituteType_ID, ViewBag.InstituteType as SelectList, "--select--", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.InstituteType_ID, "", new { @class = "error" })
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="form-group label-floating">
+                                        <label for="Email">start Year</label>
+                                        @Html.TextBoxFor(model => model.start_date, "{0:yyyy-MM-dd}", new { @class = "form-control py-2", type = "date" })
+                                        @*<input type="date" id="name" name="start_date" class="form-control py-2">*@
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group label-floating">
+
+
+                                        <label for="Email">End Year</label>
+                                        @Html.TextBoxFor(model => model.end_date, "{0:yyyy-MM-dd}", new { @class = "form-control py-2", type = "date" })
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group label-floating">
+
+                                        @Html.LabelFor(model => model.Institute_Affilation, htmlAttributes: new { @class = "" })
                                         @Html.EditorFor(model => model.Institute_Affilation, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Institute_Affilation, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
-                                <input type="submit" value="Add" class="btn btn-primary pull-right" />
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label for="email" class="control-label">Email</label>
+                                        <input type="email" name="Email" class="form-control py-2">
+                                    </div>
+                                </div>
 
-                                <div class="clearfix"></div>
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label for="password" class="control-label">Password</label>
+                                        <input type="password" name="Password" required class="form-control py-2">
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label for="Website_Link" class="control-label">Website Link</label>
+                                        @Html.EditorFor(model => model.Website_Link, new { htmlAttributes = new { @class = "form-control" } })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group label-floating">
+                                        <label for="Payment_Info" class="control-label">Payment Info</label>
+                                        @Html.TextAreaFor(model => model.Payment_Info,new { @class = "form-control py-2"  })
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    @Html.Label("Institute Image", htmlAttributes: new { @class = "", @style = "display:block" })
+                                    <div class="form-group btn btn-primary label-floating">
+                                        <input type="file" name="Prop" class="form-control py-2" />
+
+                                        @if (Model.Institute_img.ToUpper() == "NON")
+                                        {
+                                            <label id="Prop">
+                                                Browse
+                                            </label>
+                                        }
+                                        else
+                                        {
+                                            <label id="Prop">
+                                                @Model.Institute_img
+                                            </label>
+                                        }
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    @Html.Label("Adversitement Image", htmlAttributes: new { @class = "", @style = "display:block" })
+                                    <div class="form-group btn btn-primary label-floating">
+
+                                        <input type="file" name="Prop2" class="form py-2" />
+                                        @if (Model.Advertisement_Img.ToUpper() == "NON")
+                                        {
+                                        <label id="Prop2">Browse</label>
+                                        }
+                                        else
+                                        {
+                                            <label id="Prop2">
+                                                @Model.Advertisement_Img
+                                            </label>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" value="Update" class="btn btn-primary pull-right" />
+
+                            <div class="clearfix"></div>
+
+
+
                         }
-
                         <div>
-                            @Html.ActionLink("Back to List", "Index")
+                            @Html.ActionLink("Back to List", "ShowInstitute")
                         </div>
                     </div>
+
                 </div>
             </div>
+
         </div>
     </div>
+
 </div>
 
-                        @section Scripts {
-                            @Scripts.Render("~/bundles/jqueryval")
-                        }
+
+
+
+
+
+@section Scripts {
+    <script>
+        $('input[type="file"]').change(function (e) {
+           var id= $(this).attr('name');
+            var fileName = e.target.files[0].name;
+            $('#' + id).html(fileName);
+        });
+        function abc() {
+            var stateId = $('#st').val();
+            $.ajax({
+                url: '/Admin/getcitydropdown',
+                type: "GET",
+                dataType: "JSON",
+                data: { a: stateId },
+                success: function (cities) {
+                    $("#sam").html(""); // clear before appending new list
+                    $.each(cities, function (i, city) {
+                        $("#sam").append(
+                            $('<option></option>').val(city.City_ID).html(city.City_Name));
+                    });
+                }
+            });
+        }
+
+        function getuniversity() {
+            var CityId = $('#sam').val();
+            $.ajax({
+                url: '/Admin/get_universitydropdown',
+                type: "GET",
+                dataType: "JSON",
+                data: { a: CityId },
+                success: function (universitites) {
+                    $("#uni").html(""); // clear before appending new list
+                    $.each(universitites, function (i, univ) {
+                        $("#uni").append(
+                            $('<option></option>').html(univ.University_Name));
+                    });
+                }
+            });
+        }
+
+
+    </script>
+
+
+}

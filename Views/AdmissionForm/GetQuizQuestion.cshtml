@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<FYP1.Models.Quiz>
 
-
+@{ 
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
 @*<div class="block">
         @Html.DisplayNameFor(model => model.question)
     </div>
@@ -27,7 +29,7 @@
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-11">
                 <div class="card">
                     <div class="card-header" data-background-color="purple">
                         <h4 class="title"><b>Quiz</b></h4>
@@ -40,14 +42,14 @@
                                 var stuid = ViewBag.data;
                                 foreach (var item in Model)
                                 {
-                                    <div class="BlockQ" style="border: 1px solid #bdbdbd; width: 75%; border-radius: 4px; margin-top: 40px; background-color: #f0ffff; padding: 8px;">
+                                    <div class="BlockQ" style="border: 1px solid #bdbdbd; width: 75%; border-radius: 20px; margin-top: 40px;margin-left:5%;margin-right:5%; background-color: #f0ffff; padding: 8px;">
                                         <div class="Question" style="padding: 2%;">
                                             <span class="label label-warning"> @string.Format("{0}{1}.", "Q", count)</span>
                                             <span id="@string.Format("{0}{1}", "ID_Q", count)" style="display:none;">@item.quiz_question_id</span>
-                                            <p style="display: inline; padding: 2%;" id="@string.Format("{0}{1}", "Q", count)">@item.question</p>
+                                            <p style="display: inline; padding: 3%;" id="@string.Format("{0}{1}", "Q", count)">@item.question</p>
                                         </div>
 
-                                        <div class="Choices" style="margin-left: 8%;">
+                                        <div class="Choices" style="margin-left: 8%;margin-bottom:3%;">
                                             @foreach (var items in item.choicess)
                                             {
                                                 <label class="radio-inline">

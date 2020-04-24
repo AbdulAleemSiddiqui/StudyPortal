@@ -62,7 +62,7 @@ namespace FYP1.Controllers
             Session["A_ID"] = null;
             Session["I_ID"] = null;
             Session["S_ID"] = null;
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("StudentLogin","Login");
         }
     }
 }

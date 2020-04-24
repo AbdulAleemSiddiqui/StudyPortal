@@ -20,7 +20,7 @@ namespace FYP1.Models
       [TVP]
         public string Alumni_Review { get; set; }
       [TVP]
-        public string Alumni_Rating { get; set; }
+        public int Alumni_Rating { get; set; }
       [TVP]
         public DateTime Date { get; set; }
 
@@ -61,7 +61,19 @@ namespace FYP1.Models
             }
         }
 
-
+        public List<InstituteReview> InstituteReview_Get_By_I_Id(int id)
+        {
+            try
+            {
+                //place your Model Logic and DB Calls here:
+                List<InstituteReview> ret = DataBase.ExecuteQuery<InstituteReview>(new { x1=id}, Connection.Get());
+                return ret;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public List<InstituteReview> InstituteReview_Get_All()
         {
             try

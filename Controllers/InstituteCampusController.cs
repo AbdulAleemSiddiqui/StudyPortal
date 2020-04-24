@@ -66,5 +66,11 @@ namespace FYP1.Controllers
         {
             return Json(new InstituteCampus().InstituteCampus_Get_All().FindAll(x => x.Institute_ID == I_ID), JsonRequestBehavior.AllowGet);
         }
+        
+
+        public ActionResult CampusForStudent(int id)
+        {
+            return View(new InstituteCampus().InstituteCampus_Get_All().FindAll(x => x.Institute_ID == id).ToList());
+        }
     }
 }

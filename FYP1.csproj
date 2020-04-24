@@ -51,6 +51,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Content\CarController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdmissionFormController.cs" />
     <Compile Include="Controllers\DegreeController.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Models\Admin\Institute\Institute.cs" />
     <Compile Include="Models\Admin\Institute\InstituteCampus.cs" />
     <Compile Include="Models\Admin\uni\University.cs" />
+    <Compile Include="Models\Car.cs" />
     <Compile Include="Models\Chat.cs" />
     <Compile Include="Models\connection.cs" />
     <Compile Include="Models\Degree.cs" />
@@ -123,6 +125,11 @@
     <Content Include="assets\js\material-dashboard.js" />
     <Content Include="assets\js\material.min.js" />
     <Content Include="assets\js\perfect-scrollbar.jquery.min.js" />
+    <Content Include="assets\Rating\jquery.js" />
+    <Content Include="assets\Rating\nst.gif" />
+    <Content Include="assets\Rating\rating_simple.css" />
+    <Content Include="assets\Rating\rating_simple.js" />
+    <Content Include="assets\Rating\sth.gif" />
     <Content Include="Content\alertifyjs\alertify.css" />
     <Content Include="Content\alertifyjs\alertify.min.css" />
     <Content Include="Content\alertifyjs\alertify.rtl.css" />
@@ -175,6 +182,9 @@
     <Content Include="fonts\images\webdesign.jpg" />
     <Content Include="fonts\images\wordpress.jpg" />
     <Content Include="images\logo.png" />
+    <Content Include="images\nst.gif" />
+    <Content Include="images\p.jpg" />
+    <Content Include="images\sth.gif" />
     <Content Include="js\alertify.js" />
     <Content Include="js\alertify.min.js" />
     <Content Include=".vs\FYP1\config\applicationhost.config" />
@@ -185,6 +195,7 @@
     <Content Include=".vs\FYP1\v16\Server\sqlite3\db.lock" />
     <Content Include=".vs\FYP1\v16\Server\sqlite3\storage.ide" />
     <Content Include=".vs\config\applicationhost.config" />
+    <Content Include="assets\Rating\Thumbs.db" />
     <None Include="Models\ControllerSnippet.snippet" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -612,10 +623,19 @@
     <Content Include="Views\Admin\index.cshtml" />
     <Content Include="Views\AdmissionForm\Get_All_Admission.cshtml" />
     <Content Include="Views\Admin\GeneralSetting.cshtml" />
+    <Content Include="Views\Student\ShowStudent.cshtml" />
+    <Content Include="Views\Student\EditStudent.cshtml" />
+    <Content Include="Views\Institute\ShowInstitute_For_Student.cshtml" />
+    <Content Include="Views\InstituteCampus\CampusForStudent.cshtml" />
+    <Content Include="Views\FeedBack\Notification.cshtml" />
+    <Content Include="Views\InstituteReview\Index.cshtml" />
+    <Content Include="Views\InstituteReview\Search.cshtml" />
+    <Content Include="Views\InstituteReview\Add.cshtml" />
+    <Content Include="Views\InstituteReview\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\InstituteReview\" />
+    <Folder Include="Views\Car\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

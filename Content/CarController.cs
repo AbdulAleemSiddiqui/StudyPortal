@@ -6,24 +6,25 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace FYP1.Controllers
+namespace FYP1.Content
 {
-    public class InstituteReviewController : Controller
+    public class CarController : Controller
     {
+        // GET: Car
 
 
 
         //Get All
         public ActionResult Index()
         {
-            return View(new InstituteReview().InstituteReview_Get_By_I_Id((int)Session["I_ID"]));
+            return View(new Car().Car_Get_All());
         }
 
         //Search
         //Get By ID
         public ActionResult Search(int id)
         {
-            return View(new InstituteReview().InstituteReview_Get_By_Id(id));
+            return View(new Car().Car_Get_By_Id(id));
         }
 
         //Add
@@ -32,29 +33,28 @@ namespace FYP1.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Add(InstituteReview obj)
+        public ActionResult Add(Car obj)
         {
-            obj.Inst_ID = (int)Session["I_ID"];
-            obj.InstituteReview_Add();
-            return RedirectToAction("Index");
+            obj.Car_Add();
+            return View();
         }
 
         //Edit
         public ActionResult Edit(int id)
         {
-            return View(new InstituteReview().InstituteReview_Get_By_Id(id));
+            return View(new Car().Car_Get_By_Id(id));
         }
         [HttpPost]
-        public ActionResult Edit(InstituteReview obj)
+        public ActionResult Edit(Car obj)
         {
-            obj.InstituteReview_Edit();
-            return RedirectToAction("Index");
+            obj.Car_Edit();
+            return View();
         }
 
         //Delete
         public ActionResult Delete(int id)
         {
-            new InstituteReview().InstituteReview_Delete(id);
+            new Car().Car_Delete(id);
             return RedirectToAction("Index");
         }
 

@@ -1,0 +1,102 @@
+﻿@model FYP1.Models.InstituteReview
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+}
+
+<link href="~/assets/Rating/rating_simple.css" rel="stylesheet" />
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="card-header" data-background-color="purple">
+                        <h4 class="title"><b>Alumni Review</b></h4>
+                        <p class="category"><b>Tell Us!!</b></p>
+                    </div>
+                    <div class="card-content">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.HiddenFor(x => x.Inst_ID)
+                            @Html.HiddenFor(x => x.R_ID)
+                            <div class="form-horizontal">
+                                <h4>InstituteReview</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Alumni_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Alumni_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Alumni_Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Alumni_Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Alumni_Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Alumni_Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Alumni_Review, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Alumni_Review, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Alumni_Review, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Alumni_Rating, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        <input name="Alumni_Rating" value=""
+                                               id="rating_simple2" type="hidden" />
+
+                                        @Html.ValidationMessageFor(model => model.Alumni_Rating, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <div>
+                            @Html.ActionLink("Back to List", "Index")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script src="~/assets/Rating/jquery.js"></script>
+    <script src="~/assets/Rating/rating_simple.js"></script>
+    <script language="javascript" type="text/javascript">
+        function test(value) {
+            $("#rating_simple2").val( value);
+        }
+        $(function () {
+            var baseUrl = "@Url.Content("~")";
+            $("#rating_simple2").webwidget_rating_simple({
+                rating_star_length: '5',
+                rating_initial_value: '',
+                rating_function_name: 'test',//this is function name for click
+                directory: baseUrl +'Images/'
+            });
+        });
+    </script>
+
+}
+

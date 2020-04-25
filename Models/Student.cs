@@ -74,7 +74,7 @@ namespace FYP1.Models.Student
             {
                 //place your Model Logic and DB Calls here:
                 Student ret = DataBase.ExecuteQuery<Student>(new { x = Id }, Connection.Get()).FirstOrDefault();
-                ret.detail = new Student_Detail().Student_Detail_Get_By_Id(ret.Student_ID);
+                ret.detail = new Student_Detail().Student_Detail_Get_By_Id(Id);
                 return ret;
             }
             catch (Exception ex)

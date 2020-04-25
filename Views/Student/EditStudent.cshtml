@@ -119,7 +119,7 @@
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
                                     <label for="City">City</label>
-                                    @Html.DropDownListFor(model => model.City_ID, new SelectList(""), "--select--", new { @class = "form-control py-2" })
+                                    @Html.DropDownListFor(model => model.City_ID, ViewBag.city as SelectList, "--select--", new { @class = "form-control py-2" })
                                 </div>
                             </div>
 

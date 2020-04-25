@@ -191,7 +191,7 @@ namespace FYP1.Models.Institute
                 u.start_date = (DateTime)sdr["start_date"];
                 u.end_date = (DateTime)sdr["end_date"];
                 u.Institute_img = (string)sdr["Institute_img"];
-                u.Website_Link = (string)sdr["Website_Link"];
+               // u.Website_Link = (string)sdr["Website_Link"];
                 lst.Add(u);
             }
             sdr.Close();

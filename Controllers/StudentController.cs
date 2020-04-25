@@ -69,6 +69,8 @@ namespace FYP1.Controllers
             ViewBag.Field_List = new SelectList(new DepartmentType().DepartmentType_Get_All(), "DepartmentType_ID", "DepartmentType_Name");
             ViewBag.Board_List = new SelectList(new Board().Board_Get_All(), "Board_ID", "Board_Name");
             ViewBag.Employment = new SelectList("Employee", "Self-Employee", "Unemployee");
+            ViewBag.city = new SelectList(new City().City_Get_All(), "City_ID", "City_Name");
+
             if (id==null)
             {
                 id = (int)Session["S_ID"];

@@ -616,6 +616,11 @@
     <Content Include="Views\Admin\ShowDepartment.cshtml" />
     <Content Include="Views\Admin\UpdateDepartment.cshtml" />
     <Content Include="Views\Student\index.cshtml" />
+    <Content Include="Views\FeedBack\Notification.cshtml" />
+    <Content Include="Views\InstituteCampus\CampusForStudent.cshtml" />
+    <Content Include="Views\Institute\ShowInstitute_For_Student.cshtml" />
+    <Content Include="Views\Student\EditStudent.cshtml" />
+    <Content Include="Views\Student\ShowStudent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

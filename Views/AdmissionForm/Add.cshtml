@@ -207,7 +207,7 @@
 
                                 <div class="col-md-4">
                                     <div class="col-md-offset-2 col-md-10">
-                                        <button type="button" class="btn btn-default" id="abc">Search</button>
+                                        <button type="button" class="btn btn-primary" id="abc">Search</button>
 
                                         @*<input type="submit" value="Add" class="btn btn-default" id="abc" />*@
                                     </div>
@@ -217,13 +217,9 @@
 
                             </div>
 
-                            <div class="input-field">
-                                <div class="result-count">
-                                </div>
-                                <div class="group-btn">
-                                    <button type="submit" class="btn-search btn btn-default">Apply</button>
-                                </div>
-                            </div>
+                            <input type="submit" value="Add" class="btn btn-primary pull-right" />
+
+                            <div class="clearfix"></div>
 
                         </form>
                     </div>
@@ -313,9 +309,9 @@
                                 //a += "<figure class='mr-3'><a href='#'><img src='/images/uni2.jpg'" + "alt='' class='img-fluid' width='250px' height='250px'></a></figure>"
 
                                // a += '<figure class="mr-3"><a href="#"><img src=' + item.InsCampus_Img_Path + ' alt='' class="img-fluid" width="250px" height="250px"></a></figure>';
-                                a += '<img src=' + item.Institute_img + ' style="display: inline-block;"  width="250px" height="250px" class="img-responsive thumbnail"/>  ';
+                                a += '<img src=' + item.Institute_img + ' style="display: inline-block;"  width="150px" height="150px" class="img-responsive thumbnail"/>  ';
 
-                                a += "<div class='col-md-6 card-content' style='color:black'>";
+                                a += "</div><div class='col-md-6 card-content' style='color:black'><br/><br/><br/><br/>";
                                 a += "<h6 class='' ><i>Reg No: </i>" + item.Institute_RegNo + "</a></h6>  ";
                                 a += "<h6 class='' ><i>Affilation: </i>" + item.Institute_Affilation + "</a></h6>  ";
 

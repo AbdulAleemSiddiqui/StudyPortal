@@ -81,7 +81,7 @@ namespace FYP1.Controllers
         [HttpPost]
         public ActionResult EditStudent(Student s)
         {
-            //s.StudentUpdate();
+            s.Student_Edit();
             return View();
         }
 

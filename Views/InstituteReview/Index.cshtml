@@ -1,0 +1,71 @@
+﻿@model IEnumerable<FYP1.Models.InstituteReview>
+
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="purple">
+                <h2>FeedBack</h2>
+                <p class="category">@Html.ActionLink("Create New", "Add")</p>
+            </div>
+            <div class="card-content table-responsive">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Institute_Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Alumni_Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Alumni_Email)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Alumni_Review)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Alumni_Rating)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Date)
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Institute_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Alumni_Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Alumni_Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Alumni_Review)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Alumni_Rating)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Date)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.R_ID }) |
+                                @Html.ActionLink("Details", "Search", new { id = item.R_ID }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.R_ID })
+                            </td>
+                        </tr>
+                    }
+
+                </table>
+                </div></div></div></div>
+

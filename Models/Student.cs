@@ -36,6 +36,10 @@ namespace FYP1.Models.Student
         public string Nationality { get; set; }
         [TVP]
         public string Password { get; set; }
+
+
+        [TVP]
+        public string ConnectionID { get; set; }
         public Student_Detail detail { get; set; } = new Student_Detail();
 
 
@@ -70,6 +74,7 @@ namespace FYP1.Models.Student
             {
                 //place your Model Logic and DB Calls here:
                 Student ret = DataBase.ExecuteQuery<Student>(new { x = Id }, Connection.Get()).FirstOrDefault();
+                ret.detail = new Student_Detail().Student_Detail_Get_By_Id(ret.Student_ID);
                 return ret;
             }
             catch (Exception ex)
@@ -85,6 +90,7 @@ namespace FYP1.Models.Student
             {
                 //place your Model Logic and DB Calls here:
                 List<Student> ret = DataBase.ExecuteQuery<Student>(new { }, Connection.Get());
+                ret.ForEach(x => x.detail = detail.Student_Detail_Get_By_Id(x.Student_ID));
                 return ret;
             }
             catch (Exception ex)

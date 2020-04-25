@@ -62,9 +62,18 @@ namespace FYP1.Controllers
         }
 
         [HttpGet]
-        public ActionResult EditStudent(int id)
+        public ActionResult EditStudent(int ?id)
         {
-            return View(new Student().Student_Get_By_Id(id));
+            ViewBag.DegreeLevel_List = new SelectList(new DegreeLevel().DegreeLevel_Get_All(), "DegreeLevel_ID", "DegreeLevel_Name");
+            ViewBag.State_List = new SelectList(new State().State_Get_All(), "State_ID ", "State_Name");
+            ViewBag.Field_List = new SelectList(new DepartmentType().DepartmentType_Get_All(), "DepartmentType_ID", "DepartmentType_Name");
+            ViewBag.Board_List = new SelectList(new Board().Board_Get_All(), "Board_ID", "Board_Name");
+            ViewBag.Employment = new SelectList("Employe", "Self-Employe", "Unemploye");
+            if (id==null)
+            {
+                id = (int)Session["S_ID"];
+            }
+            return View(new Student().Student_Get_By_Id(id.Value));
         }
 
         [HttpPost]

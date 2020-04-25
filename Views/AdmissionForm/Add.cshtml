@@ -183,12 +183,12 @@
                         </div>
                     </div>
 
-                </div\\
+                </div>
 
 
             </div>
         </div>*@
-   <div class="row">
+                            <div class="row">
                                 <div class="col-md-4">
 
                                     <div class="form-group label-floating">
@@ -207,19 +207,23 @@
 
                                 <div class="col-md-4">
                                     <div class="col-md-offset-2 col-md-10">
-                                        <button type="button" class="btn btn-primary" id="abc">Search</button>
+                                        <button type="button" class="btn btn-default" id="abc">Search</button>
 
                                         @*<input type="submit" value="Add" class="btn btn-default" id="abc" />*@
                                     </div>
                                 </div>
-                            </div>
+                            </div>"
                             <div class="col-md-12" id="bdy">
 
                             </div>
 
-                            <input type="submit" value="Apply" class="btn btn-primary pull-right" />
-
-                            <div class="clearfix"></div>
+                            <div class="input-field">
+                                <div class="result-count">
+                                </div>
+                                <div class="group-btn">
+                                    <button type="submit" class="btn-search btn btn-default">Apply</button>
+                                </div>
+                            </div>
 
                         </form>
                     </div>
@@ -236,7 +240,7 @@
     @*<script>
 
          var lst = @Html.Raw(Json.Encode(ViewBag.ids));
-        
+        debugger
         const customSelects = document.querySelectorAll("select");
         const deleteBtn = document.getElementById('delete')
         const choices = new Choices('#Department_ID',
@@ -264,7 +268,7 @@
 
             $('#Department_ID').change(function () {
 
-                ;
+                debugger;
                 $('#bdy').html('');
                 $.ajax({
                     url: '/AdmissionForm/GetDegreeByDeprtment',
@@ -272,7 +276,7 @@
                     dataType: 'json',
                     data: { D_ID: $(this).val() },
                     success: function (d) {
-                        ;
+                        debugger;
 
                         var degree = $('#Degree_ID');
                         degree.html('');
@@ -284,7 +288,7 @@
                 });
             });
             $('#abc').click(function () {
-                ;
+                debugger;
 
                 $.ajax({
                     url: '/AdmissionForm/GetByDegree',
@@ -295,9 +299,10 @@
 
                             var body = $('#bdy');
                             body.empty();
-                            var a = ""
+                        var a = "";
+                        var v = 0;
                             $.each(d, function (i, item) {
-                                
+                                debugger
 
                                 a = ""
                                 a+= "<div class='card col-md-12'>"
@@ -308,9 +313,9 @@
                                 //a += "<figure class='mr-3'><a href='#'><img src='/images/uni2.jpg'" + "alt='' class='img-fluid' width='250px' height='250px'></a></figure>"
 
                                // a += '<figure class="mr-3"><a href="#"><img src=' + item.InsCampus_Img_Path + ' alt='' class="img-fluid" width="250px" height="250px"></a></figure>';
-                                a += '<img src=' + item.Institute_img + ' style="display: inline-block;"  width="150px" height="150px" class="img-responsive thumbnail"/>  ';
+                                a += '<img src=' + item.Institute_img + ' style="display: inline-block;"  width="250px" height="250px" class="img-responsive thumbnail"/>  ';
 
-                                a += "</div> <div class='col-md-6 card-content' style='color:black'> <br/><br/><br/><br/><br/>";
+                                a += "<div class='col-md-6 card-content' style='color:black'>";
                                 a += "<h6 class='' ><i>Reg No: </i>" + item.Institute_RegNo + "</a></h6>  ";
                                 a += "<h6 class='' ><i>Affilation: </i>" + item.Institute_Affilation + "</a></h6>  ";
 
@@ -341,8 +346,8 @@
                                   yyyy = enddate.getFullYear();
                                   sdate = mm + '/' + dd + '/' + yyyy;
                                   a += "<h6 class='' ><i>End date: </i>" + sdate + "</a></h6>  ";
-                                  debugger;
-                                  a += " <td> <input type='checkbox' Name='Inst_List[" + i + "].I_ID' value=" + item.Institute_ID + " /> </td> ";
+                                  a += " <td> <input type='checkbox' Name='Inst_List[" + v + "].I_ID' value=" + item.Institute_ID + " /> </td> ";
+                                  v++;
                               }
                               else {
                                   dd = String(enddate.getDate()).padStart(2, '0');
@@ -354,7 +359,7 @@
                                       a += "<h6 class='' ><i style='color:red'>Already Applied</i></h6>  ";
                                   else
                                   a += "<h6 class='' ><i style='color:red'>Date Closed</i></h6>  ";
-                                  a += " <td> <input type='checkbox' Name='Inst_List[" + i + "].I_ID' value=" + item.Institute_ID + "  disabled='disabled'/> </td> ";
+                                  a += " <td> <input type='checkbox' Name='Inst_List[" + -1 + "].I_ID' value=" + item.Institute_ID + "  disabled='disabled'/> </td> ";
 
                               }
                                 a+= '</div>'
@@ -393,7 +398,7 @@
     <script>
 
             function openForm() {
-                
+                debugger;
                 document.getElementById("myForm").style.display = "block";
                 var ls = @Html.Raw(Json.Encode(ViewBag.insdetail));
                 var btn = $('#ab');
@@ -402,7 +407,7 @@
 
 
                     $.each(ls, function (k, ktem) {
-                        ;
+                        debugger;
                         b = ""
                         b += " <h1  class='btn'   id = " + ktem.Institute_ID + " onclick = 'opendiv(this.id)' > " + ktem.Institute_Name + " </h1 > "
                         btn.append(b);
@@ -425,7 +430,7 @@
                 var bs = @Html.Raw(Json.Encode(ViewBag.insdetail));
                 $.each(bs, function (l, ltem) {
                     if (ltem.Institute_ID == value) {
-                        ;
+                        debugger;
                        Talk.ready.then(function() {
     var me = new Talk.User({
         id: String(ltem.S_ID),
@@ -452,12 +457,12 @@
     var inbox = talkSession.createInbox({selected: conversation});
     inbox.mount(document.getElementById("talkjs-container"));
 });
-                        ;
+                        debugger;
                     }
 });
 
 
-                                ;
+                                debugger;
             }
     </script>
 

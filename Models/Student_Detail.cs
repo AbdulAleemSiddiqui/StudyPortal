@@ -15,10 +15,10 @@ namespace FYP1.Models.Student
         public int SD_ID { get; set; }
         [TVP]
         public int Student_ID { get; set; }
-        [DisplayName("Degree Level")]
         [TVP]
+        [DisplayName("Degree Level")]
         public int DegreeLevel_ID { get; set; }
-        public string DegreeLevel_Name { get; set; }
+        public string Dl_Name { get; set; }
         [TVP]
         [DisplayName("Field")]
         public int Field_ID { get; set; }
@@ -49,19 +49,16 @@ namespace FYP1.Models.Student
         [TVP]
         public string Designation { get; set; }
 
-        public Student_Detail Student_Qualification_GetById(int student_ID)
+        public Student_Detail Student_Detail_Get_By_Id(int student_ID)
         {
             try
             {
-                //place your Model Logic and DB Calls here:
-                Student_Detail ret = DataBase.ExecuteQuery<Student_Detail>(new { x = student_ID }, Connection.Get()).FirstOrDefault();
-                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
-                Logger.Logging.DB_Log(Logger.eLogType.Log_Positive, "", new { x = student_ID }, "", "", Connection.GetLogConnection(), 1);
-                return ret;
+                List<Student_Detail> ret = DataBase.ExecuteQuery<Student_Detail>(new { x = student_ID }, Connection.Get());
+
+                return ret.FirstOrDefault();
             }
             catch (Exception ex)
             {
-                // Logging Here=> Type of Log, Message, Data (complete objects or paramters except 1), PageName, Module (for Multiple Areas), Connection to Log DB, 1
                 Logger.Logging.DB_Log(Logger.eLogType.Log_Negative, ex.Message, new { x = student_ID }, "", "", Connection.GetLogConnection(), 1);
                 return null;
             }

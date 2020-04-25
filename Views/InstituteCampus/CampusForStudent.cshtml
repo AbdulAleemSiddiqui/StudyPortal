@@ -1,0 +1,67 @@
+﻿@model IEnumerable<FYP1.Models.Institute.InstituteCampus>
+
+@{
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+
+    ViewBag.Title = "ShowInstituteCampus";
+}
+
+
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="purple">
+                        <h4 class="title"><b>Show Institute Campus</b></h4>
+                        <p class="category">
+                        </p>
+                    </div>
+                    <div class="card-content">
+                        <table class="table">
+                            <tr>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Institute_Name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.InsCampus_Area)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.InsCampus_Address)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.InsCampus_EstablishYear)
+                                </th>
+                                <th></th>
+                            </tr>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Institute_Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.InsCampus_Area)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.InsCampus_Address)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.InsCampus_EstablishYear)
+                                    </td>
+                                </tr>
+                            }
+
+
+                        </table>
+                        @Html.ActionLink("Back To List", "ShowInstitute_For_Student","Institute")
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

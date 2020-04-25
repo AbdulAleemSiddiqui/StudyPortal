@@ -33,23 +33,33 @@ namespace FYP1.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddInstitute(AdminViewModel avm)
+        public ActionResult AddInstitute(Institute avm)
         {
             try
             {
-                List<InstituteType> ls = avm.institutetype.InstituteType_Get_All().ToList();
+                List<InstituteType> ls = new InstituteType().InstituteType_Get_All().ToList();
                 ViewBag.InstituteType = new SelectList(ls, "InstituteType_ID", "InstituteType_Name");
-                 //Institute i = new Institute();
-                avm.institute.InstituteType_ID = avm.institutetype.InstituteType_ID;
-                avm.institute.Institute_img = imageupload(avm.institute.Prop, avm.institute.Institute_img);
-                string filename = Path.GetFileNameWithoutExtension(avm.institute.Prop.FileName);
-                string extension = Path.GetExtension(avm.institute.Prop.FileName);
-                filename = filename + DateTime.Now.ToString("-yymmssffff") + extension;
-                avm.institute.Institute_img = "/images/" + filename;
-                filename = Path.Combine(Server.MapPath("/images/"), filename);
-                avm.institute.Prop.SaveAs(filename);
-
-                avm.institute.Institute_Add();
+                if (avm.Institute_img != null)
+                {
+                    avm.Institute_img = imageupload(avm.Prop, avm.Institute_img);
+                    string filename = Path.GetFileNameWithoutExtension(avm.Prop.FileName);
+                    string extension = Path.GetExtension(avm.Prop.FileName);
+                    filename = filename + DateTime.Now.ToString("-yymmssffff") + extension;
+                    avm.Institute_img = "/images/" + filename;
+                    filename = Path.Combine(Server.MapPath("/images/"), filename);
+                    avm.Prop.SaveAs(filename);
+                }
+                if (avm.Advertisement_Img != null)
+                {
+                    avm.Advertisement_Img = imageupload(avm.Prop2, avm.Advertisement_Img);
+                    string filename = Path.GetFileNameWithoutExtension(avm.Prop2.FileName);
+                    string  extension = Path.GetExtension(avm.Prop2.FileName);
+                    filename = filename + DateTime.Now.ToString("-yymmssffff") + extension;
+                    avm.Advertisement_Img = "/images/" + filename;
+                    filename = Path.Combine(Server.MapPath("/images/"), filename);
+                    avm.Prop.SaveAs(filename);
+                }
+                avm.Institute_Add();
             }
             catch (Exception ex)
             {
@@ -62,7 +72,7 @@ namespace FYP1.Controllers
         {
             string filename = Path.GetFileNameWithoutExtension(image.FileName);
             string extension = Path.GetExtension(image.FileName);
-            filename = filename + DateTime.Now + "yymmssffff" + extension;
+            filename = filename + DateTime.Now.ToString().Replace(':','-').Replace('/','_')+ extension;
             imagepath = "~/images/" + filename;
             filename = Path.Combine(Server.MapPath("~/images/") + filename);
             image.SaveAs(filename);
@@ -74,19 +84,30 @@ namespace FYP1.Controllers
         [HttpGet]
         public ActionResult UpdateInstitute(int id)
         {
-            Institute i = new Institute();
-            i.Institute_ID = id;
-            Institute ins = i.Institute_Get_By_ID();
+            Institute ins = new Institute() { Institute_ID = id }.Institute_Get_By_ID();
+            ViewBag.InstituteType = new SelectList(new InstituteType().InstituteType_Get_All(), "InstituteType_ID", "InstituteType_Name");
+
             return View(ins);
         }
         [HttpPost]
         public ActionResult UpdateInstitute(Institute obj)
         {
+            ViewBag.InstituteType = new SelectList(new InstituteType().InstituteType_Get_All(), "InstituteType_ID", "InstituteType_Name");
+            obj.Institute_img = obj.Institute_img == null ? "NON" : obj.Institute_img;
+            obj.Advertisement_Img = obj.Advertisement_Img == null ? "NON" : obj.Advertisement_Img;
             obj.Query = 2; //for update we use 2
             obj.Institute_Update();
-            return RedirectToAction("ShowInstitute");
+            return View(obj);
         }
 
+
+
+
+        //For Student
+        public ActionResult ShowInstitute_For_Student()
+        {
+            return View(new Institute().Institute_Get_All().ToList());
+        }
 
     }
 }

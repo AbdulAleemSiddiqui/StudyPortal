@@ -207,7 +207,8 @@
 
                             var body = $('#bdy');
                             body.empty();
-                            var a = ""
+                        var a = "";
+                        var v = 0;
                             $.each(d, function (i, item) {
                                 debugger
 
@@ -253,7 +254,8 @@
                                   yyyy = enddate.getFullYear();
                                   sdate = mm + '/' + dd + '/' + yyyy;
                                   a += "<h6 class='' ><i>End date: </i>" + sdate + "</a></h6>  ";
-                                  a += " <td> <input type='checkbox' Name='Inst_List[" + i + "].I_ID' value=" + item.Institute_ID + " /> </td> ";
+                                  a += " <td> <input type='checkbox' Name='Inst_List[" + v + "].I_ID' value=" + item.Institute_ID + " /> </td> ";
+                                  v++;
                               }
                               else {
                                   dd = String(enddate.getDate()).padStart(2, '0');
@@ -265,7 +267,7 @@
                                       a += "<h6 class='' ><i style='color:red'>Already Applied</i></h6>  ";
                                   else
                                   a += "<h6 class='' ><i style='color:red'>Date Closed</i></h6>  ";
-                                  a += " <td> <input type='checkbox' Name='Inst_List[" + i + "].I_ID' value=" + item.Institute_ID + "  disabled='disabled'/> </td> ";
+                                  a += " <td> <input type='checkbox' Name='Inst_List[" + -1 + "].I_ID' value=" + item.Institute_ID + "  disabled='disabled'/> </td> ";
 
                               }
                                 a+= '</div>'

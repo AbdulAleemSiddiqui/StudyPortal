@@ -1,68 +1,73 @@
 ﻿@model FYP1.Models.Pre_Req_Course
 
 @{
-    ViewBag.Title = "Add";
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+
+    ViewBag.Title = "Add";
 }
+
 
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <div class="card">
                     <div class="card-header" data-background-color="purple">
-                        <h4 class="title"><b>Add </b></h4>
-                        <p class="category"><b>Pre Request Course</b></p>
+                        <h4 class="title"><b>Pre Req Course</b></h4>
+                        @*<p class="category"><b>Tell Us!!</b></p>*@
                     </div>
                     <div class="card-content">
 
                         @using (Html.BeginForm())
                         {
                             @Html.AntiForgeryToken()
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                        <div class="row">
+                           
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-10">
 
-                            <div class="col-md-5">
-                                <div class="form-group label-floating">
+                                <div class="form-group">
                                     @Html.LabelFor(model => model.PR_Course_Name, htmlAttributes: new { @class = "control-label col-md-2" })
                                     @Html.EditorFor(model => model.PR_Course_Name, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.PR_Course_Name, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                            <div class="col-md-2">
-                                <div class="form-group label-floating">
-                                        @Html.LabelFor(model => model.PR_Course_Duration, htmlAttributes: new { @class = "control-label col-md-2" })
-                                            @Html.EditorFor(model => model.PR_Course_Duration, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.PR_Course_Duration, "", new { @class = "text-danger" })
-                                        </div>
-                                    </div>
-                                <div class="col-md-5">
-                                    <div class="form-group label-floating">
+                            <div class="col-md-10">
 
-                                        @Html.LabelFor(model => model.Degree_ID, htmlAttributes: new { @class = "control-label col-md-2" })
-                                        @Html.DropDownListFor(model => model.Degree_ID, new SelectList(ViewBag.Degrees, "D_ID", "Name"), "", new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.Degree_ID, "", new { @class = "text-danger" })
-                                    </div>
-                                    </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PR_Course_Duration, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.PR_Course_Duration, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PR_Course_Duration, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-md-10">
 
-                                    <div class="form-group">
-                                        <div class="col-md-offset-2 col-md-10">
-                                            <input type="submit" value="Add" class="btn btn-default" />
-                                        </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Degree_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.DropDownListFor(model => model.Degree_ID, new SelectList(ViewBag.Degrees, "D_ID", "Name"), new { htmlAttributes = new { @class = "form -control" } })
+                                    @Html.ValidationMessageFor(model => model.Degree_ID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Add" class="btn btn-default" />
                                     </div>
                                 </div>
-                                }
-                            </div>
+                            
+                        }
+
+                        <div>
+                            @Html.ActionLink("Back to List", "Index")
                         </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+ </div>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+                        @section Scripts {
+                            @Scripts.Render("~/bundles/jqueryval")
+                        }

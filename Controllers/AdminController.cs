@@ -107,6 +107,12 @@ namespace FYP1.Controllers
 
 
 
+
+
+
+
+
+
         // GET: Admin
         //[HttpGet]
         //public ActionResult AddDepartment()

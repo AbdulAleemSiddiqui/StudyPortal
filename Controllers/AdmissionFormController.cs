@@ -1,4 +1,5 @@
 ﻿using FYP1.Models;
+using FYP1.Models.Admin;
 using FYP1.Models.Admin.AdmissionForm;
 using FYP1.Models.Department;
 using FYP1.Models.Institute;
@@ -63,6 +64,7 @@ namespace FYP1.Controllers
             ViewBag.DegreeLevel = new DegreeLevel().DegreeLevel_Get_All();
             ViewBag.Department = new Department().DepartmentAndType_Get_All();
             ViewBag.Degree = new Degree().Degree_Get_All();
+            ViewBag.Payment_Info = new Admin().Admin_Get().Payment_Info;
 
             var lst = new AdmissionViewModel() { S_ID = (int)Session["S_ID"] }.Get_Student_Admission();
             //int ids = new AdmissionForm();
@@ -167,6 +169,7 @@ namespace FYP1.Controllers
         //Admin
         public ActionResult Get_Unpaid_Admission()
         {
+            ViewBag.Payment_Info = Session["Payment_Info"];
             return View(new AdmissionViewModel().Get_Admission_For_Admin());
         }
 
@@ -275,7 +278,7 @@ namespace FYP1.Controllers
         [HttpGet]
         public ActionResult PayAdmission(int AI_ID)
         {
-            new Admission_Institute() { AI_ID = AI_ID }.Pay();
+           Session["Payment_Info"]= new Admission_Institute() { AI_ID = AI_ID }.Pay();
             return RedirectToAction("Get_Unpaid_Admission");
         }
 

@@ -17,6 +17,14 @@
                 <p class="category">@Html.ActionLink("Create New", "Create")</p>
             </div>
             <div class="card-content table-responsive">
+                @if (ViewBag.Payment_Info != null)
+                {
+                <div id="notification" class="alert alert-info alert-with-icon" data-notify="container">
+                    <button type="button" aria-hidden="true" class="close">×</button>
+                    <i data-notify="icon" class="material-icons">add_alert</i>
+                    <span data-notify="message">Note: The Last Admission you pay, following are the payment info for the institute you pay. <br /> <b>Payment Details: </b>@ViewBag.Payment_Info</span>
+                </div>
+                }
                 <table class="table">
                     <thead class="text-gray">
                         <tr>
@@ -79,4 +87,8 @@
             </div>
         </div>
     </div>
-</div>
+</div>@section Scripts{
+    <script>
+            $('#notification').delay(5000).fadeOut('slow');
+    </script>
+    }

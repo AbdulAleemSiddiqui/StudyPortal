@@ -32,7 +32,7 @@ namespace FYP1.Models.Admin.AdmissionForm
         public int I_ID { get; set; }
         public int A_ID { get; set; }
         public int Status_ID { get; set; }
-
+        public string Payment_Info { get; set; }
         public void Add()
         {
             SqlCommand sc = new SqlCommand("Usp_InsertUpdateDelete_AdmissionInstitute", Connection.Get()) { CommandType = System.Data.CommandType.StoredProcedure }; ;
@@ -41,13 +41,19 @@ namespace FYP1.Models.Admin.AdmissionForm
             sc.Parameters.AddWithValue("@Query", 1);
             object id = sc.ExecuteScalar();
          }
-      public void Pay()
+      public string Pay()
         {
             SqlCommand sc = new SqlCommand("Usp_InsertUpdateDelete_AdmissionInstitute", Connection.Get()) { CommandType = System.Data.CommandType.StoredProcedure }; ;
             sc.Parameters.AddWithValue("@AI_ID", AI_ID);
             sc.Parameters.AddWithValue("@Status", 2);
             sc.Parameters.AddWithValue("@Query", 2);
-            sc.ExecuteNonQuery();
+            SqlDataReader sdr =sc.ExecuteReader();
+            while (sdr.Read())
+            {
+                Payment_Info=(string)sdr[0];
+            }
+            sdr.Close();
+            return Payment_Info;
         }
         public void Response()
         {

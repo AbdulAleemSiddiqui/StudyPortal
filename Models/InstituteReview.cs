@@ -1,27 +1,38 @@
 ﻿using DatabaseTVP;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
-using System.Web;
 
 namespace FYP1.Models
 {
     public class InstituteReview
     {
-      [TVP]
-        public int R_ID { get; set; }
-      [TVP]
-        public int Inst_ID { get; set; }
-        public string Institute_Name { get; set; }
         [TVP]
+        public int R_ID { get; set; }
+
+        [TVP]
+        [DisplayName("Institute")]
+        public int Inst_ID { get; set; }
+        [DisplayName("Institute")]
+        public string Institute_Name { get; set; }
+
+        [TVP]
+        [DisplayName("Alumni Name")]
         public string Alumni_Name { get; set; }
-      [TVP]
+
+        [TVP]
+        [DisplayName("Alumni Email")]
         public string Alumni_Email { get; set; }
-      [TVP]
+
+        [TVP]
+        [DisplayName("Alumni Review")]
         public string Alumni_Review { get; set; }
-      [TVP]
+
+        [TVP]
+        [DisplayName("Alumni Rating")]
         public int Alumni_Rating { get; set; }
-      [TVP]
+        [TVP]
         public DateTime Date { get; set; }
 
 
@@ -66,7 +77,7 @@ namespace FYP1.Models
             try
             {
                 //place your Model Logic and DB Calls here:
-                List<InstituteReview> ret = DataBase.ExecuteQuery<InstituteReview>(new { x1=id}, Connection.Get());
+                List<InstituteReview> ret = DataBase.ExecuteQuery<InstituteReview>(new { x1 = id }, Connection.Get());
                 return ret;
             }
             catch (Exception ex)

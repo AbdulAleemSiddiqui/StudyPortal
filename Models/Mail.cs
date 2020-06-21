@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Net.Sockets;
+using System.Text;
 using System.Web;
 
 namespace FYP1.Models
@@ -63,6 +66,46 @@ namespace FYP1.Models
         {
             email = a; password = b;
         }
-
+        public bool isEmailExist(string email)
+        {
+            TcpClient tClient = new TcpClient("gmail-smtp-in.l.google.com", 25);
+            string CRLF = "\r\n";
+            byte[] dataBuffer;
+            string ResponseString;
+            NetworkStream netStream = tClient.GetStream();
+            StreamReader reader = new StreamReader(netStream);
+            ResponseString = reader.ReadLine();
+            /* Perform HELO to SMTP Server and get Response */
+            dataBuffer = BytesFromString("HELO KirtanHere" + CRLF);
+            netStream.Write(dataBuffer, 0, dataBuffer.Length);
+            ResponseString = reader.ReadLine();
+            dataBuffer = BytesFromString("MAIL FROM:<abdulaleem.yousuf97@gmail.com>" + CRLF);
+            netStream.Write(dataBuffer, 0, dataBuffer.Length);
+            ResponseString = reader.ReadLine();
+            /* Read Response of the RCPT TO Message to know from google if it exist or not */
+            dataBuffer = BytesFromString("RCPT TO:<" + email.Trim() + ">" + CRLF);
+            netStream.Write(dataBuffer, 0, dataBuffer.Length);
+            ResponseString = reader.ReadLine();
+            if (GetResponseCode(ResponseString) == 550)
+            {
+                dataBuffer = BytesFromString("QUITE" + CRLF);
+                netStream.Write(dataBuffer, 0, dataBuffer.Length);
+                tClient.Close();
+                return false;
+            }
+            /* QUITE CONNECTION */
+            dataBuffer = BytesFromString("QUITE" + CRLF);
+            netStream.Write(dataBuffer, 0, dataBuffer.Length);
+            tClient.Close();
+            return true;
+        }
+        private byte[] BytesFromString(string str)
+        {
+            return Encoding.ASCII.GetBytes(str);
+        }
+        private int GetResponseCode(string ResponseString)
+        {
+            return int.Parse(ResponseString.Substring(0, 3));
+        }
     }
 }

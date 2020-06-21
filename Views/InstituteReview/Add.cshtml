@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Add";
-    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <link href="~/assets/Rating/rating_simple.css" rel="stylesheet" />
@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header" data-background-color="purple">
+                    <div class="card-header" data-background-color="purple" style="text-align:center">
                         <h4 class="title"><b>Alumni Review</b></h4>
                         <p class="category"><b>Tell Us!!</b></p>
                     </div>
@@ -20,58 +20,67 @@
                         {
                             @Html.AntiForgeryToken()
 
-                            <div class="form-horizontal">
-                                <h4>InstituteReview</h4>
-                                <hr />
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-horizontal">
+                            <h4 style="text-align:center">Institute Review</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Alumni_Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Alumni_Name, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Alumni_Name, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Alumni_Email, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Alumni_Email, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Alumni_Email, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Alumni_Review, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Alumni_Review, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Alumni_Review, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Alumni_Rating, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        <input name="Alumni_Rating" value=""
-                                               id="rating_simple2" type="hidden" />
-
-                                        @Html.ValidationMessageFor(model => model.Alumni_Rating, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-
-
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <input type="submit" value="Create" class="btn btn-default" />
-                                    </div>
+                            @if (Session["I_ID"] == null)
+                            {
+                                    var data = new FYP1.Models.Institute.Institute().Institute_Get_All();
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Inst_ID, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-5">
+                                    @Html.DropDownListFor(model => model.Inst_ID,new SelectList(data, "Institute_ID", "Institute_Name"),  new { @class = "form-control  py-2" }  )
+                                    @Html.ValidationMessageFor(model => model.Inst_ID, "", new { @class = "text-danger" })
                                 </div>
                             </div>
+                            }
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Alumni_Name, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-5">
+                                    @Html.EditorFor(model => model.Alumni_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Alumni_Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Alumni_Email, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-5">
+                                    @Html.EditorFor(model => model.Alumni_Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Alumni_Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Alumni_Review, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-5">
+                                    @Html.EditorFor(model => model.Alumni_Review, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Alumni_Review, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Alumni_Rating, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-5">
+                                    <input name="Alumni_Rating" value=""
+                                           id="rating_simple2" type="hidden" />
+
+                                    @Html.ValidationMessageFor(model => model.Alumni_Rating, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group" style="text-align:center">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
                         }
 
-                        <div>
-                            @Html.ActionLink("Back to List", "Index")
-                        </div>
+                        
                     </div>
                 </div>
             </div>

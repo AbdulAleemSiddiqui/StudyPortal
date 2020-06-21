@@ -36,6 +36,7 @@ namespace FYP1.Models.Institute
         [DataType(DataType.MultilineText)]
         public string Payment_Info { get; set; }
         public string Website_Link { get; set; }
+        public int Alumni_Rating { get;  set; }
         public string Advertisement_Img { get; set; }
 
         public HttpPostedFileBase Prop { get; set; }
@@ -63,6 +64,7 @@ namespace FYP1.Models.Institute
                 u.Institute_img = (string)sdr["Institute_img"];
                 u.Payment_Info = (string)sdr["Payment_Info"];
                 u.Website_Link= (string)sdr["Website_Link"];
+                u.Alumni_Rating = (int)sdr["Alumni_Rating"];
                 u.Advertisement_Img= (string)sdr["Advertisement_Img"];
                 lst.Add(u);
             }
@@ -92,6 +94,7 @@ namespace FYP1.Models.Institute
                 u.Institute_img = (string)sdr["Institute_img"];
                 u.Payment_Info = (string)sdr["Payment_Info"];
                 u.Website_Link = (string)sdr["Website_Link"];
+                u.Alumni_Rating = (int)sdr["Alumni_Rating"];
                 u.Advertisement_Img = (string)sdr["Advertisement_Img"];
             }
             sdr.Close();

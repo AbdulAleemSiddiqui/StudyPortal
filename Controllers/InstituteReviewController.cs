@@ -34,9 +34,14 @@ namespace FYP1.Controllers
         [HttpPost]
         public ActionResult Add(InstituteReview obj)
         {
-            obj.Inst_ID = (int)Session["I_ID"];
+            if (Session["I_ID"] != null)
+            {
+                obj.Inst_ID = (int)Session["I_ID"];
+                obj.InstituteReview_Add();
+                return RedirectToAction("Index");
+            }
             obj.InstituteReview_Add();
-            return RedirectToAction("Index");
+            return View();
         }
 
         //Edit

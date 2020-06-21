@@ -13,10 +13,16 @@ namespace FYP1.Models
         static SqlConnection c_log;
         public static SqlConnection Get()
         {
+            
             if (c == null ||c.State==System.Data.ConnectionState.Closed|| c.State != System.Data.ConnectionState.Connecting)
             {
                 c = new SqlConnection();
                 c.ConnectionString = ConfigurationManager.ConnectionStrings["FYPSTUDYPORTALEntities"].ToString();
+                c.Open();
+            }
+           else if(c.State==  System.Data.ConnectionState.Open)
+            {
+                c.Close();
                 c.Open();
             }
             return c;

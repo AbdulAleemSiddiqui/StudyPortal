@@ -37,24 +37,25 @@ namespace FYP1.Models.Student
         public decimal Percentage { get; set; }
         [TVP]
         public string Grades { get; set; }
-
+        [TVP]
+        public string Gender { get; set; }
+  
+        [TVP]
+        public string Employment { get; set; }
+        [TVP]
+        public string Designation { get; set; }
         [TVP]
         public string Fav_Subject { get; set; }
         [TVP]
         public string Fav_Sport { get; set; }
         [TVP]
-        public string Fav_Hobby{ get; set; }
-        [TVP]
-        public string Employment { get; set; }
-        [TVP]
-        public string Designation { get; set; }
+        public string Fav_Hobby { get; set; }
 
         public Student_Detail Student_Detail_Get_By_Id(int student_ID)
         {
             try
             {
                 List<Student_Detail> ret = DataBase.ExecuteQuery<Student_Detail>(new { x = student_ID }, Connection.Get());
-
                 return ret.FirstOrDefault();
             }
             catch (Exception ex)

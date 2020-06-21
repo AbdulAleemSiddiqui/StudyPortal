@@ -6,6 +6,7 @@
     ViewBag.Title = "ShowInstitute";
 }
 
+<link href="~/assets/Rating/rating_simple.css" rel="stylesheet" />
 
 <div class="content">
     <div class="container-fluid">
@@ -13,7 +14,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" data-background-color="purple">
-                        <h2>Show Institute</h2>
+                        <h4 class="title"><b>All Institutes</b></h4>
                         <p class="category">
 
                         </p>
@@ -22,9 +23,6 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>
-                                        @Html.DisplayNameFor(model => model.Institute_ID)
-                                    </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.Institute_Name)
                                     </th>
@@ -44,50 +42,77 @@
                                         @Html.DisplayNameFor(model => model.Email)
                                     </th>
                                     <th>
-                                        @Html.DisplayNameFor(model => model.Website_Link)
+                                        Website Link
                                     </th>
-
+                                    <th>
+                                        Avg Rating
+                                    </th>
                                     <th></th>
                                 </tr>
                             </thead>
                             @foreach (var item in Model)
                             {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Institute_ID)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Institute_Name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Institute_RegNo)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Institute_EstablishYear)
-                                </td>
-                                @*<td>
-            @Html.DisplayFor(modelItem => item.InstituteType_ID)
-        </td>*@
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Institute_Affilation)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Email)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Website_Link)
-                                </td>
-
-                                <td>
-                                    @Html.ActionLink("Campuses", "CampusForStudent", "InstituteCampus", new { id = item.Institute_ID }, new { }) 
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Institute_Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Institute_RegNo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Institute_EstablishYear)
+                                    </td>
+                                    @*<td>
+                                            @Html.DisplayFor(modelItem => item.InstituteType_ID)
+                                        </td>*@
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Institute_Affilation)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Email)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Website_Link)
+                                    </td>
+                                    <td>
+                                        @*@Html.DisplayFor(modelItem => item.Alumni_Rating)*@
+                                        <input name="Alumni_Rating" value="@item.Alumni_Rating"  
+                                               class="rating_simple2" type="hidden"  style=""/>
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Campuses", "CampusForStudent", "InstituteCampus", new { id = item.Institute_ID }, new { })
+                                    </td>
+                                </tr>
                             }
 
-                        </table>    
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script src="~/assets/Rating/jquery.js"></script>
+    <script src="~/assets/Rating/rating_simple.js"></script>
+    <script language="javascript" type="text/javascript">
+        function test(value) {
+            $("#rating_simple2").val( value);
+        }
+        $(function () {
+            var baseUrl = "@Url.Content("~")";
+
+            $("input[type=hidden]").each(function () {
+                var input = $(this); // This is the jquery object of the input, do what you will
+                $(this).webwidget_rating_simple({
+                    rating_star_length: '5',
+                    rating_initial_value: input.val(),//this is function name for click
+                    directory: baseUrl + 'Images/'
+                });
+            });
+            
+        });
+    </script>
+
+}

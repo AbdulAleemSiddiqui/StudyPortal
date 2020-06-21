@@ -1,0 +1,66 @@
+﻿@{
+    /**/
+
+    Layout = "~/Views/Shared/_DashboardLayout.cshtml";
+
+    ViewBag.Title = "Prediction";
+}
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="purple">
+                        <h4 class="title"><b>Suggested Feild</b></h4>
+                        <p class="category"><b>We care about you!!</b></p>
+                    </div>
+                    <div class="card-content">
+
+                        <div class="card-content table-responsive">
+                            <table class="table">
+                                <tr style="">
+                                    <th>S.no</th>
+                                    <th>Feild</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th>Percentage</th>
+                                    <th></th>
+                                </tr>
+                                @{ int i = 0;}
+                                @foreach (var item in ViewBag.Output)
+                                {
+                                    if (i == 10) { break; }else { i++; }
+                                    <tr onmouseover="this.style.background = '#9c27b0'; this.style.color = 'white';" onmouseout="this.style.background='white';this.style.color = 'black'">
+                                        <td>
+                                            @i</td>
+                                        <td>
+                                            @item.Key
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            @(item.Value * 100) %
+                                        </td>
+                                    </tr>
+                                }
+
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+
+    <script>
+     
+    </script>
+}

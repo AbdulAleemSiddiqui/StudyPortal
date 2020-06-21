@@ -16,8 +16,6 @@ namespace FYP1.Models.Admin.AdmissionForm
         public List<Admission_Institute> Inst_List { get; set; }
         public int Admission_Add()
         {   
-
-
             SqlCommand sc = new SqlCommand("Usp_InsertUpdateDelete_AdmissionForm", Connection.Get()) { CommandType = System.Data.CommandType.StoredProcedure }; ;
             sc.Parameters.AddWithValue("@S_ID", S_ID); // seshan se uth k aarai hai or view mei hide karwadi
             sc.Parameters.AddWithValue("@Degree_ID", Degree_ID);

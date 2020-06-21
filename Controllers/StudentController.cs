@@ -24,7 +24,8 @@ namespace FYP1.Controllers
             ViewBag.State_List = new SelectList(new State().State_Get_All(), "State_ID ", "State_Name");
             ViewBag.Field_List = new SelectList(new DepartmentType().DepartmentType_Get_All(), "DepartmentType_ID", "DepartmentType_Name");
             ViewBag.Board_List = new SelectList(new Board().Board_Get_All(), "Board_ID", "Board_Name");
-            ViewBag.Employment = new SelectList("Employe", "Self-Employe", "Unemploye");
+            ViewBag.Employment = new SelectList("Employee", "Self-Employee", "Unemployee");
+            ViewBag.city = new SelectList(new City().City_Get_All(), "City_ID", "City_Name");
             return View();
         }
         [HttpPost]
@@ -47,6 +48,7 @@ namespace FYP1.Controllers
                 ViewBag.Field_List = new SelectList(new DepartmentType().DepartmentType_Get_All(), "DepartmentType_ID", "DepartmentType_Name");
                 ViewBag.Board_List = new SelectList(new Board().Board_Get_All(), "Board_ID", "Board_Name");
                 ViewBag.Employment = new SelectList("Employe", "Self-Employe", "Unemploye");
+            ViewBag.city = new SelectList(new City().City_Get_All(), "City_ID", "City_Name");
                 return View();
             }
             return RedirectToAction("Confirmation");
@@ -82,7 +84,7 @@ namespace FYP1.Controllers
         public ActionResult EditStudent(Student s)
         {
             s.Student_Edit();
-            return View();
+            return View(s);
         }
 
         public ActionResult DeleteStudent(Student s)

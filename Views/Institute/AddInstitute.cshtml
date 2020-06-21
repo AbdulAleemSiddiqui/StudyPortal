@@ -52,7 +52,7 @@
 
                                 <div class="col-md-3">
                                     <div class="form-group label-floating">
-                                        @Html.LabelFor(model => model.InstituteType_ID, htmlAttributes: new { @class = "" })
+                                        @Html.Label("Institute Type", htmlAttributes: new { @class = "" })
                                         @Html.DropDownListFor(model => model.InstituteType_ID, ViewBag.InstituteType as SelectList, "--select--", new { @class = "form-control" })
                                         @Html.ValidationMessageFor(model => model.InstituteType_ID, "", new { @class = "error" })
                                     </div>

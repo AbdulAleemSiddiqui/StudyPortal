@@ -192,17 +192,17 @@ namespace FYP1.Controllers
             return View(new Quiz().get().ToList());
         }
         [HttpPost]
-        public ActionResult GetQuizQuestion(List<Quiz_user_answer> resultQuiz)
+        public ActionResult GetQuizQuestion(List<Quiz_user_answer>  quiz)
         {
+            
             List<quiz_choice> qc = new quiz_choice().Getchoices();
             int id = (int)Session["S_ID"];
             int count = 0;
             List<Quiz_user_answer> finalresult = new List<Quiz_user_answer>();
-            foreach (Quiz_user_answer ans in resultQuiz)
+            foreach (Quiz_user_answer ans in quiz)
             {
                 if (ans.answer != null)
                 {
-
                     Quiz_user_answer qa = new Quiz_user_answer();
                     qa.student_id = id;
                     qa.quiz_choice_id = ans.quiz_choice_id;
@@ -210,20 +210,11 @@ namespace FYP1.Controllers
                     qa.answer = ans.answer.ToLower();
                     qa.count = count;
 
-
-
-                    //Quiz_user_answer qq = q.Where(a => a.quiz_ques_id == ans.quiz_ques_id)
-                    //    .Select(a => new Quiz_user_answer {
-                    //    quiz_ques_id = ans.quiz_ques_id
-                    //      , quiz_choice_id = ans.quiz_choice_id
-                    //      , answer = ans.answer
-                    //      , Is_correct = (ans.answer.ToLower().Equals(a.choices.ToLower()))
                     foreach (var item in qc)
                     {
                         if (ans.quiz_ques_id == item.quiz_ques_id && ans.answer == item.choices && item.is_correct_choice == true)
                         {
                             qa.Is_correct = true;
-                            //  qa.Add();
                             count++;
                             break;
                         }
@@ -236,15 +227,7 @@ namespace FYP1.Controllers
                             }
                             
                         }
-
-                        //}).FirstOrDefault();
-                        //    if (qa.answer!=null)
-                        //{
-
-                        //    }
-
                     }
-                   
 
                     finalresult.Add(qa);
                     qa.Add();

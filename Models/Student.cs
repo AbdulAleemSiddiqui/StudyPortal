@@ -37,7 +37,8 @@ namespace FYP1.Models.Student
         [TVP]
         public string Password { get; set; }
 
-
+        public int State_ID { get; set; }
+        public string State_Name{ get; set; }
         [TVP]
         public string ConnectionID { get; set; }
         public Student_Detail detail { get; set; } = new Student_Detail();
@@ -103,6 +104,7 @@ namespace FYP1.Models.Student
         {
             try
             {
+                detail.Student_ID = this.Student_ID;
                 //place your Model Logic and DB Calls here:
                 string Message = DataBase.ExecuteQuery<Student>(new { x = this,x1=detail }, Connection.Get()).FirstOrDefault().ReturnMessage;
                 return Message;

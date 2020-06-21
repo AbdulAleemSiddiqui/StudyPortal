@@ -54,7 +54,7 @@
                                 <div class="form-group">
                                     @Html.LabelFor(model => model.Alumni_Rating, htmlAttributes: new { @class = "control-label col-md-2" })
                                     <div class="col-md-10">
-                                        <input name="Alumni_Rating" value=""
+                                        <input name="Alumni_Rating" value="@Model.Alumni_Rating"
                                                id="rating_simple2" type="hidden" />
 
                                         @Html.ValidationMessageFor(model => model.Alumni_Rating, "", new { @class = "text-danger" })
@@ -89,9 +89,10 @@
         }
         $(function () {
             var baseUrl = "@Url.Content("~")";
+           var rate =$("#rating_simple2").val();
             $("#rating_simple2").webwidget_rating_simple({
                 rating_star_length: '5',
-                rating_initial_value: '',
+                rating_initial_value: rate,
                 rating_function_name: 'test',//this is function name for click
                 directory: baseUrl +'Images/'
             });

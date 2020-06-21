@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<FYP1.Models.Quiz>
 
-@{ 
+@{
     Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 }
 @*<div class="block">
@@ -54,17 +54,9 @@
                                             {
                                                 <label class="radio-inline">
                                                     <span id="@string.Format("{0}{1}", "ID_C", count)" style="display:none;">@items.quiz_choice_id</span>
-                                                    @if (stuid == 0)
-                                                    {
 
-                                                        <input type="radio" name="@string.Format("{0}{1}", "inlineRadioOptions", count)" id="@string.Format("{0}{1}", "inlineRadio", countR)" value="@items.choices" style="margin-left: -16px;"> @items.choices
+                                                    <input type="radio" name="@string.Format("{0}{1}", "inlineRadioOptions", count)" id="@string.Format("{0}{1}", "inlineRadio", countR)" value="@items.choices" style="margin-left: -16px;"> @items.choices
 
-                                                    }
-                                                    else
-                                                    {
-                                                        <input type="radio" name="@string.Format("{0}{1}", "inlineRadioOptions", count)" id="@string.Format("{0}{1}", "inlineRadio", countR)" value="@items.choices" style="margin-left: -16px;" disabled="disabled"> @items.choices
-
-                                                    }
                                                 </label><br />
                                                 countR++;
                                             }
@@ -90,6 +82,8 @@
         </div>
     </div>
 </div>
+
+
 @section scripts
 {
     <script>
@@ -115,57 +109,44 @@
 
                     resultQuiz.push(question);
                 }
- debugger;
-                $.ajax({
+                debugger;
 
+                resultQuiz = JSON.stringify({ 'quiz': resultQuiz});
+
+                $.ajax({
+                    contentType: 'application/json; charset=utf-8',
+                    dataType: 'json',
                     type: 'POST',
                     url: '@Url.Action("GetQuizQuestion", "AdmissionForm")',
-                    data: { resultQuiz },
-
+                    data: resultQuiz,
                     success: function (response) {
-                        debugger;
-
-                        if (response.qa.length > 0)
-                        {
+                        if (response.qa.length > 0) {
                             var j = 1;
                             count = 0;
-                            for(var i = 0; i <response.qa.length; i++ )
-                            {
-                                if (response.qa[i].Is_correct == true )
-                                {
+                            for (var i = 0; i < response.qa.length; i++) {
+                                if (response.qa[i].Is_correct == true) {
                                     debugger;
                                     $('#AnsQ' + j).html('<div class="alert alert-success" role="alert"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Correct answer</div>');
                                     count++;
-
-
                                 }
 
-                                else
-                                {
-
+                                else {
                                     $('#AnsQ' + j).html('<div class="alert alert-danger" role="alert"> <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Incorrect answer - The Good Answer is <b>' + response.qa[i].answer + '</b></div>');
                                 }
                                 j++;
-
-
                             }
-                            swal("Congratulation!", "You marks is" + count, "success");
-
+                            debugger;
+                            swal("Congratulation!", "You marks is " + count, "success");
                         }
-                        else
-                        {
+                        else {
                             alert("Something Wrong");
                         }
-
-
-                        //console.log(response.result.length);
-
                     },
-                    error: function (response) {
 
+                    failure: function (response) {
+                        alert(response);
                     }
                 });
-
                 console.log(resultQuiz);
 
             });

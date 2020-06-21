@@ -10,20 +10,23 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header" data-background-color="purple">
-                <h2>Pre Request Courses</h2>
-                <p class="category">@Html.ActionLink("Create New", "Add")</p>
+                <h4 class="title"> <b>Pre Request Courses</b></h4>
+                @if (Session["S_ID"] == null)
+                {
+                    <p class="category">@Html.ActionLink("Create New", "Add")</p>
+                }
             </div>
             <div class="card-content table-responsive">
                 <table class="table">
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.PR_Course_Name)
+                            PR Course Name
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.PR_Course_Duration)
+                            PR Course Duration
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.Degree_Name)
+                            Degree Name 
                         </th>
                         <th></th>
                     </tr>
@@ -40,11 +43,16 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Degree_Name)
                             </td>
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.PR_Course_ID }) |
-                                @Html.ActionLink("Search", "Search", new { id = item.PR_Course_ID }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.PR_Course_ID })
-                            </td>
+                            @if (Session["S_ID"] == null)
+                            {
+                                <td>
+
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.PR_Course_ID }) |
+                                    @Html.ActionLink("Search", "Search", new { id = item.PR_Course_ID }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.PR_Course_ID })
+                                    }
+                                </td>
+                            }
                         </tr>
                     }
 

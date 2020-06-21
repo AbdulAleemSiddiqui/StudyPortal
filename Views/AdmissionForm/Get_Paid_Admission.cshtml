@@ -41,7 +41,7 @@ Layout = "~/Views/Shared/_DashboardLayout.cshtml";
 <div class="col-md-12">
     <div class="card">
         <div class="card-header" data-background-color="purple">
-            <h2>Paid Admission</h2>
+            <h4>Paid Admission</h4>
             @*<p class="category">@Html.ActionLink("Create New", "Create")</p>*@
         </div>
         <div class="card-content table-responsive">
@@ -65,10 +65,12 @@ Layout = "~/Views/Shared/_DashboardLayout.cshtml";
                 <th>
                     @Html.DisplayNameFor(model => model.Status)
                 </th>
-                <th>
+                <th style="text-align:center">
                     Mark
                 </th>
-                <th></th>
+                <th>
+                    Student info
+                </th>
 
 
                 </thead>
@@ -97,18 +99,13 @@ Layout = "~/Views/Shared/_DashboardLayout.cshtml";
                             <td>
                                 @Html.DisplayFor(modelItem => item.Status)
                             </td>
-                            <td>
-                                <button onclick="window.location.href='@Url.Action("StudentSearch","AdmissionForm",new { S_ID=item.S_ID})'" value="Pay">
-                                    Details
-                                </button>
+                            <td align="center">
+                                <input type="submit" value="Accept" class="btn btn-primary" onclick="window.location.href='@Url.Action("AdmissionResponse","AdmissionForm",new { AI_ID=item.AI_ID,Status_ID=3})'" />
+                                <input type="submit" value="Reject" class="btn btn-primary" onclick="window.location.href='@Url.Action("AdmissionResponse","AdmissionForm",new { AI_ID=item.AI_ID,Status_ID=4})'" />
                             </td>
                             <td>
-                                <button onclick="window.location.href='@Url.Action("AdmissionResponse","AdmissionForm",new { AI_ID=item.AI_ID,Status_ID=3})'" value="Pay">
-                                    Accept
-                                </button>
-                                <button onclick="window.location.href='@Url.Action("AdmissionResponse","AdmissionForm",new { AI_ID=item.AI_ID,Status_ID=4})'" value="Pay">
-                                    Reject
-                                </button>
+                                <input type="submit" value="Details" class="btn btn-primary" onclick="window.location.href='@Url.Action("StudentSearch","AdmissionForm",new { S_ID=item.S_ID})'" />
+                             
                             </td>
 
                         </tr>

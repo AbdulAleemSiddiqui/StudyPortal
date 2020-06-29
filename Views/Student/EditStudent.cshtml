@@ -13,11 +13,10 @@
                     <p class="category"><b>Personal Information</b></p>
                 </div>
                 <div class="card-content">
-                    <form action="/Student/AddStudent" method="post" style="margin:50px">
+                    <form action="/Student/EditStudent" method="post" style="margin:50px">
 
                         <div class="row gap-20">
 
-                            <div class="clear"></div>
                             @Html.HiddenFor(x => x.Student_ID)
                             <div class="col-sm-6 col-md-4">
 
@@ -91,138 +90,136 @@
                                 </div>
                             </div>
 
-                        </div>
 
-                        <div class="col-sm-6 col-md-4">
-                            <div class="form-group">
-                                <label for="Start_Year">State</label>
-                                @Html.DropDownList("State_Id", ViewBag.State_List as SelectList, "--select--", new { @class = "form-control" })
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4">
-                            <div class="form-group">
-                                <label for="City">City</label>
-                                @Html.DropDownListFor(model => model.City_ID, ViewBag.city as SelectList, "--select--", new { @class = "form-control py-2" })
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4">
-                            <div class="form-group">
-                                <label for="name">Password</label>
-                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                @*<input type="password" id="name" name="Password" class="form-control py-2 ">*@
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4">
-
-                            <div class="form-group">
-                                <label for="Start_Year">Field</label>
-                                @Html.DropDownListFor(model => model.detail.Field_ID, ViewBag.Field_List as SelectList, "--select--", new { @class = "form-control py-2" })
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-md-4">
-
-                            <div class="form-group r">
-                                <label for="Start_Year">Degree</label>
-                                @Html.DropDownListFor(model => model.detail.DegreeLevel_ID, ViewBag.DegreeLevel_List as SelectList, "--select--", new { @class = "form-control py-2" })
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4">
-                            <div class="form-group">
-                                <label for="Start_Year">Board</label>
-                                @Html.DropDownListFor(model => model.detail.Board_ID, ViewBag.Board_List as SelectList, "--select--", new { @class = "form-control py-2" })
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                            <div class="form-group">
-                                <label for="Start_Year">Start Year</label>
-                                @Html.EditorFor(model => model.detail.Start_Year, new { htmlAttributes = new { @min = "1950", @class = "form-control" } })
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group">
+                                    <label for="Start_Year">State</label>
+                                    @Html.DropDownList("State_Id", ViewBag.State_List as SelectList, "--select--", new { @class = "form-control" })
+                                </div>
                             </div>
 
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group">
+                                    <label for="City">City</label>
+                                    @Html.DropDownListFor(model => model.City_ID, ViewBag.city as SelectList, "--select--", new { @class = "form-control py-2" })
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group">
+                                    <label for="name">Password</label>
+                                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                    @*<input type="password" id="name" name="Password" class="form-control py-2 ">*@
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-4">
+
+                                <div class="form-group">
+                                    <label for="Start_Year">Field</label>
+                                    @Html.DropDownListFor(model => model.detail.Field_ID, ViewBag.Field_List as SelectList, "--select--", new { @class = "form-control py-2" })
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-4">
+
+                                <div class="form-group r">
+                                    <label for="Start_Year">Degree</label>
+                                    @Html.DropDownListFor(model => model.detail.DegreeLevel_ID, ViewBag.DegreeLevel_List as SelectList, "--select--", new { @class = "form-control py-2" })
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group">
+                                    <label for="Start_Year">Board</label>
+                                    @Html.DropDownListFor(model => model.detail.Board_ID, ViewBag.Board_List as SelectList, "--select--", new { @class = "form-control py-2" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group">
+                                    <label for="Start_Year">Start Year</label>
+                                    @Html.EditorFor(model => model.detail.Start_Year, new { htmlAttributes = new { @min = "1950", @class = "form-control" } })
+                                </div>
+
+                            </div>
+
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group">
+                                    <label for="Start_Year">End Year</label>
+                                    @Html.EditorFor(model => model.detail.End_Year, new { htmlAttributes = new { @min = "1950", @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group">
+                                    <label for="Start_Year">Percentage</label>
+                                    @Html.EditorFor(model => model.detail.Percentage, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    @*<input type="number" id="name" name="detail.Percentage" class="form-control py-2" step="0.01">*@
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group">
+                                    <label for="Grade">Grade</label>
+                                    @Html.EditorFor(model => model.detail.Grades, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    @*<input type="text" id="name" name="detail.Grade" class="form-control py-2" step="0.01">*@
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group">
+                                    <label for="Employment">Employment</label>
+                                    <select type="text" id="detail.Employment" name="detail.Employment" class="form-control py-2" step="0.01">
+                                        <option>Employe</option>
+                                        <option>Self-Employed</option>
+                                        <option>Unemployed</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group">
+                                    <label for="Designation">Designation</label>
+                                    @Html.EditorFor(model => model.detail.Designation, new { htmlAttributes = new { @min = "1950", @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group">
+                                    <label for="Fav_Subject">Favourite Subject</label>
+                                    @{
+                                        var lst = FYP1.Models.DataSets.Fav_Subject();
+                                        var lst2 = FYP1.Models.DataSets.Fav_Hobby();
+                                        var lst3 = FYP1.Models.DataSets.Fav_Sports();
+
+                                    }
+                                    @Html.DropDownListFor(model => model.detail.Fav_Subject, new SelectList(lst), "--select--", new { @class = "form-control py-2" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group">
+                                    <label for="Fav_Hobby">Favourite Hobby</label>
+                                    @Html.DropDownListFor(model => model.detail.Fav_Hobby, new SelectList(lst2), "--select--", new { @class = "form-control py-2" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-4">
+                                <div class="form-group">
+                                    <label for="Fav_Sport">Favourite Sport</label>
+                                    @Html.DropDownListFor(model => model.detail.Fav_Sport, new SelectList(lst3), "--select--", new { @class = "form-control py-2" })
+                                </div>
+                            </div>
+
+                            <div class="clear"></div>
+                            <div class="col-sm-12 mt-10">
+                                <button class="btn btn-primary" type="submit">Save</button>
+                                <a href="#" class="btn btn-primary btn-inverse">Cancel</a>
+                            </div>
                         </div>
 
-                        <div class="col-sm-6 col-md-4">
-                            <div class="form-group">
-                                <label for="Start_Year">End Year</label>
-                                @Html.EditorFor(model => model.detail.End_Year, new { htmlAttributes = new { @min = "1950", @class = "form-control" } })
-                            </div>
-                        </div> 
-                        <div class="col-sm-6 col-md-4">
-                            <div class="form-group">
-                                <label for="Start_Year">Percentage</label>
-                                @Html.EditorFor(model => model.detail.Percentage, new { htmlAttributes = new { @class = "form-control" } })
 
-                                @*<input type="number" id="name" name="detail.Percentage" class="form-control py-2" step="0.01">*@
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                            <div class="form-group">
-                                <label for="Grade">Grade</label>
-                                @Html.EditorFor(model => model.detail.Grades, new { htmlAttributes = new { @class = "form-control" } })
-
-                                @*<input type="text" id="name" name="detail.Grade" class="form-control py-2" step="0.01">*@
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                            <div class="form-group">
-                                <label for="Employment">Employment</label>
-                                <select type="text" id="detail.Employment" name="detail.Employment" class="form-control py-2" step="0.01">
-                                    <option>Employe</option>
-                                    <option>Self-Employed</option>
-                                    <option>Unemployed</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                            <div class="form-group">
-                                <label for="Designation">Designation</label>
-                                @Html.EditorFor(model => model.detail.Designation, new { htmlAttributes = new { @min = "1950", @class = "form-control" } })
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                            <div class="form-group">
-                                <label for="Fav_Subject">Favourite Subject</label>
-                                @{
-                                    var lst = FYP1.Models.DataSets.Fav_Subject();
-                                }
-                                @Html.DropDownListFor(model => model.detail.Fav_Subject, new SelectList(lst), "--select--", new { @class = "form-control py-2" })
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                            <div class="form-group">
-                                <label for="Fav_Hobby">Favourite Hobby</label>
-                                @{
-                                    lst = FYP1.Models.DataSets.Fav_Hobby();
-                                }
-                                @Html.DropDownListFor(model => model.detail.Fav_Hobby, new SelectList(lst), "--select--", new { @class = "form-control py-2" })
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4">
-                            <div class="form-group">
-                                <label for="Fav_Sport">Favourite Sport</label>
-                                @{
-                                    lst = FYP1.Models.DataSets.Fav_Sports();
-                                }
-                                @Html.DropDownListFor(model => model.detail.Fav_Sport, new SelectList(lst), "--select--", new { @class = "form-control py-2" })
-                            </div>
-                        </div>
-
-                        <div class="clear"></div>
-                        <div class="col-sm-12 mt-10">
-                            <button class="btn btn-primary" type="submit">Save</button>
-                            <a href="#" class="btn btn-primary btn-inverse">Cancel</a>
-                        </div>
+                    </form>
                 </div>
 
-                </form>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 @section Scripts {

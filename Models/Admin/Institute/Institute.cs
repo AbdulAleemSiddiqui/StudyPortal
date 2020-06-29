@@ -136,7 +136,6 @@ namespace FYP1.Models.Institute
             sc.Parameters.AddWithValue("@end_date", end_date);
             sc.Parameters.AddWithValue("@Institute_img", Institute_img);
             sc.Parameters.AddWithValue("@Email", Email);
-            sc.Parameters.AddWithValue("@EmailConfirmation", EmailConfirmation);
             sc.Parameters.AddWithValue("@Password", Password);
             sc.Parameters.AddWithValue("@Payment_Info", Payment_Info);
             sc.Parameters.AddWithValue("@Website_Link", Website_Link);

@@ -19,7 +19,7 @@
                             <form action="#" method="post">
                                 <div class="row">
                                     <div class="col-md-12 form-group">
-                                        <label for="name">Username</label>
+                                        <label for="name">Email</label>
                                         <input type="text" id="Email" name="Email" class="form-control py-2">
                                     </div>
                                 </div>
@@ -58,7 +58,15 @@
 
 
 
+@section scripts
+{
+    <script>
+        @*var lst = @Html.Raw(Json.Encode(ViewBag.Message));
+        swal("Congratulation!", "You marks is " + lst, "success");*@
+        
+    </script>
 
+}
 
 
 

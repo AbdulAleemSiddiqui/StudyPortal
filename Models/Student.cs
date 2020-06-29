@@ -46,7 +46,7 @@ namespace FYP1.Models.Student
 
 
         private const string Module = "Module";
-
+            
         //Your Properties for Model Here
 
 
@@ -60,8 +60,10 @@ namespace FYP1.Models.Student
         {
             try
             {
+                this.ConnectionID = "asd";
                 //place your Model Logic and DB Calls here:
-                return DataBase.ExecuteQuery<Student>(new { x = this ,x1=detail}, Connection.Get()).FirstOrDefault().Student_ID;
+                var id= DataBase.ExecuteQuery<Student>(new { x = this ,x1=detail}, Connection.Get()).FirstOrDefault().Student_ID;
+                return id;
             }
             catch (Exception ex)
             {

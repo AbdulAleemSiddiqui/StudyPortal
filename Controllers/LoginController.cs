@@ -25,6 +25,14 @@ namespace FYP1.Controllers
                 Session["S_ID"] = id;
                 return RedirectToAction("index", "student");
             }
+            else if(id==-1)
+            {
+                ViewBag.Message = "Kindly Confirm Your Email";
+            }
+            else if(id==-2)
+            {
+                ViewBag.Message = "Invalid Email or Password";
+            }
             return View();
         }
         public ActionResult InstituteLogin()

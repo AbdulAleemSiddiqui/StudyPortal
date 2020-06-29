@@ -93,7 +93,8 @@ namespace FYP1.Controllers
         public ActionResult UpdateInstitute(Institute obj)
         {
             ViewBag.InstituteType = new SelectList(new InstituteType().InstituteType_Get_All(), "InstituteType_ID", "InstituteType_Name");
-            obj.Institute_img = obj.Institute_img == null ? "NON" : obj.Institute_img;
+            obj.Institute_img= imageupload(obj.Prop, "");
+            obj.Institute_img = obj.Prop == null ? "NON" : obj.Institute_img;
             obj.Advertisement_Img = obj.Advertisement_Img == null ? "NON" : obj.Advertisement_Img;
             obj.Query = 2; //for update we use 2
             obj.Institute_Update();

@@ -47,9 +47,10 @@ namespace FYP1.Models.Student
         [TVP]
         public string Fav_Subject { get; set; }
         [TVP]
-        public string Fav_Sport { get; set; }
-        [TVP]
         public string Fav_Hobby { get; set; }
+        [TVP]
+        public string Fav_Sport { get; set; }
+  
 
         public Student_Detail Student_Detail_Get_By_Id(int student_ID)
         {

@@ -36,7 +36,7 @@ namespace FYP1.Models
             {
                 mail.From = new MailAddress(SenderMail);
                 mail.To.Add(UserMail);
-                mail.Subject = Subject;
+                mail.Subject = "Email Confirmation";
                 mail.Body = ConfirmationMessage;
                 mail.IsBodyHtml = true;
                 //mail.Attachments.Add(new Attachment("C:\\file.zip"));
@@ -53,7 +53,8 @@ namespace FYP1.Models
         private void SetMessage()
         {
             ConfirmationMessage = "";
-            foreach (var item in File.ReadAllLines(@"E:\Rafay FYP\fyp folder\FYP1 - Copy\verify-email.html"))
+            var path = AppDomain.CurrentDomain.BaseDirectory + "verify-email.html";
+            foreach (var item in File.ReadAllLines(@path))
             {
                 ConfirmationMessage += item.Replace("Company_Code", Company_Name)
                     .Replace("Company_Address", Company_Address)

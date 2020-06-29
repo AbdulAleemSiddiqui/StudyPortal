@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using DatabaseTVP;
 using FYP1.Models.Institute;
 namespace FYP1.Models.Admin.AdmissionForm
 {
@@ -31,6 +32,7 @@ namespace FYP1.Models.Admin.AdmissionForm
         public int A_ID { get; set; }
         public int Status_ID { get; set; }
         public string Payment_Info { get; set; }
+        public string Message { get; set; }
         public void Add()
         {
             SqlCommand sc = new SqlCommand("Usp_InsertUpdateDelete_AdmissionInstitute", Connection.Get()) { CommandType = System.Data.CommandType.StoredProcedure }; ;
@@ -60,6 +62,19 @@ namespace FYP1.Models.Admin.AdmissionForm
             sc.Parameters.AddWithValue("@Status", Status_ID);
             sc.Parameters.AddWithValue("@Query",2);
             sc.ExecuteNonQuery();
+        }
+
+        public string Total_Admissions_Stats()
+        {
+            try
+            {
+                string Message = DataBase.ExecuteQuery<Admission_Institute>(new {  }, Connection.Get()).FirstOrDefault().Message;
+                return Message;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 

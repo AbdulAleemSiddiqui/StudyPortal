@@ -1,5 +1,7 @@
 ﻿using FYP1.Models;
+using FYP1.Models.Admin.AdmissionForm;
 using FYP1.Models.Department;
+using FYP1.Models.Institute;
 using FYP1.Models.Location;
 using FYP1.Models.Student;
 using System;
@@ -14,7 +16,10 @@ namespace FYP1.Controllers
         [HttpGet]
         public ActionResult index()
         {
-            return View();
+            ViewBag.Applications = new Admission_Institute().Total_Admissions_Stats();
+            ViewBag.Institutes = new Institute().Institute_Get_All().Count;
+            ViewBag.PreReq = new Pre_Req_Course().Pre_Req_Course_Get_All().Count;
+             return View();
         }
 
         // Registration
@@ -83,6 +88,12 @@ namespace FYP1.Controllers
         [HttpPost]
         public ActionResult EditStudent(Student s)
         {
+            ViewBag.DegreeLevel_List = new SelectList(new DegreeLevel().DegreeLevel_Get_All(), "DegreeLevel_ID", "DegreeLevel_Name");
+            ViewBag.State_List = new SelectList(new State().State_Get_All(), "State_ID ", "State_Name");
+            ViewBag.Field_List = new SelectList(new DepartmentType().DepartmentType_Get_All(), "DepartmentType_ID", "DepartmentType_Name");
+            ViewBag.Board_List = new SelectList(new Board().Board_Get_All(), "Board_ID", "Board_Name");
+            ViewBag.Employment = new SelectList("Employee", "Self-Employee", "Unemployee");
+            ViewBag.city = new SelectList(new City().City_Get_All(), "City_ID", "City_Name");
             s.Student_Edit();
             return View(s);
         }

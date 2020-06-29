@@ -1,4 +1,7 @@
-﻿using FYP1.Models.Admin;
+﻿using FYP1.Models;
+using FYP1.Models.Admin;
+using FYP1.Models.Admin.AdmissionForm;
+using FYP1.Models.Institute;
 using System.Web.Mvc;
 
 namespace FYP1.Controllers
@@ -8,6 +11,9 @@ namespace FYP1.Controllers
         [HttpGet]
         public ActionResult index()
         {
+            ViewBag.Applications = new Admission_Institute().Total_Admissions_Stats();
+            ViewBag.Institutes = new Institute().Institute_Get_All().Count;
+            ViewBag.PreReq = new Pre_Req_Course().Pre_Req_Course_Get_All().Count;
             return View();
         }
         public ActionResult GeneralSetting()
